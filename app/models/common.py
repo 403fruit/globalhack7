@@ -66,6 +66,7 @@ class UserResource(TimestampMixin, db.Model):
     type = db.Column(sau.ChoiceType(USER_RESOURCE_TYPES), index=True)
     quantity_available = db.Column(db.BigInteger)
     quantity_needed = db.Column(db.BigInteger)
+    fulfilled = db.Column(db.Boolean, nullable=False, default=False, server_default='0')
 
 
 class UserResourceFulfillment(TimestampMixin, db.Model):
@@ -74,6 +75,7 @@ class UserResourceFulfillment(TimestampMixin, db.Model):
     fulfilling_resource_id = db.Column(db.BigInteger, db.ForeignKey('user_resources.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
     fulfilled_resource_id = db.Column(db.BigInteger, db.ForeignKey('user_resources.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
     fulfilled_quantity = db.Column(db.BigInteger, nullable=False)
+    confirmed_by_recipient = db.Column(db.Boolean, nullable=False, default=False, server_default='0')
 
 
 UserResource.fulfilled_by = db.relationship(
