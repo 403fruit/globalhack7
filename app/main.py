@@ -2,7 +2,7 @@ import json
 import os
 import logging
 
-from flask import Flask
+from flask import Flask, g
 
 from flask_script import Manager
 from flask_sqlalchemy import SQLAlchemy
@@ -43,13 +43,9 @@ def create_app():
     login_manager.init_app(app)
 
     from app.models import common
+    from app.views.index import app as index_view
 
-    from flask import Blueprint, render_template
-    index_bp = Blueprint('index', __name__)
-    @index_bp.route('/')
-    def index():
-        return render_template('index.jinja.html')
-    app.register_blueprint(index_bp)
+    app.register_blueprint(index_view)
 
     # from app.views import view_modules
     # app.register_blueprint(index.app, url_prefix=whatever)
@@ -58,6 +54,8 @@ def create_app():
 
 
 app = None
+
+
 def get_app():
     global app
     if app is None:
