@@ -74,15 +74,23 @@ class UserResource(TimestampMixin, db.Model):
     type = db.Column(sau.ChoiceType(USER_RESOURCE_TYPES), index=True)
     quantity_available = db.Column(db.BigInteger)
     quantity_needed = db.Column(db.BigInteger)
-    quantity_fulfilled = db.Column(db.BigInteger)
-    fulfills_id = db.Column(db.BigInteger, db.ForeignKey('user_resources.id', onupdate='CASCADE', ondelete='CASCADE'))
-    fulfills = db.relationship('UserResource', foreign_keys=[fulfills_id], remote_side=[id], backref='fulfilled_by')
 
-    @property
-    def is_fulfilled(self):
-        if self.quantity_needed is None:
-            return None
-        return self.quantity_needed - self.quantity_fulfilled <= 0
+
+class UserResourceFulfillment(TimestampMixin, db.Model):
+    __tablename__ = 'user_resource_fulfillment'
+    id = db.Column(db.BigInteger, primary_key=True)
+    fulfilling_resource_id = db.Column(db.BigInteger, db.ForeignKey('user_resources.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
+    fulfilled_resource_id = db.Column(db.BigInteger, db.ForeignKey('user_resources.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
+    fulfilled_quantity = db.Column(db.BigInteger, nullable=False)
+
+
+UserResource.fulfilled_by = db.relationship(
+    'UserResource',
+    secondary=UserResourceFulfillment.__table__,
+    primaryjoin=UserResource.id == UserResourceFulfillment.fulfilled_resource_id,
+    secondaryjoin=UserResourceFulfillment.fulfilling_resource_id == UserResource.id,
+    backref='fulfills'
+)
 
 
 class UserLanguage(TimestampMixin, db.Model):
