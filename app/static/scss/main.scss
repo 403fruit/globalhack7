@@ -5,6 +5,10 @@ body {
 	top: 0;
 	border: 0;
 	border-radius: 0;
+	margin-bottom: 0;
+}
+.main-content-home {
+	margin-left: 0;
 }
 h1.greeting {
 	text-align: center;
@@ -16,6 +20,7 @@ h1.greeting {
 }
 ul.flags {
 	display: flex;
+	padding: 0;
 	li {
 		display: inline-block;
 		margin: 0 10px;
@@ -28,10 +33,13 @@ ul.flags {
 			border-radius: 6px;
 		}
 	}
-}
-ul.flags-sm {
-	img {
-		width: 3em;
+	&.flags-sm {
+		justify-content: center;
+		li {
+			img {
+				width: 3em;
+			}
+		}
 	}
 }
 .form-inline {
