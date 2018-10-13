@@ -22,3 +22,4 @@ roadblocks, sharing knowledge, and making connections that will last a lifetime.
 * Jesse Bu
 * Dylan Williams
 * Charlie Taylor
+* Kyle Shive
