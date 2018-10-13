@@ -1,4 +1,9 @@
 {% extends "base.jinja.html" %}
+
+{% block navbar %}
+    {% include 'nav.jinja.html' %}
+{% endblock navbar %}
+
 {% block content %}
 <h1>{{ _("Hello, World!") }}</h1>
     <img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/us.svg') }}" style="height: 3em;"/>
