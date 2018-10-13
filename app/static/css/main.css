@@ -46,18 +46,25 @@ ul.flags {
   line-height: 40px;
   height: 40px; }
 
-.categories-container .categories-list .category {
-  display: block;
-  text-align: center; }
-.categories-container .categories-list .icons {
-  display: block; }
-  .categories-container .categories-list .icons img {
-    display: inline-block;
-    clear: none; }
+.categories-container {
+  display: inline-block;
+  margin-bottom: 50px; }
+  .categories-container .categories-list .category {
+    display: block;
+    text-align: center;
+    background: #fff; }
+  .categories-container .categories-list .icons {
+    display: block; }
     .categories-container .categories-list .icons img.caticon-4, .categories-container .categories-list .icons img.caticon-3, .categories-container .categories-list .icons img.caticon-2 {
-      width: 50%; }
+      width: 50%;
+      height: 75px; }
     .categories-container .categories-list .icons img.caticon-1 {
       width: 100%; }
+  .categories-container .categories-list .name {
+    display: block;
+    text-transform: uppercase;
+    color: #000;
+    margin-top: 5px; }
 
 .alert {
   padding-top: 75px;
