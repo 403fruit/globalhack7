@@ -42,6 +42,7 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
 
+    from app.models import common
 
     from flask import Blueprint, render_template
     index_bp = Blueprint('index', __name__)
