@@ -1,6 +1,6 @@
 import json
 
-from flask import Blueprint, render_template, abort, g, current_app, redirect, url_for, flash
+from flask import Blueprint, render_template, abort, g, current_app, redirect, url_for, flash, request
 from flask_babel import Babel
 from flask_login import login_user, logout_user, current_user
 from flask_wtf import Form
@@ -73,7 +73,9 @@ class RegistrationForm(Form):
         if user is not None:
             raise ValidationError(ERROR_MESSAGES['different_email'])
 
+
 app = Blueprint('user', __name__)
+
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
