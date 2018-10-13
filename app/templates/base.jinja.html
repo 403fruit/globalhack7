@@ -16,12 +16,15 @@
 {% block scripts %}
     {{ super() }}
     <script type="text/javascript">
-        window.lang_code = '{{ g.lang_code or 'en' }}';
+        window.lang_code = '{{ g.lang_code or "en" }}';
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery-ui-1.9.2.custom.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/typeahead.bundle.js') }}"></script>
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
     <script src="{{ url_for('static', filename='js/chart-master/Chart.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.nicescroll.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.dcjqaccordion.2.7.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/common-scripts.js') }}"></script>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 {% endblock %}
@@ -29,6 +32,9 @@
 {% block content %}
     <section id="container">
         {% include 'nav.jinja.html' %}
+        <div class="row-fluid">
+            {% include 'messages.jinja.html' %}
+        </div>
         {% include 'sidebar.jinja.html' %}
         {% block wrapper %}{% endblock %}
         {% include 'footer.jinja.html' %}

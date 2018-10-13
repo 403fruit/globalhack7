@@ -99,6 +99,7 @@ class Resource(TimestampMixin, db.Model):
     quantity_available = db.Column(db.BigInteger)
     quantity_needed = db.Column(db.BigInteger)
     fulfilled = db.Column(db.Boolean, nullable=False, default=False, server_default='0')
+    name = db.Column(db.UnicodeText(), nullable=False)
 
     @property
     def quantity_remaining(self):

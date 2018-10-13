@@ -1,12 +1,6 @@
 body {
 	font-weight: 400;
 }
-.navbar-default {
-	top: 0;
-	border: 0;
-	border-radius: 0;
-	margin-bottom: 0;
-}
 h1.greeting {
 	text-align: center;
 }
@@ -28,6 +22,7 @@ ul.flags {
 		img {
 			width: 15em;
 			border-radius: 6px;
+			box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 		}
 	}
 	&.flags-sm {
@@ -55,7 +50,7 @@ ul.flags {
 		margin-right: 10px;
 	}
 }
-.btn-theme02 {
+.btn-default {
 	padding: 0 20px;
 	line-height: 40px;
 	height: 40px;
@@ -78,4 +73,14 @@ ul.flags {
 			}
 		}
 	}
+}
+
+
+.alert {
+  padding-top:75px;
+  text-align: center;
+  margin-bottom: 0;
+}
+div.form-panel {
+	margin-top: 20px;
 }
