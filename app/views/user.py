@@ -100,7 +100,7 @@ def login():
             return redirect(url_for('user.login', lang_code=g.lang_code))
         login_user(user, remember=form.remember_me.data)
         flash(GENERAL_MESSAGES['login_success'], "success")
-        return redirect(url_for('index.index', lang_code=g.lang_code))
+        return redirect(url_for('index.index', lang_code=user.language.lower()))
     return render_template('login.jinja.html', title=gettext('Sign In'), form=form)
 
 
