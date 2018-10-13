@@ -9,8 +9,10 @@
 
     "BABEL_DEFAULT_LOCALE": "en",
     "BABEL_DEFAULT_TIMEZONE": "UTC",
+    "BABEL_TRANSLATION_DIRECTORIES": "../translations",
     "SUPPORTED_LANGUAGES": {
         "en": "English",
-        "es": "Spanish"
+        "es": "Spanish",
+        "zh": "Chinese"
     }
 }
