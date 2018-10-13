@@ -1,29 +1,24 @@
-# README #
+# Ellis #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Named after the famous Ellis Island, Ellis helps immigrants and refugees by
+connecting them with others in their area, immigrants and natives alike, to
+share knowledge and build communities to ensure their transition to life in
+the United States is as smooth as possible.
 
-### What is this repository for? ###
+Users can create profiles describing their unique situations, skills, and
+interests, and Ellis will find others willing to share or looking for help.
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+The goal of Ellis is to build and strenghten immigrant communities by removing
+roadblocks, sharing knowledge, and making connections that will last a lifetime.
 
-### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
 
-### Contribution guidelines ###
+### Contributors ###
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* Drew Newman
+* Alec Elton
+* Brandon Butler
+* Daniel Salberg
+* Jesse Bu
+* Dylan Williams
+* Charlie Taylor
