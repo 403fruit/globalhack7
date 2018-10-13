@@ -1,0 +1,45 @@
+body {
+  font-weight: 400; }
+
+.navbar-default {
+  top: 0;
+  border: 0;
+  border-radius: 0; }
+
+h1.greeting {
+  text-align: center; }
+
+.flag-container {
+  width: 50%;
+  overflow: scroll;
+  margin: 0 auto; }
+
+ul.flags {
+  display: flex; }
+  ul.flags li {
+    display: inline-block;
+    margin: 0 10px; }
+    ul.flags li:first-child {
+      margin-left: 0; }
+    ul.flags li img {
+      height: 15em;
+      border-radius: 6px; }
+
+.form-inline {
+  display: flex;
+  justify-content: center; }
+  .form-inline label {
+    line-height: 40px;
+    vertical-align: text-top;
+    text-transform: uppercase;
+    margin-right: 5px; }
+  .form-inline input {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    margin-right: 10px; }
+
+.btn-theme02 {
+  padding: 0 20px;
+  line-height: 40px;
+  height: 40px; }
