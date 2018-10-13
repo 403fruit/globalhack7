@@ -5,9 +5,10 @@ h1.greeting {
   text-align: center; }
 
 .flag-container {
-  width: 90%;
+  width: 225px;
   overflow: scroll;
-  margin: 0 auto 50px; }
+  margin: 0 auto 50px;
+  position: relative; }
 
 ul.flags {
   display: flex;
@@ -22,10 +23,8 @@ ul.flags {
       width: 15em;
       border-radius: 6px;
       box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2); }
-  ul.flags.flags-sm {
-    justify-content: center; }
-    ul.flags.flags-sm li img {
-      width: 3em; }
+  ul.flags.flags-sm li img {
+    width: 3em; }
 
 .form-inline {
   display: flex;
@@ -68,7 +67,9 @@ ul.flags {
     display: block;
     text-transform: uppercase;
     color: #000;
-    margin-top: 15px; }
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 700; }
 
 .alert {
   padding-top: 75px;
