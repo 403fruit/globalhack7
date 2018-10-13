@@ -1,6 +1,11 @@
 body {
   font-weight: 400; }
 
+.navbar-default {
+  top: 0;
+  border: 0;
+  border-radius: 0; }
+
 h1.greeting {
   text-align: center; }
 
@@ -13,14 +18,24 @@ ul.flags {
     border: 1px solid #999;
     padding: 10px;
     margin: 0 10px; }
+    ul.flags li img {
+      height: 15em; }
 
 .form-inline {
   display: flex;
   justify-content: center; }
   .form-inline label {
     line-height: 40px;
-    vertical-align: text-top; }
+    vertical-align: text-top;
+    text-transform: uppercase;
+    margin-right: 5px; }
   .form-inline input {
     height: 40px;
     line-height: 40px;
-    padding: 0 15px; }
+    padding: 0 15px;
+    margin-right: 10px; }
+
+.btn-theme02 {
+  padding: 0 20px;
+  line-height: 40px;
+  height: 40px; }
