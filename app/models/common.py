@@ -83,17 +83,3 @@ UserResource.fulfilled_by = db.relationship(
     secondaryjoin=UserResourceFulfillment.fulfilling_resource_id == UserResource.id,
     backref='fulfills'
 )
-
-
-class UserLanguage(TimestampMixin, db.Model):
-    __tablename__ = 'user_languages'
-    id = db.Column(db.BigInteger, primary_key=True)
-    user_id = db.Column(db.BigInteger, db.ForeignKey('user.id', onupdate='CASCADE', ondelete='RESTRICT'))
-    language_id = db.Column(db.BigInteger, db.ForeignKey('language.id', onupdate='CASCADE', ondelete='RESTRICT'))
-
-
-class Country(TimestampMixin, db.Model):
-    __tablename__ = 'countries'
-    id = db.Column(db.BigInteger, primary_key=True)
-    display_name = db.Column(db.String(128), nullable=False, unique=True)
-    code = db.Column(db.String(3), nullable=False, unique=True)
