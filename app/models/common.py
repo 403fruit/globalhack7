@@ -14,6 +14,7 @@ class User(db.Model):
     username = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.UnicodeText, nullable=False)
     name = db.Column(db.UnicodeText, nullable=False)
+    country = db.Column(db.String(2))
 
 
 class Resource(db.Model):
