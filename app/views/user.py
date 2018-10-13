@@ -70,7 +70,7 @@ class RegistrationForm(Form):
     primary_role = SelectField(LABELS["primary_roll"], choices=PRIMARY_ROLE)
     bio = StringField(LABELS['bio'])
     phone = StringField(LABELS["phone"])
-    language = SelectField(LABELS["language"], choices=SUPPORTEDLANGUAGES())
+    language = SelectField(LABELS["language"], choices=[])
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
     submit = SubmitField(LABELS['submit'])
 
@@ -109,6 +109,7 @@ def register():
     if current_user.is_authenticated():
         return redirect(url_for('index.index'))
     form = RegistrationForm()
+    form.language.choices = [[k, v] for k, v in current_app.config.get("SUPPORTED_LANGUAGES", {}).items()]
     if form.validate_on_submit():
         user = User(
             username=form.username.data,
@@ -126,6 +127,8 @@ def register():
         db.session.commit()
         flash(GENERAL_MESSAGES['registration_success'], "success")
         return redirect(url_for('index.index'))
+    else :
+        form.language.data = g.lang_code
     return render_template('register.jinja.html', title=gettext('Register'), form=form)
 
 
