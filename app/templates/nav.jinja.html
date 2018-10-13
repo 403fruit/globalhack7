@@ -18,7 +18,7 @@
     <div class="top-menu">
         <ul class="nav pull-right top-menu">
             <li><a class="logout" href="{{ url_for('user.login', lang_code=(g.lang_code or 'en')) }}"> {{ _("Login") }}</a></li>
-            <li><a class="logout" href="{{ url_for('user.logout') }}"> {{ _("Logout") }}</a></li>
+            <li><a class="logout" href="{{ url_for('user.logout', lang_code=(g.lang_code or 'en')) }}"> {{ _("Logout") }}</a></li>
         </ul>
     </div>
 </header>
