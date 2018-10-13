@@ -1,3 +1,5 @@
+import re
+
 import sqlalchemy_utils as sau
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -67,9 +69,23 @@ class Category(db.Model):
     __tablename__ = 'categories'
     id = db.Column(db.BigInteger, primary_key=True)
     parent_id = db.Column(db.BigInteger, db.ForeignKey('categories.id', onupdate='CASCADE', ondelete='CASCADE'))
-    parent = db.relationship('Category', foreign_keys=[parent_id], remote_side=[id])
+    parent = db.relationship('Category', foreign_keys=[parent_id], remote_side=[id], backref='children')
     name = db.Column(db.UnicodeText(), nullable=False)
     fontawesome_icon = db.Column(db.UnicodeText())
+
+    @property
+    def fontawesome_icons(self):
+        if self.fontawesome_icon is None:
+            return ''
+
+        return list(re.split(r',\s*', self.fontawesome_icon))
+
+    @property
+    def fontawesome_icon_classes(self):
+        if self.fontawesome_icon is None:
+            return ''
+
+        return ['fas fa-' + i for i in re.split(r',\s*', self.fontawesome_icon)]
 
 
 class Resource(TimestampMixin, db.Model):

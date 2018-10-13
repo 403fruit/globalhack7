@@ -50,3 +50,16 @@ ul.flags {
   padding: 0 20px;
   line-height: 40px;
   height: 40px; }
+
+.categories-container .categories-list .icons {
+  display: block;
+  text-align: center; }
+  .categories-container .categories-list .icons img {
+    display: inline-block;
+    clear: none; }
+    .categories-container .categories-list .icons img.caticon-4, .categories-container .categories-list .icons img.caticon-3, .categories-container .categories-list .icons img.caticon-2 {
+      width: 50%; }
+    .categories-container .categories-list .icons img.caticon-1 {
+      width: 100%; }
+
+/*# sourceMappingURL=main.css.map */
