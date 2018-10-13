@@ -2,7 +2,7 @@
 
 {% block wrapper %}
 <h1 class="greeting">{{ _("Hello, World!") }}</h1>
-    <ul class="{% if g.lang_code %}flags-sm{% else %}flags">
+    <ul class="{% if g.lang_code %}flags-sm{% else %}flags{% endif %}">
         <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/us.svg') }}" style="height: 3em;"/></li>
         <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/de.svg') }}" style="height: 3em;"/></li>
         <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/fr.svg') }}" style="height: 3em;"/></li>
