@@ -43,14 +43,17 @@ def create_app():
     manager = Manager(app)
     db.init_app(app)
     login_manager.init_app(app)
+    login_manager.login_view = "login"
     babel = Babel(app)
 
     from app.models import common
     from app.views.index import app as index_view
     from app.views.api import app as api_view
+    from app.views.user import app as user_view
 
     app.register_blueprint(index_view)
     app.register_blueprint(index_view, url_prefix='/<lang_code>')
+    app.register_blueprint(user_view, url_prefix='/<lang_code>')
     app.register_blueprint(api_view, url_prefix='/api')
 
     # from app.views import view_modules
