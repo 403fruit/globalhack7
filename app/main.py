@@ -51,7 +51,7 @@ def create_app():
 
     app.register_blueprint(index_view)
     app.register_blueprint(index_view, url_prefix='/<lang_code>')
-    app.register_blueprint(api_view, url_prefix='/api/<lang_code>')
+    app.register_blueprint(api_view, url_prefix='/api')
 
     # from app.views import view_modules
     # app.register_blueprint(index.app, url_prefix=whatever)
