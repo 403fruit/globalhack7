@@ -66,7 +66,6 @@ class UserResource(TimestampMixin, db.Model):
     type = db.Column(sau.ChoiceType(USER_RESOURCE_TYPES), index=True)
     quantity_available = db.Column(db.BigInteger)
     quantity_needed = db.Column(db.BigInteger)
-<<<<<<< HEAD
 
 
 class UserResourceFulfillment(TimestampMixin, db.Model):
@@ -98,14 +97,3 @@ class Country(TimestampMixin, db.Model):
     id = db.Column(db.BigInteger, primary_key=True)
     display_name = db.Column(db.String(128), nullable=False, unique=True)
     code = db.Column(db.String(3), nullable=False, unique=True)
-=======
-    quantity_fulfilled = db.Column(db.BigInteger)
-    fulfills_id = db.Column(db.BigInteger, db.ForeignKey('user_resources.id', onupdate='CASCADE', ondelete='CASCADE'))
-    fulfills = db.relationship('UserResource', foreign_keys=[fulfills_id], remote_side=[id], backref='fulfilled_by')
-
-    @property
-    def is_fulfilled(self):
-        if self.quantity_needed is None:
-            return None
-        return self.quantity_needed - self.quantity_fulfilled <= 0
->>>>>>> 0716f6d6af5e0bc6d2c86e46b1268131c7ff6bef
