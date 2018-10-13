@@ -5,5 +5,12 @@
     "_SERVER_NAME": "dontsetmeunlessyouhaveto:8000",
     "SQLALCHEMY_TRACK_MODIFICATIONS": false,
     "SQLALCHEMY_DATABASE_URI": "mysql+pymysql://root:password@localhost/globalhack",
-    "BOOTSTRAP_SERVE_LOCAL": true
+    "BOOTSTRAP_SERVE_LOCAL": true,
+
+    "BABEL_DEFAULT_LOCALE": "en",
+    "BABEL_DEFAULT_TIMEZONE": "UTC",
+    "SUPPORTED_LANGUAGES": {
+        "en": "English",
+        "es": "Spanish"
+    }
 }

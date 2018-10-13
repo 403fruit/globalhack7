@@ -43,19 +43,11 @@ class User(TimestampMixin, db.Model):
     email = db.Column(db.String(255), nullable=True)
     phone = db.Column(db.BigInteger(), nullable=True)
     secondary_phone = db.Column(db.BigInteger(), nullable=True)
-    bio = db.Column(db.Text(), nullable=False)
+    bio = db.Column(db.UnicodeText, nullable=False)
     immigration_status = db.Column(sau.ChoiceType(IMMIGRATION_STATUS), index=True)
     primary_role = db.Column(sau.ChoiceType(PRIMARY_ROLE))
-    languages = db.relationship('Language', backref='users')
-    country = db.relationship('Country', backref='users')
-    country_id = db.Column(db.BigInteger, db.ForeignKey('country.id', onupdate='CASCADE', ondelete='CASCADE'))
-
-
-class Language(db.Model):
-    __tablename__ = 'languages'
-    id = db.Column(db.BigInteger, primary_key=True)
-    display_name = db.Column(db.String(255), nullable=False, unique=True)
-    cole = db.Column(db.String(8), nullable=False, unique=True)
+    language = db.Column(db.String(2), nullable=False)
+    country = db.Column(db.String(2), nullable=False)
 
 
 class Resource(db.Model):
@@ -74,6 +66,7 @@ class UserResource(TimestampMixin, db.Model):
     type = db.Column(sau.ChoiceType(USER_RESOURCE_TYPES), index=True)
     quantity_available = db.Column(db.BigInteger)
     quantity_needed = db.Column(db.BigInteger)
+<<<<<<< HEAD
 
 
 class UserResourceFulfillment(TimestampMixin, db.Model):
@@ -105,3 +98,14 @@ class Country(TimestampMixin, db.Model):
     id = db.Column(db.BigInteger, primary_key=True)
     display_name = db.Column(db.String(128), nullable=False, unique=True)
     code = db.Column(db.String(3), nullable=False, unique=True)
+=======
+    quantity_fulfilled = db.Column(db.BigInteger)
+    fulfills_id = db.Column(db.BigInteger, db.ForeignKey('user_resources.id', onupdate='CASCADE', ondelete='CASCADE'))
+    fulfills = db.relationship('UserResource', foreign_keys=[fulfills_id], remote_side=[id], backref='fulfilled_by')
+
+    @property
+    def is_fulfilled(self):
+        if self.quantity_needed is None:
+            return None
+        return self.quantity_needed - self.quantity_fulfilled <= 0
+>>>>>>> 0716f6d6af5e0bc6d2c86e46b1268131c7ff6bef
