@@ -7,7 +7,7 @@ h1.greeting {
 .flag-container {
   width: 90%;
   overflow: scroll;
-  margin: 0 auto; }
+  margin: 0 auto 50px; }
 
 ul.flags {
   display: flex;
@@ -46,9 +46,11 @@ ul.flags {
   line-height: 40px;
   height: 40px; }
 
-.categories-container .categories-list .icons {
+.categories-container .categories-list .category {
   display: block;
   text-align: center; }
+.categories-container .categories-list .icons {
+  display: block; }
   .categories-container .categories-list .icons img {
     display: inline-block;
     clear: none; }
@@ -64,5 +66,3 @@ ul.flags {
 
 div.form-panel {
   margin-top: 20px; }
-
-/*# sourceMappingURL=main.css.map */
