@@ -41,7 +41,7 @@
             <div class="categories-list row-fluid">
                 {% for cat in cat_list %}
                     <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
-                        <a class="category" href="{{ url_for('index.index', cat_id=cat.id) }}">
+                        <a class="category pn" href="{{ url_for('index.index', cat_id=cat.id) }}">
                             <span class="icons">
                                 {#{% for icon in cat.fontawesome_icon_classes %}
                                     <i class="caticon-{{ loop.length }} {{ icon }}"></i>#}
@@ -66,7 +66,7 @@
                         <label for="id_resource">{{ _("I need") }}: </label>
                         <input class="typeahead form-control" id="id_resource" type="text" placeholder="{{ _("What do you need?") }}">
                     </div>
-                    <button type="submit" class="btn btn-default btn-primary btn-theme02">{{ _("Submit") }}</button>
+                    <button type="submit" class="btn btn-default btn-primary">{{ _("Submit") }}</button>
                 </form>
             </div>
         </div>

@@ -7,7 +7,7 @@ h1.greeting {
 .flag-container {
 	width: 90%;
 	overflow: scroll;
-	margin: 0 auto;
+	margin: 0 auto 50px;
 }
 ul.flags {
 	display: flex;
@@ -55,27 +55,35 @@ ul.flags {
 	line-height: 40px;
 	height: 40px;
 }
-
 .categories-container {
+	display: inline-block;
+	margin-bottom: 50px;
 	.categories-list {
-		.icons {
+		.category {
 			display: block;
 			text-align: center;
+			background: #fff;
+		}
+		.icons {
+			display: block;
 			img {
-				display: inline-block;
-				clear: none;
 				&.caticon-4, &.caticon-3, &.caticon-2 {
 					width: 50%;
+					height: 75px;
 				}
 				&.caticon-1 {
 					width: 100%;
 				}
 			}
 		}
+		.name {
+			display: block;
+			text-transform: uppercase;
+			color: #000;
+			margin-top: 5px;
+		}
 	}
 }
-
-
 .alert {
   padding-top:75px;
   text-align: center;
