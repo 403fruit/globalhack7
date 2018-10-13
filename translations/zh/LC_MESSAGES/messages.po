@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-13 13:01-0500\n"
+"POT-Creation-Date: 2018-10-13 13:36-0500\n"
 "PO-Revision-Date: 2018-10-13 11:53-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -22,15 +22,15 @@ msgstr ""
 msgid "Hello, World!"
 msgstr "你好，世界"
 
-#: app/templates/index.jinja.html:20
+#: app/templates/index.jinja.html:22
 msgid "I need"
 msgstr "我需要"
 
-#: app/templates/index.jinja.html:21
+#: app/templates/index.jinja.html:23
 msgid "What do you need?"
 msgstr "你需要什么？"
 
-#: app/templates/index.jinja.html:23
+#: app/templates/index.jinja.html:25
 msgid "Submit"
 msgstr "提交"
 
