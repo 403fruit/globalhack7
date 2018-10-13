@@ -6,7 +6,6 @@
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         prefetch: {
             url: '/api/en/resources',
-            ttl: 1,
             filter: false
         }
     });
