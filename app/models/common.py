@@ -43,19 +43,11 @@ class User(TimestampMixin, db.Model):
     email = db.Column(db.String(255), nullable=True)
     phone = db.Column(db.BigInteger(), nullable=True)
     secondary_phone = db.Column(db.BigInteger(), nullable=True)
-    bio = db.Column(db.Text(), nullable=False)
+    bio = db.Column(db.UnicodeText, nullable=False)
     immigration_status = db.Column(sau.ChoiceType(IMMIGRATION_STATUS), index=True)
     primary_role = db.Column(sau.ChoiceType(PRIMARY_ROLE))
-    languages = db.relationship('Language', backref='users')
-    country = db.relationship('Country', backref='users')
-    country_id = db.Column(db.BigInteger, db.ForeignKey('country.id', onupdate='CASCADE', ondelete='CASCADE'))
-
-
-class Language(db.Model):
-    __tablename__ = 'languages'
-    id = db.Column(db.BigInteger, primary_key=True)
-    display_name = db.Column(db.String(255), nullable=False, unique=True)
-    cole = db.Column(db.String(8), nullable=False, unique=True)
+    language = db.Column(db.String(2), nullable=False)
+    country = db.Column(db.String(2), nullable=False)
 
 
 class Resource(db.Model):
@@ -83,17 +75,3 @@ class UserResource(TimestampMixin, db.Model):
         if self.quantity_needed is None:
             return None
         return self.quantity_needed - self.quantity_fulfilled <= 0
-
-
-class UserLanguage(TimestampMixin, db.Model):
-    __tablename__ = 'user_languages'
-    id = db.Column(db.BigInteger, primary_key=True)
-    user_id = db.Column(db.BigInteger, db.ForeignKey('user.id', onupdate='CASCADE', ondelete='RESTRICT'))
-    language_id = db.Column(db.BigInteger, db.ForeignKey('language.id', onupdate='CASCADE', ondelete='RESTRICT'))
-
-
-class Country(TimestampMixin, db.Model):
-    __tablename__ = 'countries'
-    id = db.Column(db.BigInteger, primary_key=True)
-    display_name = db.Column(db.String(128), nullable=False, unique=True)
-    code = db.Column(db.String(3), nullable=False, unique=True)
