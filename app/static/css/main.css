@@ -10,7 +10,7 @@ h1.greeting {
   text-align: center; }
 
 .flag-container {
-  width: 50%;
+  width: 90%;
   overflow: scroll;
   margin: 0 auto; }
 
@@ -18,12 +18,16 @@ ul.flags {
   display: flex; }
   ul.flags li {
     display: inline-block;
-    margin: 0 10px; }
+    margin: 0 10px;
+    cursor: pointer; }
     ul.flags li:first-child {
       margin-left: 0; }
     ul.flags li img {
-      height: 15em;
+      width: 15em;
       border-radius: 6px; }
+
+ul.flags-sm img {
+  width: 3em; }
 
 .form-inline {
   display: flex;
