@@ -1,12 +1,6 @@
 body {
   font-weight: 400; }
 
-.navbar-default {
-  top: 0;
-  border: 0;
-  border-radius: 0;
-  margin-bottom: 0; }
-
 h1.greeting {
   text-align: center; }
 
@@ -46,7 +40,7 @@ ul.flags {
     padding: 0 15px;
     margin-right: 10px; }
 
-.btn-theme02 {
+.btn-default {
   padding: 0 20px;
   line-height: 40px;
   height: 40px; }
