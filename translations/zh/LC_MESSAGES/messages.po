@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-13 11:51-0500\n"
+"POT-Creation-Date: 2018-10-13 13:01-0500\n"
 "PO-Revision-Date: 2018-10-13 11:53-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -18,15 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: app/templates/index.jinja.html:3
+#: app/templates/index.jinja.html:8
 msgid "Hello, World!"
 msgstr "你好，世界"
 
-#: app/templates/index.jinja.html:15
+#: app/templates/index.jinja.html:20
 msgid "I need"
-msgstr ""
+msgstr "我需要"
 
-#: app/templates/index.jinja.html:18
+#: app/templates/index.jinja.html:21
+msgid "What do you need?"
+msgstr "你需要什么？"
+
+#: app/templates/index.jinja.html:23
 msgid "Submit"
-msgstr ""
+msgstr "提交"
+
+#: app/templates/nav.jinja.html:11
+msgid "Home"
+msgstr "家"
+
+#: app/templates/nav.jinja.html:15
+msgid "Login"
+msgstr "登录"
 
