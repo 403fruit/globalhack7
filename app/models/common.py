@@ -63,7 +63,7 @@ class Resource(TimestampMixin, db.Model):
     __tablename__ = 'resources'
     id = db.Column(db.BigInteger, primary_key=True)
     category_id = db.Column(db.BigInteger, db.ForeignKey('categories.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
-    category = db.relationship('Resource', backref='user_categories')
+    category = db.relationship('Category', backref='user_categories')
     user_id = db.Column(db.BigInteger, db.ForeignKey('users.id', onupdate='CASCADE', ondelete='CASCADE'), nullable=False)
     user = db.relationship('User', backref='resources')
     type = db.Column(sau.ChoiceType(USER_RESOURCE_TYPES), index=True)
