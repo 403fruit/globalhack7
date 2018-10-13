@@ -88,7 +88,7 @@ class RegistrationForm(Form):
 app = Blueprint('user', __name__)
 
 
-@app.route('/login/', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated():
         return redirect(url_for('index.index'))
