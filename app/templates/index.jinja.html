@@ -1,10 +1,6 @@
 {% extends "base.jinja.html" %}
 
-{% block navbar %}
-    {% include 'nav.jinja.html' %}
-{% endblock navbar %}
-
-{% block content %}
+{% block wrapper %}
 <h1 class="greeting">{{ _("Hello, World!") }}</h1>
     <ul class="flags">
         <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/us.svg') }}" style="height: 3em;"/></li>
@@ -26,13 +22,3 @@
     </form>
 {% endblock %}
 
-{% block styles %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/typeahead.css') }}" />
-{% endblock %}
-
-{% block scripts %}
-    {{ super() }}
-    <script src="{{ url_for('static', filename='js/typeahead.bundle.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-{% endblock %}
