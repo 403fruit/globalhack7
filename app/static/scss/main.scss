@@ -63,6 +63,10 @@ ul.flags {
 			display: block;
 			text-align: center;
 			background: #fff;
+			padding: 20px;
+			height: auto;
+			min-height: 320px;
+			margin-bottom: 25px;
 		}
 		.icons {
 			display: block;
@@ -80,7 +84,7 @@ ul.flags {
 			display: block;
 			text-transform: uppercase;
 			color: #000;
-			margin-top: 5px;
+			margin-top: 15px;
 		}
 	}
 }

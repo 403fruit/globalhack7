@@ -52,7 +52,11 @@ ul.flags {
   .categories-container .categories-list .category {
     display: block;
     text-align: center;
-    background: #fff; }
+    background: #fff;
+    padding: 20px;
+    height: auto;
+    min-height: 320px;
+    margin-bottom: 25px; }
   .categories-container .categories-list .icons {
     display: block; }
     .categories-container .categories-list .icons img.caticon-4, .categories-container .categories-list .icons img.caticon-3, .categories-container .categories-list .icons img.caticon-2 {
@@ -64,7 +68,7 @@ ul.flags {
     display: block;
     text-transform: uppercase;
     color: #000;
-    margin-top: 5px; }
+    margin-top: 15px; }
 
 .alert {
   padding-top: 75px;

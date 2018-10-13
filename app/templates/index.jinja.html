@@ -40,7 +40,7 @@
             </div>
             <div class="categories-list row-fluid">
                 {% for cat in cat_list %}
-                    <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
+                    <div class="col-xs-6 col-sm-4">
                         <a class="category pn" href="{{ url_for('index.index', cat_id=cat.id) }}">
                             <span class="icons">
                                 {#{% for icon in cat.fontawesome_icon_classes %}
