@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-13 14:57-0500\n"
+"POT-Creation-Date: 2018-10-13 16:49-0500\n"
 "PO-Revision-Date: 2018-10-13 11:53-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -22,96 +22,107 @@ msgstr ""
 msgid "Hello, World!"
 msgstr "Hola, Mundo!"
 
-#: app/templates/index.jinja.html:20
+#: app/templates/index.jinja.html:21
 msgid "I need"
 msgstr "Yo necessito"
 
-#: app/templates/index.jinja.html:21
+#: app/templates/index.jinja.html:22
 msgid "What do you need?"
 msgstr "¿Que necesitas?"
 
-#: app/templates/index.jinja.html:23
+#: app/templates/index.jinja.html:24
 msgid "Submit"
 msgstr "Enviar"
 
-#: app/templates/login.jinja.html:4 app/views/user.py:21 app/views/user.py:90
-msgid "Sign In"
-msgstr ""
+#: app/templates/nav.jinja.html:21
+msgid "Logout"
+msgstr "Cerrar sesión"
 
-#: app/templates/nav.jinja.html:11
-msgid "Home"
-msgstr "Casa"
-
-#: app/templates/nav.jinja.html:15
+#: app/templates/nav.jinja.html:23
 msgid "Login"
 msgstr "Iniciar Sesión"
 
-#: app/templates/register.jinja.html:6 app/views/user.py:23
-#: app/views/user.py:115
+#: app/templates/register.jinja.html:8 app/views/user.py:24
+#: app/views/user.py:129
 msgid "Register"
-msgstr ""
-
-#: app/views/user.py:17
-msgid "Username"
-msgstr ""
+msgstr "Registro"
 
 #: app/views/user.py:18
-msgid "Password"
-msgstr ""
+msgid "Username"
+msgstr "Nombre de Usuario"
 
 #: app/views/user.py:19
-msgid "Repeat Password"
-msgstr ""
+msgid "Password"
+msgstr "Contraseña"
 
 #: app/views/user.py:20
+msgid "Repeat Password"
+msgstr "Repite la Contraseña"
+
+#: app/views/user.py:21
 msgid "Remember Me"
-msgstr ""
+msgstr "Recuérdame"
 
-#: app/views/user.py:22
+#: app/views/user.py:22 app/views/user.py:104
+msgid "Sign In"
+msgstr "Registrarse"
+
+#: app/views/user.py:23
 msgid "Email"
-msgstr ""
-
-#: app/views/user.py:24
-msgid "Name"
-msgstr ""
+msgstr "Correo Electrónico"
 
 #: app/views/user.py:25
-msgid "Phone Number"
-msgstr ""
+msgid "Name"
+msgstr "Nombre"
 
 #: app/views/user.py:26
-msgid "Bio"
-msgstr ""
+msgid "Phone Number"
+msgstr "Número de Teléfono"
 
 #: app/views/user.py:27
-msgid "Immigration Status"
-msgstr ""
+msgid "Bio"
+msgstr "Biografía"
 
 #: app/views/user.py:28
-msgid "Primary Role"
-msgstr ""
+msgid "Immigration Status"
+msgstr "Estado de inmigración"
 
 #: app/views/user.py:29
-msgid "Language"
-msgstr ""
+msgid "Primary Role"
+msgstr "Rol Primario"
 
 #: app/views/user.py:30
-msgid "Country"
-msgstr ""
+msgid "Language"
+msgstr "Idioma"
 
-#: app/views/user.py:34
+#: app/views/user.py:31
+msgid "Country"
+msgstr "País"
+
+#: app/views/user.py:43
 msgid "Please select a different username."
 msgstr ""
 
-#: app/views/user.py:35
+#: app/views/user.py:44
 msgid "Please select a different email address"
-msgstr ""
+msgstr "Por favor seleccione un nombre de usuario diferente."
 
-#: app/views/user.py:36
+#: app/views/user.py:45
 msgid "Invalid username or password."
+msgstr "Usuario o contraseña invalido."
+
+#: app/views/user.py:49
+msgid "You have successfully registered."
+msgstr "Se ha registrado exitosamente."
+
+#: app/views/user.py:50
+msgid "You have successfully logged in."
 msgstr ""
 
-#: app/views/user.py:40
-msgid "You have successfully registered."
+#: app/views/user.py:51
+msgid "You have successfully logged out."
 msgstr ""
+
+#~ msgid "Home"
+#~ msgstr "Casa"
 

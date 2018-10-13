@@ -1,0 +1,13 @@
+{% extends "base.jinja.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block wrapper %}
+<section id="main-content">
+    <section class="wrapper site-min-height">
+        <h1>{{ _("User Profile") }}</h1>
+        {{ wtf.quick_form(form) }}
+    </section>
+</section>
+
+{% endblock %}
