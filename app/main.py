@@ -2,7 +2,7 @@ import json
 import os
 import logging
 
-from flask import Flask
+from flask import Flask, g
 
 from flask_script import Manager
 from flask_sqlalchemy import SQLAlchemy
@@ -55,6 +55,10 @@ def create_app():
 
     # from app.views import view_modules
     # app.register_blueprint(index.app, url_prefix=whatever)
+
+    @babel.localeselector
+    def get_locale():
+        return g.get('lang_code', app.config['BABEL_DEFAULT_LOCALE'])
 
     return app
 

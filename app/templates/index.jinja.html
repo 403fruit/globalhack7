@@ -1,4 +1,9 @@
 {% extends "base.jinja.html" %}
+
+{% block navbar %}
+    {% include 'nav.jinja.html' %}
+{% endblock navbar %}
+
 {% block content %}
 <h1>{{ _("Hello, World!") }}</h1>
     <img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/us.svg') }}" style="height: 3em;"/>
@@ -12,10 +17,10 @@
     <ul class="inputs"></ul>
     <form method="POST" class="form-inline">
         <div class="form-group">
-            <label for="id_resource">I need: </label>
-            <input class="typeahead form-control" id="id_resource" type="text" placeholder="What do you need?">
+            <label for="id_resource">{{ _("I need") }}: </label>
+            <input class="typeahead form-control" id="id_resource" type="text" placeholder="{{ _("What do you need?") }}">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">{{ _("Submit") }}</button>
     </form>
 {% endblock %}
 
@@ -26,7 +31,6 @@
 
 {% block scripts %}
     {{ super() }}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/typeahead.bundle.js') }}"></script>
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 {% endblock %}

@@ -1,8 +1,5 @@
 import json
 from flask import Blueprint, render_template, abort, g, current_app
-from flask_babel import Babel
-
-from app.main import babel
 
 
 app = Blueprint('index', __name__)
