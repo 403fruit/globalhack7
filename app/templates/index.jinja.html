@@ -1,7 +1,7 @@
 {% extends "base.jinja.html" %}
 
 {% block wrapper %}
-<section id="main-content">
+<section id="main-content class="main-content-home">
     <section class="wrapper site-min-height">
         <h1 class="greeting">{{ _("Hello, World!") }}</h1>
         <div class="flag-container">
@@ -11,6 +11,7 @@
                 <li><a href="{{ url_for('index.index', lang_code='es') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/mx.svg') }}" /></a></li>
                 <li><a href="{{ url_for('index.index', lang_code='zh') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/cn.svg') }}" /></a></li>
                 <li><a href="{{ url_for('index.index', lang_code='fr') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/fr.svg') }}" /></a></li>
+                <li><a href="{{ url_for('index.index', lang_code='vi') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/vn.svg') }}" /></a></li>
             </ul>
         </div>
 
