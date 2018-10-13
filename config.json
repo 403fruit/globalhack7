@@ -1,0 +1,9 @@
+{
+    "DEBUG": true,
+    "SECRET_KEY": "9d681127232d5a7494250d5c31948b4544c25f3cf8125556d684cbc57597a928e37ec05a46210f2e30c51a1822d5d812ae6745f6abfd38b06997dfdbba373ca2",
+    "SESSION_COOKIE_NAME": "ellis_session",
+    "_SERVER_NAME": "dontsetmeunlessyouhaveto:8000",
+    "SQLALCHEMY_TRACK_MODIFICATIONS": false,
+    "SQLALCHEMY_DATABASE_URI": "mysql+pymysql://root:password@localhost/globalhack",
+    "BOOTSTRAP_SERVE_LOCAL": true
+}
