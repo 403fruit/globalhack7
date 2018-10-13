@@ -1,4 +1,7 @@
 import sqlalchemy_utils as sau
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
+from app.main import login_manager
 
 import arrow
 
@@ -34,7 +37,7 @@ class TimestampMixin(object):
     updated_at = db.Column(sau.ArrowType(), nullable=False, index=True, default=arrow.utcnow, onupdate=arrow.utcnow)
 
 
-class User(TimestampMixin, db.Model):
+class User(UserMixin, TimestampMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.BigInteger, primary_key=True)
     name = db.Column(db.UnicodeText, nullable=False)
@@ -48,6 +51,16 @@ class User(TimestampMixin, db.Model):
     primary_role = db.Column(sau.ChoiceType(PRIMARY_ROLE))
     language = db.Column(db.String(2), nullable=False)
     country = db.Column(db.String(2), nullable=False)
+
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
 
 class Resource(db.Model):
