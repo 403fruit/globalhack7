@@ -1,13 +1,15 @@
 {% extends "base.jinja.html" %}
 {% block content %}
-<h1>{{ _("Hello, World!") }}</h1>
-    <img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/us.svg') }}" style="height: 3em;"/>
-    <img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/de.svg') }}" style="height: 3em;"/>
-    <img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/fr.svg') }}" style="height: 3em;"/>
-    <img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/af.svg') }}" style="height: 3em;"/>
-    <img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/cn.svg') }}" style="height: 3em;"/>
-    <img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/jp.svg') }}" style="height: 3em;"/>
-    <img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/tk.svg') }}" style="height: 3em;"/>
+<h1 class="greeting">{{ _("Hello, World!") }}</h1>
+    <ul class="flags">
+        <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/us.svg') }}" style="height: 3em;"/></li>
+        <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/de.svg') }}" style="height: 3em;"/></li>
+        <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/fr.svg') }}" style="height: 3em;"/></li>
+        <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/af.svg') }}" style="height: 3em;"/></li>
+        <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/cn.svg') }}" style="height: 3em;"/></li>
+        <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/jp.svg') }}" style="height: 3em;"/></li>
+        <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/tk.svg') }}" style="height: 3em;"/></li>
+    </ul>
 
     <ul class="inputs"></ul>
     <form method="POST" class="form-inline">

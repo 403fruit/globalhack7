@@ -1,0 +1,26 @@
+body {
+  font-weight: 400; }
+
+h1.greeting {
+  text-align: center; }
+
+ul.flags {
+  display: flex;
+  justify-content: center; }
+  ul.flags li {
+    display: inline-block;
+    border-radius: 6px;
+    border: 1px solid #999;
+    padding: 10px;
+    margin: 0 10px; }
+
+.form-inline {
+  display: flex;
+  justify-content: center; }
+  .form-inline label {
+    line-height: 40px;
+    vertical-align: text-top; }
+  .form-inline input {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px; }
