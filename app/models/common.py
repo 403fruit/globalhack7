@@ -50,17 +50,20 @@ class User(TimestampMixin, db.Model):
     country = db.Column(db.String(2), nullable=False)
 
 
-class Resource(db.Model):
+class Category(db.Model):
+    __tablename__ = 'categories'
+    id = db.Column(db.BigInteger, primary_key=True)
+    parent_id = db.Column(db.BigInteger, db.ForeignKey('categories.id', onupdate='CASCADE', ondelete='CASCADE'))
+    parent = db.relationship('Category', foreign_keys=[parent_id], remote_side=[id])
+    name = db.Column(db.UnicodeText(), nullable=False)
+    fontaweseome_icon = db.Column(db.UnicodeText())
+
+
+class Resource(TimestampMixin, db.Model):
     __tablename__ = 'resources'
     id = db.Column(db.BigInteger, primary_key=True)
-    name = db.Column(db.UnicodeText())
-
-
-class UserResource(TimestampMixin, db.Model):
-    __tablename__ = 'user_resources'
-    id = db.Column(db.BigInteger, primary_key=True)
-    resource_id = db.Column(db.BigInteger, db.ForeignKey('resources.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
-    resource = db.relationship('Resource', backref='user_resources')
+    category_id = db.Column(db.BigInteger, db.ForeignKey('categories.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
+    category = db.relationship('Resource', backref='user_categories')
     user_id = db.Column(db.BigInteger, db.ForeignKey('users.id', onupdate='CASCADE', ondelete='CASCADE'), nullable=False)
     user = db.relationship('User', backref='resources')
     type = db.Column(sau.ChoiceType(USER_RESOURCE_TYPES), index=True)
@@ -91,21 +94,21 @@ class UserResource(TimestampMixin, db.Model):
         return self.quantity_needed - sum([f.fulfilled_quantity for f in fulfillment])
 
 
-class UserResourceFulfillment(TimestampMixin, db.Model):
+class ResourceFulfillment(TimestampMixin, db.Model):
     __tablename__ = 'user_resource_fulfillment'
     id = db.Column(db.BigInteger, primary_key=True)
-    fulfilling_resource_id = db.Column(db.BigInteger, db.ForeignKey('user_resources.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
-    fulfilling_resource = db.relationship('UserResource', foreign_keys=[fulfilling_resource_id])
-    fulfilled_resource_id = db.Column(db.BigInteger, db.ForeignKey('user_resources.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
-    fulfilled_resource = db.relationship('UserResource', foreign_keys=[fulfilled_resource_id])
+    fulfilling_resource_id = db.Column(db.BigInteger, db.ForeignKey('resources.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
+    fulfilling_resource = db.relationship('Resource', foreign_keys=[fulfilling_resource_id])
+    fulfilled_resource_id = db.Column(db.BigInteger, db.ForeignKey('resources.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
+    fulfilled_resource = db.relationship('Resource', foreign_keys=[fulfilled_resource_id])
     fulfilled_quantity = db.Column(db.BigInteger, nullable=False)
     confirmed_by_recipient = db.Column(db.Boolean, nullable=False, default=False, server_default='0')
 
 
-UserResource.fulfilled_by = db.relationship(
-    'UserResource',
-    secondary=UserResourceFulfillment.__table__,
-    primaryjoin=UserResource.id == UserResourceFulfillment.fulfilled_resource_id,
-    secondaryjoin=UserResourceFulfillment.fulfilling_resource_id == UserResource.id,
+Resource.fulfilled_by = db.relationship(
+    'Resource',
+    secondary=ResourceFulfillment.__table__,
+    primaryjoin=Resource.id == ResourceFulfillment.fulfilled_resource_id,
+    secondaryjoin=ResourceFulfillment.fulfilling_resource_id == Resource.id,
     backref='fulfills'
 )
