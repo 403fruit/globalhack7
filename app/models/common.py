@@ -68,12 +68,36 @@ class UserResource(TimestampMixin, db.Model):
     quantity_needed = db.Column(db.BigInteger)
     fulfilled = db.Column(db.Boolean, nullable=False, default=False, server_default='0')
 
+    @property
+    def quantity_remaining(self):
+        if self.type != 'HAVE':
+            return None
+
+        fulfillment = UserResourceFulfillment.query.filter(
+            UserResourceFulfillment.fulfilling_resource == self,
+            UserResourceFulfillment.confirmed_by_recipient == True,
+        )
+        return self.quantity_available - sum([f.fulfilled_quantity for f in fulfillment])
+
+    @property
+    def quantity_fulfilled(self):
+        if self.type != 'NEED':
+            return None
+
+        fulfillment = UserResourceFulfillment.query.filter(
+            UserResourceFulfillment.fulfilled_resource == self,
+            UserResourceFulfillment.confirmed_by_recipient == True,
+        )
+        return self.quantity_needed - sum([f.fulfilled_quantity for f in fulfillment])
+
 
 class UserResourceFulfillment(TimestampMixin, db.Model):
     __tablename__ = 'user_resource_fulfillment'
     id = db.Column(db.BigInteger, primary_key=True)
     fulfilling_resource_id = db.Column(db.BigInteger, db.ForeignKey('user_resources.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
+    fulfilling_resource = db.relationship('UserResource', foreign_keys=[fulfilling_resource_id])
     fulfilled_resource_id = db.Column(db.BigInteger, db.ForeignKey('user_resources.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
+    fulfilled_resource = db.relationship('UserResource', foreign_keys=[fulfilled_resource_id])
     fulfilled_quantity = db.Column(db.BigInteger, nullable=False)
     confirmed_by_recipient = db.Column(db.Boolean, nullable=False, default=False, server_default='0')
 
