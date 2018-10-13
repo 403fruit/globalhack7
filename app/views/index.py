@@ -1,5 +1,4 @@
-import json
-from flask import Blueprint, render_template, abort, g, current_app
+from flask import Blueprint, render_template, g, current_app, url_for, redirect
 
 
 app = Blueprint('index', __name__)
