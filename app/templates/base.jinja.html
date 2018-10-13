@@ -6,10 +6,23 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style-responsive.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/typeahead.css') }}" />
 {% endblock %}
 
 {% block scripts %}
     {{ super() }}
+    <script type="text/javascript">
+        window.lang_code = '{{ g.lang_code or 'en' }}';
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/typeahead.bundle.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <section id="container">
+        {% include 'nav.jinja.html' %}
+        {% block wrapper %}{% endblock %}
+    </section>
 {% endblock %}

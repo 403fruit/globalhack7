@@ -1,11 +1,13 @@
 (function () {
+    var url = '/api/resources?lang_code=' + window.lang_code;
+
     var bloodhound_resources = new Bloodhound({
         datumTokenizer: function (datum) {
             return Bloodhound.tokenizers.whitespace(datum);
         },
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         prefetch: {
-            url: '/api/en/resources',
+            url: url,
             filter: false
         }
     });

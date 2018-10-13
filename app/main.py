@@ -2,7 +2,7 @@ import json
 import os
 import logging
 
-from flask import Flask, g
+from flask import Flask, g, current_app, abort
 
 from flask_script import Manager
 from flask_sqlalchemy import SQLAlchemy
@@ -51,7 +51,7 @@ def create_app():
 
     app.register_blueprint(index_view)
     app.register_blueprint(index_view, url_prefix='/<lang_code>')
-    app.register_blueprint(api_view, url_prefix='/api/<lang_code>')
+    app.register_blueprint(api_view, url_prefix='/api')
 
     # from app.views import view_modules
     # app.register_blueprint(index.app, url_prefix=whatever)
@@ -59,6 +59,24 @@ def create_app():
     @babel.localeselector
     def get_locale():
         return g.get('lang_code', app.config['BABEL_DEFAULT_LOCALE'])
+
+    @app.url_defaults
+    def set_language_code(endpoint, values):
+        if 'lang_code' in values or not g.get('lang_code', None):
+            return
+        if current_app.url_map.is_endpoint_expecting(endpoint, 'lang_code'):
+            values['lang_code'] = g.lang_code
+
+    @app.url_value_preprocessor
+    def get_lang_code(endpoint, values):
+        if values is not None:
+            g.lang_code = values.pop('lang_code', None)
+
+    @app.before_request
+    def ensure_lang_support():
+        lang_code = g.get('lang_code', None)
+        if lang_code and lang_code not in current_app.config['SUPPORTED_LANGUAGES'].keys():
+            return abort(404)
 
     return app
 
