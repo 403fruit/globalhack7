@@ -7,7 +7,7 @@ h1.greeting {
 .flag-container {
 	width: 90%;
 	overflow: scroll;
-	margin: 0 auto;
+	margin: 0 auto 50px;
 }
 ul.flags {
 	display: flex;
@@ -22,6 +22,7 @@ ul.flags {
 		img {
 			width: 15em;
 			border-radius: 6px;
+			box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 		}
 	}
 	&.flags-sm {
@@ -54,8 +55,32 @@ ul.flags {
 	line-height: 40px;
 	height: 40px;
 }
-
+.categories-container {
+	.categories-list {
+		.category {
+			display: block;
+			text-align: center;
+		}
+		.icons {
+			display: block;
+			img {
+				display: inline-block;
+				clear: none;
+				&.caticon-4, &.caticon-3, &.caticon-2 {
+					width: 50%;
+				}
+				&.caticon-1 {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
 .alert {
   padding-top:75px;
   text-align: center;
+  margin-bottom: 0;
+}
+div.form-panel {
+	margin-top: 20px;
 }

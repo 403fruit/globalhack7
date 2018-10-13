@@ -4,25 +4,72 @@
 <section id="main-content">
     <section class="wrapper site-min-height">
         <h1 class="greeting">{{ _("Hello, World!") }}</h1>
-        <div class="flag-container">
-            <ul class="{% if g.lang_code %}flags flags-sm{% else %}flags{% endif %}">
-                <li><a href="{{ url_for('index.index', lang_code='en') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/us.svg') }}" /></a></li>
-                <li><a href="{{ url_for('index.index', lang_code='ar') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/sy.svg') }}" /></a></li>
-                <li><a href="{{ url_for('index.index', lang_code='es') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/mx.svg') }}" /></a></li>
-                <li><a href="{{ url_for('index.index', lang_code='zh') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/cn.svg') }}" /></a></li>
-                <li><a href="{{ url_for('index.index', lang_code='fr') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/fr.svg') }}" /></a></li>
-                <li><a href="{{ url_for('index.index', lang_code='vi') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/vn.svg') }}" /></a></li>
-            </ul>
+        <div class="flag-container row-fluid">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="{% if g.lang_code %}flags flags-sm{% else %}flags{% endif %}">
+                    <li><a href="{{ url_for('index.index', lang_code='en') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/us.svg') }}" /></a></li>
+                    <li><a href="{{ url_for('index.index', lang_code='ar') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/sy.svg') }}" /></a></li>
+                    <li><a href="{{ url_for('index.index', lang_code='es') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/mx.svg') }}" /></a></li>
+                    <li><a href="{{ url_for('index.index', lang_code='zh') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/cn.svg') }}" /></a></li>
+                    <li><a href="{{ url_for('index.index', lang_code='fr') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/fr.svg') }}" /></a></li>
+                    <li><a href="{{ url_for('index.index', lang_code='vi') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/vn.svg') }}" /></a></li>
+                </ul>
+            </div>
         </div>
 
-        <ul class="inputs"></ul>
-        <form method="POST" class="form-inline">
-            <div class="form-group">
-                <label for="id_resource">{{ _("I need") }}: </label>
-                <input class="typeahead form-control" id="id_resource" type="text" placeholder="{{ _("What do you need?") }}">
+        <div class="categories-container">
+            <div class="categories-breadcrumbs row-fluid">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    {% if cat_drilldown %}
+                        <ol class="breadcrumb">
+                            {#<li><a href="#">Home</a></li>
+                            <li><a href="#">Library</a></li>
+                            <li class="active">Data</li>#}
+                            <li class="active">{{ _("Category: ") }}</li>
+                            {% for cat in cat_drilldown %}
+                                <li>
+                                    {% for icon in cat.fontawesome_icon_classes %}
+                                        <i class="{{ icon }}"></i>
+                                    {% endfor %}
+                                    {{ _(cat.name) }}
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
+                </div>
             </div>
-            <button type="submit" class="btn btn-default btn-primary">{{ _("Submit") }}</button>
-        </form>
+            <div class="categories-list row-fluid">
+                {% for cat in cat_list %}
+                    <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
+                        <a class="category" href="{{ url_for('index.index', cat_id=cat.id) }}">
+                            <span class="icons">
+                                {#{% for icon in cat.fontawesome_icon_classes %}
+                                    <i class="caticon-{{ loop.length }} {{ icon }}"></i>#}
+                                {% for icon in cat.fontawesome_icons %}
+                                    <img class="caticon-{{ loop.length }}" src="{{ url_for('static', filename='fontawesome-5.4.1/svgs/solid/' + icon + '.svg') }}" />
+                                {% endfor %}
+                            </span>
+                            <span class="name">{{ _(cat.name) }}</span>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="search row-fluid">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="inputs"></ul>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <form method="POST" class="form-inline">
+                    <div class="form-group">
+                        <label for="id_resource">{{ _("I need") }}: </label>
+                        <input class="typeahead form-control" id="id_resource" type="text" placeholder="{{ _("What do you need?") }}">
+                    </div>
+                    <button type="submit" class="btn btn-default btn-primary">{{ _("Submit") }}</button>
+                </form>
+            </div>
+        </div>
     </section>
 </section>
 {% endblock wrapper %}

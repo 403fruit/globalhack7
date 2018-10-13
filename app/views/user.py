@@ -19,7 +19,9 @@ LABELS = {
     "password": lazy_gettext("Password"),
     "repeat_password": lazy_gettext("Repeat Password"),
     "remember_me": lazy_gettext("Remember Me"),
-    "submit": lazy_gettext("Sign In"),
+    "submit_sign_in": lazy_gettext("Sign In"),
+    "submit": lazy_gettext("Submit"),
+    "submit_register": lazy_gettext("Register"),
     "email": lazy_gettext("Email"),
     "register": lazy_gettext("Register"),
     "name": lazy_gettext("Name"),
@@ -56,7 +58,7 @@ class LoginForm(Form):
     username = StringField(LABELS['username'], validators=[DataRequired()])
     password = PasswordField(LABELS['password'], validators=[DataRequired()])
     remember_me = BooleanField(LABELS['remember_me'])
-    submit = SubmitField(LABELS['submit'])
+    submit = SubmitField(LABELS['submit_sign_in'])
 
 
 class RegistrationForm(Form):
@@ -70,9 +72,9 @@ class RegistrationForm(Form):
     primary_role = SelectField(LABELS["primary_roll"], choices=PRIMARY_ROLE)
     bio = StringField(LABELS['bio'])
     phone = StringField(LABELS["phone"])
-    language = SelectField(LABELS["language"], choices=SUPPORTEDLANGUAGES())
+    language = SelectField(LABELS["language"], choices=[])
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
-    submit = SubmitField(LABELS['submit'])
+    submit = SubmitField(LABELS['submit_register'])
 
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
@@ -100,7 +102,7 @@ def login():
             return redirect(url_for('user.login', lang_code=g.lang_code))
         login_user(user, remember=form.remember_me.data)
         flash(GENERAL_MESSAGES['login_success'], "success")
-        return redirect(url_for('index.index', lang_code=g.lang_code))
+        return redirect(url_for('index.index', lang_code=user.language.lower()))
     return render_template('login.jinja.html', title=gettext('Sign In'), form=form)
 
 
@@ -109,6 +111,7 @@ def register():
     if current_user.is_authenticated():
         return redirect(url_for('index.index'))
     form = RegistrationForm()
+    form.language.choices = [[k, v] for k, v in current_app.config.get("SUPPORTED_LANGUAGES", {}).items()]
     if form.validate_on_submit():
         user = User(
             username=form.username.data,
@@ -126,6 +129,9 @@ def register():
         db.session.commit()
         flash(GENERAL_MESSAGES['registration_success'], "success")
         return redirect(url_for('index.index'))
+    else :
+        if form.language.data == "None":
+            form.language.data = g.lang_code
     return render_template('register.jinja.html', title=gettext('Register'), form=form)
 
 
