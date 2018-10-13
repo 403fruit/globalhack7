@@ -13,6 +13,9 @@
     "SUPPORTED_LANGUAGES": {
         "en": "English",
         "es": "Spanish",
-        "zh": "Chinese"
+        "zh": "Chinese",
+        "fr": "French",
+        "ar": "Arabic",
+        "vi": "Vietnamese"
     }
 }

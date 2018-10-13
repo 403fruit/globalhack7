@@ -1,24 +1,29 @@
 {% extends "base.jinja.html" %}
 
 {% block wrapper %}
-<h1 class="greeting">{{ _("Hello, World!") }}</h1>
-    <ul class="flags">
-        <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/us.svg') }}" style="height: 3em;"/></li>
-        <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/de.svg') }}" style="height: 3em;"/></li>
-        <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/fr.svg') }}" style="height: 3em;"/></li>
-        <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/af.svg') }}" style="height: 3em;"/></li>
-        <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/cn.svg') }}" style="height: 3em;"/></li>
-        <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/jp.svg') }}" style="height: 3em;"/></li>
-        <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/tk.svg') }}" style="height: 3em;"/></li>
-    </ul>
-
-    <ul class="inputs"></ul>
-    <form method="POST" class="form-inline">
-        <div class="form-group">
-            <label for="id_resource">{{ _("I need") }}: </label>
-            <input class="typeahead form-control" id="id_resource" type="text" placeholder="{{ _("What do you need?") }}">
+<section id="main-content class="main-content-home">
+    <section class="wrapper site-min-height">
+        <h1 class="greeting">{{ _("Hello, World!") }}</h1>
+        <div class="flag-container">
+            <ul class="{% if g.lang_code %}flags flags-sm{% else %}flags{% endif %}">
+                <li><a href="{{ url_for('index.index', lang_code='en') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/us.svg') }}" /></a></li>
+                <li><a href="{{ url_for('index.index', lang_code='ar') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/sy.svg') }}" /></a></li>
+                <li><a href="{{ url_for('index.index', lang_code='es') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/mx.svg') }}" /></a></li>
+                <li><a href="{{ url_for('index.index', lang_code='zh') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/cn.svg') }}" /></a></li>
+                <li><a href="{{ url_for('index.index', lang_code='fr') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/fr.svg') }}" /></a></li>
+                <li><a href="{{ url_for('index.index', lang_code='vi') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/vn.svg') }}" /></a></li>
+            </ul>
         </div>
-        <button type="submit" class="btn btn-default">{{ _("Submit") }}</button>
-    </form>
-{% endblock %}
+
+        <ul class="inputs"></ul>
+        <form method="POST" class="form-inline">
+            <div class="form-group">
+                <label for="id_resource">{{ _("I need") }}: </label>
+                <input class="typeahead form-control" id="id_resource" type="text" placeholder="{{ _("What do you need?") }}">
+            </div>
+            <button type="submit" class="btn btn-default btn-theme02">{{ _("Submit") }}</button>
+        </form>
+    </section>
+</section>
+{% endblock wrapper %}
 
