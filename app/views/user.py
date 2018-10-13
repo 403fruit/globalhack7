@@ -19,7 +19,9 @@ LABELS = {
     "password": lazy_gettext("Password"),
     "repeat_password": lazy_gettext("Repeat Password"),
     "remember_me": lazy_gettext("Remember Me"),
-    "submit": lazy_gettext("Sign In"),
+    "submit_sign_in": lazy_gettext("Sign In"),
+    "submit": lazy_gettext("Submit"),
+    "submit_register": lazy_gettext("Register"),
     "email": lazy_gettext("Email"),
     "register": lazy_gettext("Register"),
     "name": lazy_gettext("Name"),
@@ -56,7 +58,7 @@ class LoginForm(Form):
     username = StringField(LABELS['username'], validators=[DataRequired()])
     password = PasswordField(LABELS['password'], validators=[DataRequired()])
     remember_me = BooleanField(LABELS['remember_me'])
-    submit = SubmitField(LABELS['submit'])
+    submit = SubmitField(LABELS['submit_sign_in'])
 
 
 class RegistrationForm(Form):
@@ -72,7 +74,7 @@ class RegistrationForm(Form):
     phone = StringField(LABELS["phone"])
     language = SelectField(LABELS["language"], choices=[])
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
-    submit = SubmitField(LABELS['submit'])
+    submit = SubmitField(LABELS['submit_register'])
 
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
@@ -128,7 +130,8 @@ def register():
         flash(GENERAL_MESSAGES['registration_success'], "success")
         return redirect(url_for('index.index'))
     else :
-        form.language.data = g.lang_code
+        if form.language.data == "None":
+            form.language.data = g.lang_code
     return render_template('register.jinja.html', title=gettext('Register'), form=form)
 
 
