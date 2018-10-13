@@ -47,6 +47,8 @@ ERROR_MESSAGES = {
 
 GENERAL_MESSAGES = {
     "registration_success": lazy_gettext("You have successfully registered."),
+    "login_success": lazy_gettext("You have successfully logged in."),
+    "logout_success": lazy_gettext("You have successfully logged out.")
 }
 
 
@@ -97,6 +99,7 @@ def login():
             flash(ERROR_MESSAGES['invalid_credentials'])
             return redirect(url_for('user.login', lang_code=g.lang_code))
         login_user(user, remember=form.remember_me.data)
+        flash(GENERAL_MESSAGES['login_success'])
         return redirect(url_for('index.index', lang_code=g.lang_code))
     return render_template('login.jinja.html', title=gettext('Sign In'), form=form)
 
@@ -129,25 +132,5 @@ def register():
 @app.route('/logout')
 def logout():
     logout_user()
+    flash(GENERAL_MESSAGES['logout_success'])
     return redirect(url_for('index.index'))
-
-
-@app.url_defaults
-def set_language_code(endpoint, values):
-    if 'lang_code' in values or not g.get('lang_code', None):
-        return
-    if current_app.url_map.is_endpoint_expecting(endpoint, 'lang_code'):
-        values['lang_code'] = g.lang_code
-
-
-@app.url_value_preprocessor
-def get_lang_code(endpoint, values):
-    if values is not None:
-        g.lang_code = values.pop('lang_code', None)
-
-
-@app.before_request
-def ensure_lang_support():
-    lang_code = g.get('lang_code', None)
-    if lang_code and lang_code not in current_app.config['SUPPORTED_LANGUAGES'].keys():
-        return abort(404)

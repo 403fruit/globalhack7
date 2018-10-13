@@ -1,0 +1,15 @@
+<!-- start messages.jinja.html -->
+{% for filter_cats in (('danger', 'error', 'err',), ('warning', 'warn',), ('success', 'succ',), ('info', 'message',)) %}
+    {% with messages = get_flashed_messages(category_filter=filter_cats) %}
+        {% if messages %}
+            <div class="col-sm-12">
+            {% for message in messages %}
+                <div class="alert alert-{{ filter_cats[0] }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+{% endfor %}
+<!-- end messages.jinja.html -->
