@@ -4,3 +4,8 @@
     {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='flag-icon-css-master/css/flag-icon.min.css') }}" />
 {% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+{% endblock %}
