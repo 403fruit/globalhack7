@@ -38,9 +38,9 @@ class User(TimestampMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.BigInteger, primary_key=True)
     name = db.Column(db.UnicodeText, nullable=False)
-    username = db.Column(db.String(255), unique=True, nullable=False)
+    username = db.Column(db.Unicode(64), unique=True, nullable=False)
     password = db.Column(db.UnicodeText, nullable=False)
-    email = db.Column(db.String(255), nullable=True)
+    email = db.Column(db.UnicodeText(), nullable=True)
     phone = db.Column(db.BigInteger(), nullable=True)
     secondary_phone = db.Column(db.BigInteger(), nullable=True)
     bio = db.Column(db.UnicodeText, nullable=False)
@@ -53,7 +53,7 @@ class User(TimestampMixin, db.Model):
 class Resource(db.Model):
     __tablename__ = 'resources'
     id = db.Column(db.BigInteger, primary_key=True)
-    name = db.Column(db.String(500), index=True)
+    name = db.Column(db.UnicodeText())
 
 
 class UserResource(TimestampMixin, db.Model):
@@ -61,7 +61,7 @@ class UserResource(TimestampMixin, db.Model):
     id = db.Column(db.BigInteger, primary_key=True)
     resource_id = db.Column(db.BigInteger, db.ForeignKey('resources.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
     resource = db.relationship('Resource', backref='user_resources')
-    user_id = db.Column(db.BigInteger, db.ForeignKey('user.id', onupdate='CASCADE', ondelete='CASCADE'), nullable=False)
+    user_id = db.Column(db.BigInteger, db.ForeignKey('users.id', onupdate='CASCADE', ondelete='CASCADE'), nullable=False)
     user = db.relationship('User', backref='resources')
     type = db.Column(sau.ChoiceType(USER_RESOURCE_TYPES), index=True)
     quantity_available = db.Column(db.BigInteger)
