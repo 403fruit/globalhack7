@@ -44,3 +44,7 @@ ul.flags {
   padding: 0 20px;
   line-height: 40px;
   height: 40px; }
+
+.alert {
+  padding-top: 75px;
+  text-align: center; }
