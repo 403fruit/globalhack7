@@ -56,6 +56,26 @@ ul.flags {
 	height: 40px;
 }
 
+.categories-container {
+	.categories-list {
+		.icons {
+			display: block;
+			text-align: center;
+			img {
+				display: inline-block;
+				clear: none;
+				&.caticon-4, &.caticon-3, &.caticon-2 {
+					width: 50%;
+				}
+				&.caticon-1 {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+
 .alert {
   padding-top:75px;
   text-align: center;
