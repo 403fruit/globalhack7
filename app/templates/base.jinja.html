@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style-responsive.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/typeahead.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/zabuto_calendar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='js/gritter/css/jquery.gritter.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='lineicons/style.css') }}">
 {% endblock %}
 
 {% block scripts %}
@@ -18,6 +21,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/typeahead.bundle.js') }}"></script>
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chart-master/Chart.js') }}"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -26,6 +32,7 @@
         <div class="row-fluid">
             {% include 'messages.jinja.html' %}
         </div>
+        {% include 'sidebar.jinja.html' %}
         {% block wrapper %}{% endblock %}
         {% include 'footer.jinja.html' %}
     </section>

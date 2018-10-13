@@ -11,6 +11,7 @@ from flask_babel import gettext, lazy_gettext
 
 from app.main import babel, db
 from app.models.common import User, IMMIGRATION_STATUS, PRIMARY_ROLE
+from app.models.constants import COUNTRY_CODES
 
 
 LABELS = {
@@ -29,6 +30,14 @@ LABELS = {
     "language": lazy_gettext("Language"),
     "country": lazy_gettext("Country"),
 }
+
+
+
+class SUPPORTEDLANGUAGES(object):
+    def __iter__(self):
+        for key, value in current_app.config.get("SUPPORTED_LANGUAGES", {}).items():
+            yield (key, value)
+
 
 ERROR_MESSAGES = {
     "different_username": lazy_gettext("Please select a different username."),
@@ -61,8 +70,8 @@ class RegistrationForm(Form):
     primary_role = SelectField(LABELS["primary_roll"], choices=PRIMARY_ROLE)
     bio = StringField(LABELS['bio'])
     phone = StringField(LABELS["phone"])
-    language = StringField(LABELS["language"])
-    country = StringField(LABELS["country"])
+    language = SelectField(LABELS["language"], choices=SUPPORTEDLANGUAGES())
+    country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
     submit = SubmitField(LABELS['submit'])
 
     def validate_username(self, username):
