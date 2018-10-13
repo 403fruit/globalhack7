@@ -5,7 +5,7 @@
     <section class="wrapper site-min-height">
         <h1 class="greeting">{{ _("Hello, World!") }}</h1>
         <div class="flag-container">
-            <ul class="{% if g.lang_code %}flags-sm{% else %}flags{% endif %}">
+            <ul class="{% if g.lang_code %}flags flags-sm{% else %}flags{% endif %}">
                 <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/us.svg') }}"/></li>
                 <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/de.svg') }}"/></li>
                 <li><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/fr.svg') }}"/></li>
