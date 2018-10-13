@@ -89,9 +89,9 @@ class Resource(TimestampMixin, db.Model):
         if self.type != 'HAVE':
             return None
 
-        fulfillment = UserResourceFulfillment.query.filter(
-            UserResourceFulfillment.fulfilling_resource == self,
-            UserResourceFulfillment.confirmed_by_recipient == True,
+        fulfillment = ResourceFulfillment.query.filter(
+            ResourceFulfillment.fulfilling_resource == self,
+            ResourceFulfillment.confirmed_by_recipient == True,
         )
         return self.quantity_available - sum([f.fulfilled_quantity for f in fulfillment])
 
@@ -100,9 +100,9 @@ class Resource(TimestampMixin, db.Model):
         if self.type != 'NEED':
             return None
 
-        fulfillment = UserResourceFulfillment.query.filter(
-            UserResourceFulfillment.fulfilled_resource == self,
-            UserResourceFulfillment.confirmed_by_recipient == True,
+        fulfillment = ResourceFulfillment.query.filter(
+            ResourceFulfillment.fulfilled_resource == self,
+            ResourceFulfillment.confirmed_by_recipient == True,
         )
         return self.quantity_needed - sum([f.fulfilled_quantity for f in fulfillment])
 
