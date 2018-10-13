@@ -1,9 +1,15 @@
 (function () {
-    var resources = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.whitespace,
+    var bloodhound_resources = new Bloodhound({
+        datumTokenizer: function (datum) {
+            return Bloodhound.tokenizers.whitespace(datum.value);
+        },
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: window.resources
+        remote: {
+            url: '/api/en/get-resources?query=%QUERY'
+        }
     });
+
+    bloodhound_resources.initialize();
 
     $('.typeahead').typeahead({
         hint: true,
@@ -12,6 +18,6 @@
     },
     {
         name: 'resources',
-        source: resources
+        source: bloodhound_resources.ttAdapter()
     });
 })();
