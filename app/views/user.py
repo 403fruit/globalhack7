@@ -96,10 +96,10 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
-            flash(ERROR_MESSAGES['invalid_credentials'])
+            flash(ERROR_MESSAGES['invalid_credentials'], "warning")
             return redirect(url_for('user.login', lang_code=g.lang_code))
         login_user(user, remember=form.remember_me.data)
-        flash(GENERAL_MESSAGES['login_success'])
+        flash(GENERAL_MESSAGES['login_success'], "success")
         return redirect(url_for('index.index', lang_code=g.lang_code))
     return render_template('login.jinja.html', title=gettext('Sign In'), form=form)
 
@@ -124,7 +124,7 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash(GENERAL_MESSAGES['registration_success'])
+        flash(GENERAL_MESSAGES['registration_success'], "success")
         return redirect(url_for('index.index'))
     return render_template('register.jinja.html', title=gettext('Register'), form=form)
 
