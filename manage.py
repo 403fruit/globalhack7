@@ -18,6 +18,8 @@ from app.main import (
     )
 logger = logging.getLogger('app')
 
+from app.commands import seed
+
 migrate = Migrate(app, db)
 
 manager.add_command('db', MigrateCommand)
