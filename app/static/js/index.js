@@ -1,14 +1,17 @@
 (function () {
     var bloodhound_resources = new Bloodhound({
         datumTokenizer: function (datum) {
-            return Bloodhound.tokenizers.whitespace(datum.value);
+            return Bloodhound.tokenizers.whitespace(datum);
         },
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        remote: {
-            url: '/api/en/get-resources?query=%QUERY'
+        prefetch: {
+            url: '/api/en/resources',
+            ttl: 1,
+            filter: false
         }
     });
 
+    localStorage.clear();
     bloodhound_resources.initialize();
 
     $('.typeahead').typeahead({
