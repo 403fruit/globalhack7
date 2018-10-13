@@ -69,7 +69,7 @@ class Category(db.Model):
     parent_id = db.Column(db.BigInteger, db.ForeignKey('categories.id', onupdate='CASCADE', ondelete='CASCADE'))
     parent = db.relationship('Category', foreign_keys=[parent_id], remote_side=[id])
     name = db.Column(db.UnicodeText(), nullable=False)
-    fontaweseome_icon = db.Column(db.UnicodeText())
+    fontawesome_icon = db.Column(db.UnicodeText())
 
 
 class Resource(TimestampMixin, db.Model):
