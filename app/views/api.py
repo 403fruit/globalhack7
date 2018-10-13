@@ -1,16 +1,17 @@
-import json
 from flask import Blueprint, render_template, abort, g, current_app
+from flask import jsonify
 from flask_babel import Babel
 
 from app.main import babel
 
 
-app = Blueprint('index', __name__)
+app = Blueprint('api', __name__)
 
 
-@app.route('/')
-def index():
-    return render_template('index.jinja.html')
+@app.route('/resources')
+def get_resources():
+    resource_list = ['bed', 'dishes', 'stuff', 'things', 'test 4']
+    return jsonify(resource_list)
 
 
 @app.url_defaults

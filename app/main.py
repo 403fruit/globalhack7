@@ -47,9 +47,11 @@ def create_app():
 
     from app.models import common
     from app.views.index import app as index_view
+    from app.views.api import app as api_view
 
     app.register_blueprint(index_view)
     app.register_blueprint(index_view, url_prefix='/<lang_code>')
+    app.register_blueprint(api_view, url_prefix='/api/<lang_code>')
 
     # from app.views import view_modules
     # app.register_blueprint(index.app, url_prefix=whatever)
