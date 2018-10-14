@@ -51,7 +51,7 @@ class User(UserMixin, TimestampMixin, db.Model):
                 self.id,
                 value.filename.split('.')[-1]
             )
-            super().__setattr__('picture', upload_file(value, 'resource_pictures', filename))
+            super().__setattr__('picture', upload_file(value, 'user_pictures', filename))
 
         else:
             super().__setattr__(name, value)
@@ -110,6 +110,7 @@ class Resource(TimestampMixin, db.Model):
     category = db.relationship('Category', backref='resources')
     user_id = db.Column(db.BigInteger, db.ForeignKey('users.id', onupdate='CASCADE', ondelete='CASCADE'), nullable=False)
     user = db.relationship('User', backref='resources')
+    description = db.Column(db.UnicodeText(), nullable=True)
     type = db.Column(sau.ChoiceType(USER_RESOURCE_TYPES), index=True)
     quantity_available = db.Column(db.BigInteger)
     quantity_needed = db.Column(db.BigInteger)
@@ -125,7 +126,7 @@ class Resource(TimestampMixin, db.Model):
                     self.id,
                     value.filename.split('.')[-1]
                 )
-                super().__setattr__('picture', upload_file(value, 'user_pictures', filename))
+                super().__setattr__('picture', upload_file(value, 'resource_pictures', filename))
 
         else:
             super().__setattr__(name, value)
