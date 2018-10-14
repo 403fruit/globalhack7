@@ -2,9 +2,9 @@
 <div class="categories-container">
     {% for resource in resources %}
     <div class="resources-list row-fluid">
-        <div class="col-sm-4">
-            <a class="resource pn" href="#">
-                <img class="resource-img" src="{{ url_for('static', filename='fontawesome-5.4.1/svgs/solid/bed.svg') }}" />
+        <div class="col-sm-4 resource-detail">
+            <a class="resource pn picture" href="{{ url_for('resource.detail_view', lang_code=(g.lang_code if g.lang_code else 'en'), id=resource.id) }}">
+                <img class="resource-img" src="{{ resource.picture_url if resource.picture_url else url_for('static', filename='fontawesome-5.4.1/svgs/solid/bed.svg') }}" />
                 <span class="name">{{ _(resource.name) }}</span>
             </a>
         </div>
