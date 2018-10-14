@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template, g, current_app, url_for, redirect, flash
+from flask import Blueprint, render_template, g, current_app, url_for, redirect, flash, request
 
-from app.models.common import Category
+from app.models.common import Category, Resource
+from app.main import db
 
 
 app = Blueprint('index', __name__)
@@ -31,3 +32,12 @@ def index(cat_id=None):
     )
 
 
+@app.route('/', methods=['POST'])
+def display_search_results():
+    resource_ids = request.form.get('resource_ids').split(',')
+    resources = db.session.query(Resource).filter(Resource.id.in_(resource_ids)).all()
+
+    return render_template(
+        'index.jinja.html',
+        resources=resources
+    )

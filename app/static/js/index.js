@@ -1,5 +1,5 @@
 (function () {
-    var url = '/api/resources?query=%QUERY&lang_code=' + window.lang_code;
+    var url = '/api/search-resources?query=%QUERY&lang_code=' + window.lang_code;
 
     var bloodhound_resources = new Bloodhound({
         datumTokenizer: function (datum) {
@@ -38,7 +38,10 @@
         source: bloodhound_resources.ttAdapter()
     });
 
-    $('#resource').on('typeahead:selected', function(event, value) {
-        var resources = value.resources;
+    $('#id_resource').on('typeahead:selected', function(event, value) {
+        // swap out readable label for resource ID values
+        $(this).val(value.value);
+        debugger;
+        $('#search-resources').submit();
     });
 })();
