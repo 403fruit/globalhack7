@@ -7,7 +7,7 @@ h1.greeting {
 .flag-container {
   width: 90%;
   overflow: scroll;
-  margin: 0 auto; }
+  margin: 0 auto 50px; }
 
 ul.flags {
   display: flex;
@@ -20,7 +20,8 @@ ul.flags {
       margin-left: 0; }
     ul.flags li img {
       width: 15em;
-      border-radius: 6px; }
+      border-radius: 6px;
+      box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2); }
   ul.flags.flags-sm {
     justify-content: center; }
     ul.flags.flags-sm li img {
@@ -45,6 +46,30 @@ ul.flags {
   line-height: 40px;
   height: 40px; }
 
+.categories-container {
+  display: inline-block;
+  margin-bottom: 50px; }
+  .categories-container .categories-list .category {
+    display: block;
+    text-align: center;
+    background: #fff; }
+  .categories-container .categories-list .icons {
+    display: block; }
+    .categories-container .categories-list .icons img.caticon-4, .categories-container .categories-list .icons img.caticon-3, .categories-container .categories-list .icons img.caticon-2 {
+      width: 50%;
+      height: 75px; }
+    .categories-container .categories-list .icons img.caticon-1 {
+      width: 100%; }
+  .categories-container .categories-list .name {
+    display: block;
+    text-transform: uppercase;
+    color: #000;
+    margin-top: 5px; }
+
 .alert {
   padding-top: 75px;
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 0; }
+
+div.form-panel {
+  margin-top: 20px; }

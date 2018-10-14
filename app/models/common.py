@@ -1,3 +1,5 @@
+import re
+
 import sqlalchemy_utils as sau
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -62,14 +64,36 @@ class User(UserMixin, TimestampMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    @property
+    def resources_needed(self):
+        resources_needed = []
+        for resource in Resource.query.filter(Resource.user_id==self.id, Resource.type=='NEEDED'):
+            resources_needed.append(resource.name)
+        return ", ".join(resources_needed)
+
+
 
 class Category(db.Model):
     __tablename__ = 'categories'
     id = db.Column(db.BigInteger, primary_key=True)
     parent_id = db.Column(db.BigInteger, db.ForeignKey('categories.id', onupdate='CASCADE', ondelete='CASCADE'))
-    parent = db.relationship('Category', foreign_keys=[parent_id], remote_side=[id])
+    parent = db.relationship('Category', foreign_keys=[parent_id], remote_side=[id], backref='children')
     name = db.Column(db.UnicodeText(), nullable=False)
     fontawesome_icon = db.Column(db.UnicodeText())
+
+    @property
+    def fontawesome_icons(self):
+        if self.fontawesome_icon is None:
+            return ''
+
+        return list(re.split(r',\s*', self.fontawesome_icon))
+
+    @property
+    def fontawesome_icon_classes(self):
+        if self.fontawesome_icon is None:
+            return ''
+
+        return ['fas fa-' + i for i in re.split(r',\s*', self.fontawesome_icon)]
 
 
 class Resource(TimestampMixin, db.Model):
@@ -106,6 +130,12 @@ class Resource(TimestampMixin, db.Model):
             ResourceFulfillment.confirmed_by_recipient == True,
         )
         return self.quantity_needed - sum([f.fulfilled_quantity for f in fulfillment])
+
+    # def __repr__(self):
+    #     if self.type == 'NEED':
+    #         return f"{self.quantity_fulfilled} {self.name}"
+    #     else:
+    #         return f"{self.quantity_remaining} {self.name}"
 
 
 class ResourceFulfillment(TimestampMixin, db.Model):
