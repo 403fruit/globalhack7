@@ -5,10 +5,10 @@ a.logo {
   font-family: 'Fahkwang', sans-serif;
   font-weight: 700;
   letter-spacing: 1.5px;
-  line-height: 25px; }
+  line-height: 1; }
   a.logo span {
     text-transform: lowercase;
-    font-size: 28px; }
+    font-size: 35px; }
 
 h1.greeting {
   text-align: center; }
@@ -50,24 +50,33 @@ ul.flags {
   position: absolute;
   top: 0;
   height: 100%;
-  outline: 0; }
+  outline: 0;
+  background: #fff;
+  z-index: 1; }
   .scroll-btn.right {
     right: 0; }
 
 .form-inline {
   display: flex;
   justify-content: center; }
-  .form-inline .control-label {
-    line-height: 40px;
+  .form-inline .control-label, .form-inline .need-have-switch {
+    line-height: 30px;
     vertical-align: text-top;
     text-transform: uppercase;
-    position: absolute;
-    top: -40px;
-    left: 0;
-    right: 0;
     text-align: center;
     font-size: 20px;
-    font-weight: 700; }
+    font-weight: 700;
+    display: inline-block;
+    width: 49%;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: 5px; }
+    .form-inline .control-label.active, .form-inline .need-have-switch.active {
+      color: #000;
+      border-color: #000; }
+  .form-inline .twitter-typeahead {
+    display: block !important;
+    clear: both; }
   .form-inline input {
     height: 40px;
     line-height: 40px;
