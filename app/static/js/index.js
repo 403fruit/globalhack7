@@ -41,4 +41,21 @@
     $('#resource').on('typeahead:selected', function(event, value) {
         var resources = value.resources;
     });
+
+    function isScrolledIntoView(elem) {
+        var docViewTop = $(window).scrollTop();
+        var docViewBottom = docViewTop + $(window).height();
+        var elemTop = $(elem).offset().top;
+        var elemBottom = elemTop + $(elem).height();
+        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+    }
+
+    var $scroll_btns = $('.scroll-btn');
+    $scroll_btns.click(function () {
+        if ($(this).hasClass('right')) {
+            $('.flag-container').animate( { scrollLeft: '+=215' }, 250);
+        } else {
+            $('.flag-container').animate( { scrollLeft: '-=215' }, 250);
+        }
+    });
 })();
