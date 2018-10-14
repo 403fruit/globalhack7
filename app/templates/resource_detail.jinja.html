@@ -20,6 +20,10 @@
                             <td>{{ resource.name }}</td>
                         </tr>
                         <tr>
+                            <td>{{ _("Description") }}</td>
+                            <td>{{ resource.description }}</td>
+                        </tr>
+                        <tr>
                             <td>{{ _("Quantity Available") if resource.type == "HAVE" else _("Quantity Needed") }} </td>
                             <td>{{ resource.quantity_remaining }}</td>
                         </tr>
