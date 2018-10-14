@@ -143,6 +143,13 @@ ul.flags {
 					max-height: 264px;
 				}
 			}
+			&.linecon {
+				color: #000;
+				font-size: 200px;
+				img {
+					display: none;
+				}
+			}
 		}
 		.name {
 			display: block;
