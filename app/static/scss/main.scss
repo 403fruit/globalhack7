@@ -143,12 +143,9 @@ ul.flags {
 					max-height: 264px;
 				}
 			}
-			&.linecon {
+			.linecon {
 				color: #000;
-				font-size: 200px;
-				img {
-					display: none;
-				}
+				font-size: calc( 12px + (50 - 12) * ( (100vw - 115px) / ( 330 - 115) ));
 			}
 		}
 		.name {
