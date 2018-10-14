@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-13 21:31-0500\n"
+"POT-Creation-Date: 2018-10-14 00:54-0500\n"
 "PO-Revision-Date: 2018-10-13 14:57-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: vi\n"
@@ -18,6 +18,128 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
+#: app/lib/constants.py:6
+msgid "Username"
+msgstr ""
+
+#: app/lib/constants.py:7 app/templates/resource_detail.jinja.html:15
+msgid "Category"
+msgstr ""
+
+#: app/lib/constants.py:8
+msgid "Quantity"
+msgstr ""
+
+#: app/lib/constants.py:9
+msgid "Type"
+msgstr ""
+
+#: app/lib/constants.py:10
+msgid "Password"
+msgstr ""
+
+#: app/lib/constants.py:11
+msgid "Repeat Password"
+msgstr ""
+
+#: app/lib/constants.py:12
+msgid "Remember Me"
+msgstr ""
+
+#: app/lib/constants.py:13 app/views/user.py:99
+msgid "Sign In"
+msgstr ""
+
+#: app/lib/constants.py:14 app/templates/index.jinja.html:90
+msgid "Submit"
+msgstr ""
+
+#: app/lib/constants.py:15 app/lib/constants.py:18
+#: app/templates/nav.jinja.html:23 app/templates/register.jinja.html:8
+#: app/views/user.py:128
+msgid "Register"
+msgstr ""
+
+#: app/lib/constants.py:16
+msgid "Create"
+msgstr ""
+
+#: app/lib/constants.py:17
+msgid "Email"
+msgstr ""
+
+#: app/lib/constants.py:19 app/templates/resource_detail.jinja.html:19
+msgid "Name"
+msgstr ""
+
+#: app/lib/constants.py:20 app/templates/view_profile.jinja.html:20
+msgid "Phone Number"
+msgstr ""
+
+#: app/lib/constants.py:21 app/templates/view_profile.jinja.html:22
+msgid "Secondary Phone Number"
+msgstr ""
+
+#: app/lib/constants.py:22
+msgid "Bio"
+msgstr ""
+
+#: app/lib/constants.py:23 app/templates/view_profile.jinja.html:24
+msgid "Primary Role"
+msgstr ""
+
+#: app/lib/constants.py:24
+msgid "Language"
+msgstr ""
+
+#: app/lib/constants.py:25
+msgid "Country"
+msgstr ""
+
+#: app/lib/constants.py:26
+msgid "Picture"
+msgstr ""
+
+#: app/lib/constants.py:27
+msgid "Association"
+msgstr ""
+
+#: app/lib/constants.py:30
+msgid "Upload a picture of yourself to help others get to know you"
+msgstr ""
+
+#: app/lib/constants.py:51
+msgid "Please select a different username."
+msgstr ""
+
+#: app/lib/constants.py:52
+msgid "Please select a different email address"
+msgstr ""
+
+#: app/lib/constants.py:53
+msgid "Invalid username or password."
+msgstr ""
+
+#: app/lib/constants.py:54
+msgid "Must be logged in."
+msgstr ""
+
+#: app/lib/constants.py:58
+msgid "You have successfully registered."
+msgstr ""
+
+#: app/lib/constants.py:59
+msgid "You have successfully saved."
+msgstr ""
+
+#: app/lib/constants.py:60
+msgid "You have successfully logged in."
+msgstr ""
+
+#: app/lib/constants.py:61
+msgid "You have successfully logged out."
+msgstr ""
+
 #: app/models/common.py:16
 msgid "Need"
 msgstr ""
@@ -27,54 +149,18 @@ msgid "Have"
 msgstr ""
 
 #: app/models/common.py:21
-msgid "Asylee"
-msgstr ""
-
-#: app/models/common.py:22
-msgid "Refugee"
-msgstr ""
-
-#: app/models/common.py:23
-msgid "Nonimmigrant"
-msgstr ""
-
-#: app/models/common.py:24
-msgid "Qualified Immigrant"
-msgstr ""
-
-#: app/models/common.py:25
-msgid "Unqualified Immigrant"
-msgstr ""
-
-#: app/models/common.py:26
-msgid "sponsor"
-msgstr ""
-
-#: app/models/common.py:27
-msgid "Public Charge"
-msgstr ""
-
-#: app/models/common.py:28
-msgid "Native Born Citizen"
-msgstr ""
-
-#: app/models/common.py:29
-msgid "Naturalized Citizen"
-msgstr ""
-
-#: app/models/common.py:33
 msgid "In Need Of Aide"
 msgstr ""
 
-#: app/models/common.py:34
+#: app/models/common.py:22
 msgid "Individual Helper"
 msgstr ""
 
-#: app/models/common.py:35
+#: app/models/common.py:23
 msgid "Corporate Sponsor"
 msgstr ""
 
-#: app/templates/edit_profile.jinja.html:8
+#: app/templates/edit_profile.jinja.html:7
 #: app/templates/view_profile.jinja.html:6
 msgid "User Profile"
 msgstr ""
@@ -83,152 +169,113 @@ msgstr ""
 msgid "Hello, World!"
 msgstr ""
 
+#: app/templates/index.jinja.html:7
+msgid "I'm"
+msgstr ""
+
 #: app/templates/index.jinja.html:34
 msgid "Category: "
 msgstr ""
 
-#: app/templates/index.jinja.html:75
+#: app/templates/index.jinja.html:84
 msgid "I need"
 msgstr ""
 
-#: app/templates/index.jinja.html:76
+#: app/templates/index.jinja.html:85
 msgid "I have"
 msgstr ""
 
-#: app/templates/index.jinja.html:78
+#: app/templates/index.jinja.html:88
 msgid "Try: 🛏, 🚗, or Start Typing"
 msgstr ""
 
-#: app/templates/index.jinja.html:80 app/views/user.py:21
-msgid "Submit"
-msgstr ""
-
-#: app/templates/login.jinja.html:10 app/templates/nav.jinja.html:27
+#: app/templates/login.jinja.html:10 app/templates/nav.jinja.html:24
 msgid "Login"
 msgstr ""
 
-#: app/templates/nav.jinja.html:22
+#: app/templates/nav.jinja.html:21
 msgid "Logout"
 msgstr ""
 
-#: app/templates/nav.jinja.html:23
-msgid "View Profile"
+#: app/templates/resource_detail.jinja.html:6
+msgid "Resource"
 msgstr ""
 
-#: app/templates/nav.jinja.html:24
+#: app/templates/resource_detail.jinja.html:23
+msgid "Description"
+msgstr ""
+
+#: app/templates/resource_detail.jinja.html:28
+msgid "Quantity Available"
+msgstr ""
+
+#: app/templates/resource_detail.jinja.html:31
+msgid "Quantity Needed"
+msgstr ""
+
+#: app/templates/resource_detail.jinja.html:36
+msgid "User"
+msgstr ""
+
+#: app/templates/resource_detail.jinja.html:40
+msgid "User Affiliation"
+msgstr ""
+
+#: app/templates/resource_detail.jinja.html:42
+msgid "No Affiliation"
+msgstr ""
+
+#: app/templates/resource_editor.jinja.html:8
+msgid "Create Resource"
+msgstr ""
+
+#: app/templates/sidebar.jinja.html:23
 msgid "Edit Profile"
 msgstr ""
 
-#: app/templates/nav.jinja.html:26 app/templates/register.jinja.html:8
-#: app/views/user.py:22 app/views/user.py:24 app/views/user.py:163
-msgid "Register"
+#: app/templates/sidebar.jinja.html:29
+msgid "My Resources"
 msgstr ""
 
-#: app/templates/sidebar.jinja.html:12
-msgid "Profile"
+#: app/templates/view_profile.jinja.html:14
+msgid "About Me"
 msgstr ""
 
-#: app/views/index.py:18
+#: app/templates/view_profile.jinja.html:17
+msgid "User Information"
+msgstr ""
+
+#: app/templates/view_profile.jinja.html:19
+msgid "E-Mail Address"
+msgstr ""
+
+#: app/templates/view_profile.jinja.html:25
+msgid "Locale"
+msgstr ""
+
+#: app/views/index.py:19
 msgid "Can't find the requested category"
 msgstr ""
 
-#: app/views/user.py:16
-msgid "Username"
+#: app/views/index.py:56
+msgid ""
+"Sorry, we can't find that. If you give us some information about it, we "
+"will notify you if it becomes available."
 msgstr ""
 
-#: app/views/user.py:17
-msgid "Password"
+#: app/views/resource.py:41
+msgid "No resource found."
 msgstr ""
 
-#: app/views/user.py:18
-msgid "Repeat Password"
-msgstr ""
-
-#: app/views/user.py:19
-msgid "Remember Me"
-msgstr ""
-
-#: app/views/user.py:20 app/views/user.py:133
-msgid "Sign In"
-msgstr ""
-
-#: app/views/user.py:23
-msgid "Email"
-msgstr ""
-
-#: app/views/user.py:25
-msgid "Name"
-msgstr ""
-
-#: app/views/user.py:26
-msgid "Phone Number"
-msgstr ""
-
-#: app/views/user.py:27
-msgid "Bio"
-msgstr ""
-
-#: app/views/user.py:28
-msgid "Immigration Status"
-msgstr ""
-
-#: app/views/user.py:29
-msgid "Primary Role"
-msgstr ""
-
-#: app/views/user.py:30
-msgid "Language"
-msgstr ""
-
-#: app/views/user.py:31
-msgid "Country"
-msgstr ""
-
-#: app/views/user.py:32
-msgid "Picture"
-msgstr ""
-
-#: app/views/user.py:33
-msgid "Association"
-msgstr ""
-
-#: app/views/user.py:36
-msgid "Upload a picture of yourself to help others get to know you"
-msgstr ""
-
-#: app/views/user.py:57
-msgid "Please select a different username."
-msgstr ""
-
-#: app/views/user.py:58
-msgid "Please select a different email address"
-msgstr ""
-
-#: app/views/user.py:59
-msgid "Invalid username or password."
-msgstr ""
-
-#: app/views/user.py:63
-msgid "You have successfully registered."
-msgstr ""
-
-#: app/views/user.py:64
-msgid "You have successfully logged in."
-msgstr ""
-
-#: app/views/user.py:65
-msgid "You have successfully logged out."
-msgstr ""
-
-#: app/views/user.py:170 app/views/user.py:180 app/views/user.py:184
+#: app/views/user.py:135 app/views/user.py:145 app/views/user.py:149
 msgid "A user with that ID does not exist"
 msgstr ""
 
-#: app/views/user.py:183
+#: app/views/user.py:148
 msgid "You do not have permission to access this profile."
 msgstr ""
 
-#: app/views/user.py:190
+#: app/views/user.py:155
 msgid "Your account has been successfully saved!"
 msgstr ""
 
@@ -290,5 +337,41 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "What do you need?"
+#~ msgstr ""
+
+#~ msgid "Asylee"
+#~ msgstr ""
+
+#~ msgid "Refugee"
+#~ msgstr ""
+
+#~ msgid "Nonimmigrant"
+#~ msgstr ""
+
+#~ msgid "Qualified Immigrant"
+#~ msgstr ""
+
+#~ msgid "Unqualified Immigrant"
+#~ msgstr ""
+
+#~ msgid "sponsor"
+#~ msgstr ""
+
+#~ msgid "Public Charge"
+#~ msgstr ""
+
+#~ msgid "Native Born Citizen"
+#~ msgstr ""
+
+#~ msgid "Naturalized Citizen"
+#~ msgstr ""
+
+#~ msgid "View Profile"
+#~ msgstr ""
+
+#~ msgid "Profile"
+#~ msgstr ""
+
+#~ msgid "Immigration Status"
 #~ msgstr ""
 

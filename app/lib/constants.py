@@ -18,6 +18,7 @@ LABELS = {
     "register": lazy_gettext("Register"),
     "name": lazy_gettext("Name"),
     "phone": lazy_gettext("Phone Number"),
+    "secondary_phone": lazy_gettext("Secondary Phone Number"),
     "bio": lazy_gettext("Bio"),
     "primary_role": lazy_gettext("Primary Role"),
     "language": lazy_gettext("Language"),
