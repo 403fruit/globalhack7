@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, g, current_app, url_for, redirect, flash, request
+from flask.ext.babel import gettext
 
 from app.models.common import Category, Resource
 from app.main import db
@@ -40,21 +41,28 @@ def submit():
     resource_data = request.form.get('resource_ids').split(',')
     resources = db.session.query(Resource).filter(Resource.id.in_(resource_data))
 
-    # Redirect to HAVE creation
     if request.form.get('is_have') != 'false':
+        # Redirect to HAVE creation (resource may or may not exist to model after)
         model_resource = resources.first()
         return redirect(
             url_for('resource.resource_create',
                     lang_code=g.lang_code or 'en',
                     name=model_resource.name if model_resource else resource_data,
+                    type='HAVE'
                     cat_id=model_resource.category_id if model_resource else ''))
 
-    if resources.count():
+    if not resources.count():
+        # No resources exist, create NEED resource
+        flash(gettext("Sorry, we can't find that. If you give us some information about it, we will notify you if it becomes available."))
+        return redirect(
+            url_for('resource.resource_create',
+                    lang_code=g.lang_code or 'en',
+                    name=model_resource.name if model_resource else resource_data,
+                    type='NEED'
+                    cat_id=model_resource.category_id if model_resource else ''))
+    else:
         # Resources exist, show NEEDER
         return render_template(
             'index.jinja.html',
             resources=resources
         )
-    else:
-        # No resources exist, create NEED resource?
-        return "stub"
