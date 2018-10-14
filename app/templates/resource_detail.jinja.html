@@ -2,37 +2,36 @@
 
 {% block wrapper %}
 <section id="main-content">
-    <section class="wrapper site-min-height">
+    <section class="wrapper site-min-height resource-detail">
         <h1>{{ _("Resource") }}: {{ resource.name }}</h1>
-        <div class="col-sm-8">
-            <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <td>{{ _("Category") }}</td>
-                        <td>{{ resource.category.name }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ _("Name") }}</td>
-                        <td>{{ resource.name }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ _("Quantity Available") if resource.type == "HAVE" else _("Quantity Needed") }} </td>
-                        <td>{{ resource.quantity_remaining }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ _("User") }}</td>
-                        <td><a href="{{ url_for('user.view_profile', lang_code=(g.lang_code if g.lang_code or 'en'), id=resource.user.id) }}">{{ resource.user.name }}</a></td>
-                    </tr>
-                    <tr>
-                        <td>{{ _("User Affiliation") }}</td>
-                        <td>{{ resource.user.association }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ _("Image") }}</td>
-                        <td><<img src="{{ resource.picture_url }}"></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 picture">
+               <<img src="{{ resource.picture_url if resource.picture else url_for('static', filename='img/ui-sam.jpg') }}">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-9 info">
+                <table class="table">
+                        <tr>
+                            <td>{{ _("Category") }}</td>
+                            <td>{{ resource.category.name }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ _("Name") }}</td>
+                            <td>{{ resource.name }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ _("Quantity Available") if resource.type == "HAVE" else _("Quantity Needed") }} </td>
+                            <td>{{ resource.quantity_remaining }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ _("User") }}</td>
+                            <td><a href="{{ url_for('user.view_profile', lang_code=(g.lang_code if g.lang_code or 'en'), id=resource.user.id) }}">{{ resource.user.name }}</a></td>
+                        </tr>
+                        <tr>
+                            <td>{{ _("User Affiliation") }}</td>
+                            <td>{{ resource.user.association }}</td>
+                        </tr>
+                </table>
+            </div>
         </div>
     </section>
 </section>

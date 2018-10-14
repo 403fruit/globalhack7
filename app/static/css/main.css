@@ -129,4 +129,5 @@ h1.form {
 .user-profile .picture img {
   width: 100%; }
 
-/*# sourceMappingURL=main.css.map */
+.resource-detail .picture img {
+  width: 100%; }
