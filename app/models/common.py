@@ -110,6 +110,7 @@ class Resource(TimestampMixin, db.Model):
     category = db.relationship('Category', backref='resources')
     user_id = db.Column(db.BigInteger, db.ForeignKey('users.id', onupdate='CASCADE', ondelete='CASCADE'), nullable=False)
     user = db.relationship('User', backref='resources')
+    description = db.Column(db.UnicodeText(), nullable=True)
     type = db.Column(sau.ChoiceType(USER_RESOURCE_TYPES), index=True)
     quantity_available = db.Column(db.BigInteger)
     quantity_needed = db.Column(db.BigInteger)

@@ -20,8 +20,17 @@
                             <td>{{ resource.name }}</td>
                         </tr>
                         <tr>
-                            <td>{{ _("Quantity Available") if resource.type == "HAVE" else _("Quantity Needed") }} </td>
-                            <td>{{ resource.quantity_remaining }}</td>
+                            <td>{{ _("Description") }}</td>
+                            <td>{{ resource.description }}</td>
+                        </tr>
+                        <tr>
+                            {% if resource.type == "HAVE" %}
+                                <td>{{ _("Quantity Available") }} </td>
+                                <td>{{ resource.quantity_remaining }}</td>
+                            {% else %}
+                                <td>{{ _("Quantity Needed") }} </td>
+                                <td>{{ resource.quantity_fulfilled }}</td>
+                            {% endif %}
                         </tr>
                         <tr>
                             <td>{{ _("User") }}</td>
@@ -29,7 +38,8 @@
                         </tr>
                         <tr>
                             <td>{{ _("User Affiliation") }}</td>
-                            <td>{{ resource.user.association }}</td>
+                            <td>
+                                {{ resource.user.association if resource.user.association else _("No Affiliation") }}</td>
                         </tr>
                 </table>
             </div>
