@@ -1,17 +1,23 @@
 body {
   font-weight: 400; }
 
-a.logo {
+a.logo, span.logo {
   font-family: 'Fahkwang', sans-serif;
   font-weight: 700;
   letter-spacing: 1.5px;
   line-height: 1; }
-  a.logo span {
+  a.logo span, span.logo span {
     text-transform: lowercase;
     font-size: 35px; }
 
+span.logo {
+  text-transform: uppercase; }
+  span.logo span {
+    font-size: 51px; }
+
 h1.greeting {
-  text-align: center; }
+  text-align: center;
+  color: #000; }
 
 .flag-carousel {
   position: relative; }
@@ -140,6 +146,9 @@ div.form-panel {
 
 h1.form {
   margin-left: 10px; }
+
+.breadcrumb {
+  background: #fff; }
 
 .user-profile .picture img {
   width: 100%; }
