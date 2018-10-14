@@ -1,0 +1,39 @@
+{% extends "base.jinja.html" %}
+
+{% block wrapper %}
+<section id="main-content">
+    <section class="wrapper site-min-height">
+        <h1>{{ _("Resource") }}: {{ resource.name }}</h1>
+        <div class="col-sm-8">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td>{{ _("Category") }}</td>
+                        <td>{{ resource.category.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ _("Name") }}</td>
+                        <td>{{ resource.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ _("Quantity Available") if resource.type == "HAVE" else _("Quantity Needed") }} </td>
+                        <td>{{ resource.quantity_remaining }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ _("User") }}</td>
+                        <td><a href="{{ url_for('user.view_profile', lang_code=(g.lang_code if g.lang_code or 'en'), id=resource.user.id) }}">{{ resource.user.name }}</a></td>
+                    </tr>
+                    <tr>
+                        <td>{{ _("User Affiliation") }}</td>
+                        <td>{{ resource.user.association }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ _("Image") }}</td>
+                        <td><<img src="{{ resource.picture_url }}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
+{% endblock %}
