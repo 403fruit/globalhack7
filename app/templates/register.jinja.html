@@ -5,8 +5,8 @@
 {% block wrapper %}
 <section id="main-content">
     <section class="wrapper site-min-height">
-        <h1>{{ _("Register") }}</h1>
-        {{ wtf.quick_form(form) }}
+        <h1 class="form">{{ _("Register") }}</h1>
+        <div class="form-panel">{{ wtf.quick_form(form) }}</div>
     </section>
 </section>
 

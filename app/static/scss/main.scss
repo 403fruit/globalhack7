@@ -5,9 +5,10 @@ h1.greeting {
 	text-align: center;
 }
 .flag-container {
-	width: 90%;
+	width: 225px;
 	overflow: scroll;
-	margin: 0 auto;
+	margin: 0 auto 50px;
+	position: relative;
 }
 ul.flags {
 	display: flex;
@@ -26,7 +27,6 @@ ul.flags {
 		}
 	}
 	&.flags-sm {
-		justify-content: center;
 		li {
 			img {
 				width: 3em;
@@ -55,27 +55,42 @@ ul.flags {
 	line-height: 40px;
 	height: 40px;
 }
-
 .categories-container {
+	display: inline-block;
+	margin-bottom: 50px;
 	.categories-list {
-		.icons {
+		.category {
 			display: block;
 			text-align: center;
+			background: #fff;
+			padding: 20px;
+			height: auto;
+			min-height: 320px;
+			margin-bottom: 25px;
+		}
+		.icons {
+			display: block;
 			img {
-				display: inline-block;
-				clear: none;
 				&.caticon-4, &.caticon-3, &.caticon-2 {
 					width: 50%;
+					height: 75px;
+					margin-bottom: 10px;
 				}
 				&.caticon-1 {
 					width: 100%;
 				}
 			}
 		}
+		.name {
+			display: block;
+			text-transform: uppercase;
+			color: #000;
+			margin-top: 15px;
+			font-size: 20px;
+			font-weight: 700;
+		}
 	}
 }
-
-
 .alert {
   padding-top:75px;
   text-align: center;
@@ -83,4 +98,7 @@ ul.flags {
 }
 div.form-panel {
 	margin-top: 20px;
+}
+h1.form {
+	margin-left: 10px;
 }
