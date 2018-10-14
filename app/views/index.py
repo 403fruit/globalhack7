@@ -48,7 +48,7 @@ def submit():
             url_for('resource.resource_create',
                     lang_code=g.lang_code or 'en',
                     name=model_resource.name if model_resource else resource_data,
-                    type='HAVE'
+                    type='HAVE',
                     cat_id=model_resource.category_id if model_resource else ''))
 
     if not resources.count():
@@ -58,7 +58,7 @@ def submit():
             url_for('resource.resource_create',
                     lang_code=g.lang_code or 'en',
                     name=model_resource.name if model_resource else resource_data,
-                    type='NEED'
+                    type='NEED',
                     cat_id=model_resource.category_id if model_resource else ''))
     else:
         # Resources exist, show NEEDER
