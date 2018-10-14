@@ -26,7 +26,7 @@ LABELS = {
     "phone": lazy_gettext("Phone Number"),
     "bio": lazy_gettext("Bio"),
     "immigration_status": lazy_gettext("Immigration Status"),
-    "primary_roll": lazy_gettext("Primary Role"),
+    "primary_role": lazy_gettext("Primary Role"),
     "language": lazy_gettext("Language"),
     "country": lazy_gettext("Country")
 }
@@ -80,6 +80,8 @@ class RegistrationForm(Form):
     phone = StringField(LABELS["phone"])
     language = SelectField(LABELS["language"], choices=[])
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
+    immigration_status = SelectField(LABELS["immigration_status"], choices=IMMIGRATION_STATUS)
+    primary_role = SelectField(LABELS["primary_role"], choices=PRIMARY_ROLE)
     submit = SubmitField(LABELS['submit_register'])
 
     def validate_username(self, username):
