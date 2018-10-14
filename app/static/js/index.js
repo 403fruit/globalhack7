@@ -38,7 +38,7 @@
         source: bloodhound_resources.ttAdapter()
     });
 
-    $('#id_resource').on('typeahead:selected', function(event, value) {
+    $('#id_resource').on('typeahead:selected typeahead:autocompleted', function(event, value) {
         // swap out readable label for resource ID values
         $(this).val(value.value);
         $('#search-resources').submit();
