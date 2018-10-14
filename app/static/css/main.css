@@ -98,11 +98,12 @@ ul.flags {
   line-height: 40px;
   height: 40px;
   margin-top: 5px;
-  width: 300px; }
+  width: 300px;
+  margin-bottom: 35px; }
 
 .categories-container, .resources-container {
   display: inline-block;
-  margin-bottom: 50px;
+  margin-bottom: 35px;
   width: 100%; }
   .categories-container .categories-list .category, .categories-container .categories-list .resource, .categories-container .resources-list .category, .categories-container .resources-list .resource, .resources-container .categories-list .category, .resources-container .categories-list .resource, .resources-container .resources-list .category, .resources-container .resources-list .resource {
     display: block;
@@ -127,7 +128,8 @@ ul.flags {
     color: #000;
     margin-top: 15px;
     font-size: 20px;
-    font-weight: 700; }
+    font-weight: 700;
+    overflow-wrap: break-word; }
   .categories-container .resources-list, .resources-container .resources-list {
     width: 100%; }
     .categories-container .resources-list .resource, .resources-container .resources-list .resource {
