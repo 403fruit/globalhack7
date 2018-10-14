@@ -8,7 +8,7 @@ from flask_script import Manager
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
-from flask_babel import Babel
+from flask_babel import Babel, Locale
 
 from app.lib.storage import file_url
 
@@ -49,8 +49,12 @@ def create_app():
     babel = Babel(app)
 
     # jinja happy fun times
+    def _user_locale_name(user):
+        l = Locale(user.language, user.country)
+        return l.get_display_name(str(l))
     app.jinja_env.globals.update({
         'file_url': file_url,
+        'user_locale_name': _user_locale_name,
     })
 
     from app.models import common
