@@ -5,6 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from flask_babel import lazy_gettext
 from app.main import login_manager
+from app.lib.storage import upload_file, file_url
 
 import arrow
 
@@ -55,6 +56,24 @@ class User(UserMixin, TimestampMixin, db.Model):
     primary_role = db.Column(sau.ChoiceType(PRIMARY_ROLE))
     language = db.Column(db.String(2), nullable=False)
     country = db.Column(db.String(2), nullable=False)
+    picture = db.Column(db.UnicodeText())
+
+    def __setattr__(self, name, value):
+        if name == 'picture':
+            filename = '{}.{}'.format(
+                self.id,
+                value.filename.split('.')[-1]
+            )
+            super().__setattr__('picture', upload_file(value, 'user_pictures', filename))
+
+        else:
+            super().__setattr__(name, value)
+
+    @property
+    def picture_url(self):
+        if not self.picture:
+            return None
+        return file_url(self.picture)
 
     @login_manager.user_loader
     def load_user(id):
