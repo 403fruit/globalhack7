@@ -5,7 +5,7 @@ import requests
 
 from app.main import manager, db
 from app.models.common import Category, User
-from app.models.common import USER_RESOURCE_TYPES, IMMIGRATION_STATUS, PRIMARY_ROLE
+from app.models.common import USER_RESOURCE_TYPES, PRIMARY_ROLE
 
 
 def get_or_create(query_props, upd_props):
@@ -101,7 +101,6 @@ def seed_user(num=None, seed=None):
             secondary_phone=info['cell'],
             bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             association=rchance(0.05, lambda: random.choice(ASSOCIATIONS)),
-            immigration_status=random.choice(list(dict(IMMIGRATION_STATUS).keys())),
             primary_role=random.choice(list(dict(PRIMARY_ROLE).keys())),
         )
         user.set_password('password')
