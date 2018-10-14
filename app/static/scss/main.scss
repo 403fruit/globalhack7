@@ -161,6 +161,11 @@ ul.flags {
 	}
 	.resources-list {
 		width: 100%;
+		.resource-detail {
+			&:nth-child(3n+1) {
+				clear: both;
+			}
+		}
 		.resource {
 			min-height: 220px;
 			img.resource-img {
@@ -188,6 +193,7 @@ h1.form {
 .user-profile {
 	.picture img {
 		width: 100%;
+		max-width: 300px;
 	}
 }
 .table td {

@@ -136,6 +136,8 @@ ul.flags {
     overflow-wrap: break-word; }
   .categories-container .resources-list, .resources-container .resources-list {
     width: 100%; }
+    .categories-container .resources-list .resource-detail:nth-child(3n+1), .resources-container .resources-list .resource-detail:nth-child(3n+1) {
+      clear: both; }
     .categories-container .resources-list .resource, .resources-container .resources-list .resource {
       min-height: 220px; }
       .categories-container .resources-list .resource img.resource-img, .resources-container .resources-list .resource img.resource-img {
@@ -158,7 +160,8 @@ h1.form {
   background: #fff; }
 
 .user-profile .picture img {
-  width: 100%; }
+  width: 100%;
+  max-width: 300px; }
 
 .table td {
   text-transform: capitalize; }
