@@ -31,8 +31,8 @@ class ResourceForm(Form):
     submit = SubmitField(LABELS['submit_create'])
 
 
-@login_required
 @app.route('/<id>', methods=['GET', 'POST'])
+@login_required
 def detail_view(id=None):
     if id == 'new':
         return 'Not Implemented Yet'
