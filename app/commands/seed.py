@@ -57,7 +57,7 @@ def get_or_create(query_props, upd_props):
 def seed_categories():
     furnishings = get_or_create({'name': "Furnishings"}, {'fontawesome_icon': "couch, bed, chair"})
     financial = get_or_create({'name': "Financial Assistance"}, {'fontawesome_icon': "yen-sign, dollar-sign, credit-card"})
-    jobs = get_or_create({'name': "One Time Jobs"}, {'fontawesome_icon': "building, hammer, people-carry"})
+    jobs = get_or_create({'name': "One Time Jobs"}, {'fontawesome_icon': "building, people-carry"})
 
     db.session.add_all([
         furnishings,
@@ -67,7 +67,7 @@ def seed_categories():
         get_or_create({'name': "Bed", 'parent': furnishings}, {'fontawesome_icon': "bed"}),
         get_or_create({'name': "Couch", 'parent': furnishings}, {'fontawesome_icon': "couch"}),
         get_or_create({'name': "Chair", 'parent': furnishings}, {'fontawesome_icon': "chair"}),
-        get_or_create({'name': "Lamp", 'parent': furnishings}, {'fontawesome_icon': "lamp"}),
+        get_or_create({'name': "Lamp", 'parent': furnishings}, {'fontawesome_icon': None}),
         get_or_create({'name': "Dining Table", 'parent': furnishings}, {'fontawesome_icon': None}),
         get_or_create({'name': "Table", 'parent': furnishings}, {'fontawesome_icon': None}),
         get_or_create({'name': "Refrigerator", 'parent': furnishings}, {'fontawesome_icon': None}),
