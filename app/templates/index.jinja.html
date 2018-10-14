@@ -17,6 +17,8 @@
                 </ul>
             </div>
         </div>
+        <button type="button" class="scroll-btn left"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        <button type="button" class="scroll-btn right"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
 
         {% if not resources %}
         <div class="categories-container">
@@ -68,7 +70,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <form method="POST" id="search-resources" class="form-inline">
                     <div class="form-group">
-                        <label for="id_resource">{{ _("I need") }}: </label>
+                        <label for="id_resource" class="control-label">{{ _("I need") }}: </label>
                         <input name="resource_ids" class="typeahead form-control" id="id_resource" type="text" placeholder="{{ _("What do you need?") }}">
                     </div>
                     <button type="submit" class="btn btn-default btn-primary">{{ _("Submit") }}</button>

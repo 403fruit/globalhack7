@@ -5,7 +5,7 @@ h1.greeting {
   text-align: center; }
 
 .flag-container {
-  width: 225px;
+  width: 90%;
   overflow: scroll;
   margin: 0 auto 50px;
   position: relative; }
@@ -23,27 +23,35 @@ ul.flags {
       width: 15em;
       border-radius: 6px;
       box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2); }
-  ul.flags.flags-sm li img {
-    width: 3em; }
+  ul.flags.flags-sm {
+    justify-content: center; }
+    ul.flags.flags-sm li img {
+      width: 3em; }
 
 .form-inline {
   display: flex;
   justify-content: center; }
-  .form-inline label {
+  .form-inline .control-label {
     line-height: 40px;
     vertical-align: text-top;
     text-transform: uppercase;
-    margin-right: 5px; }
+    position: absolute;
+    top: -40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700; }
   .form-inline input {
     height: 40px;
     line-height: 40px;
-    padding: 0 15px;
-    margin-right: 10px; }
+    padding: 0 15px; }
 
 .btn-default {
   padding: 0 20px;
   line-height: 40px;
-  height: 40px; }
+  height: 40px;
+  margin-left: 10px; }
 
 .categories-container {
   display: inline-block;
