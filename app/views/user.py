@@ -140,7 +140,7 @@ def register():
         db.session.commit()
         flash(GENERAL_MESSAGES['registration_success'], "success")
         return redirect(url_for('index.index'))
-    else :
+    else:
         if form.language.data == "None":
             form.language.data = g.lang_code
     return render_template('register.jinja.html', title=gettext('Register'), form=form)
