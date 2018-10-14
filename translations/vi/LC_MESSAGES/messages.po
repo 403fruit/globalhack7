@@ -167,7 +167,7 @@ msgstr ""
 
 #: app/templates/index.jinja.html:7
 msgid "Hello, World!"
-msgstr ""
+msgstr "xin chào, nhân loại"
 
 #: app/templates/index.jinja.html:7
 msgid "I'm"
