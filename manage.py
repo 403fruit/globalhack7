@@ -18,7 +18,7 @@ from app.main import (
     )
 logger = logging.getLogger('app')
 
-from app.commands import seed
+from app.commands import seed, strings
 
 migrate = Migrate(app, db)
 
