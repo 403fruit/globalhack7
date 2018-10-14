@@ -6,7 +6,7 @@
     <section class="wrapper site-min-height">
         <h1 class="greeting">{{ _("Hello, World!") }} {{ _("I'm") }} <span class="logo">Ell<span>i</span>s!</span> </h1>
         <div class="flag-carousel">
-            {% if not g.lang_code %}<button type="button" class="scroll-btn left"><i class="fa fa-caret-left" aria-hidden="true"></i></button>{% endif %}
+            <button type="button" class="scroll-btn left"><i class="fa fa-caret-left" aria-hidden="true"></i></button>
             <div class="flag-container row-fluid">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <ul class="{% if g.lang_code %}flags flags-sm{% else %}flags{% endif %}">
@@ -19,7 +19,7 @@
                     </ul>
                 </div>
             </div>
-            {% if not g.lang_code %}<button type="button" class="scroll-btn right"><i class="fa fa-caret-right" aria-hidden="true"></i></button>{% endif %}
+            <button type="button" class="scroll-btn right"><i class="fa fa-caret-right" aria-hidden="true"></i></button>
         </div>
 
         {% if not resources %}

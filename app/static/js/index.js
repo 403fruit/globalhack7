@@ -68,4 +68,14 @@
             $is_have_input.val('false');
         }
     });
+
+
+    (function(){
+        var counter=0;
+        $('.scroll-btn.left').on('click', function(){
+            if (counter++>37) {
+                $('ul.flags').prepend('<li><a href="#"><img src="/static/pirate.jpg" /></a></li>');
+            }
+        });
+    })();
 })();
