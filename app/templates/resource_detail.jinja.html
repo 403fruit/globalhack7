@@ -21,7 +21,7 @@
                     </tr>
                     <tr>
                         <td>{{ _("User") }}</td>
-                        <td><a href="{{ url_for('user.edit_profile, id=resource.user.id) }}">{{ resource.user.name }}</a></td>
+                        <td><a href="{{ url_for('user.view_profile', lang_code=(g.lang_code if g.lang_code or 'en'), id=resource.user.id) }}">{{ resource.user.name }}</a></td>
                     </tr>
                     <tr>
                         <td>{{ _("User Affiliation") }}</td>
