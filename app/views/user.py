@@ -29,7 +29,7 @@ LABELS = {
     "primary_role": lazy_gettext("Primary Role"),
     "language": lazy_gettext("Language"),
     "country": lazy_gettext("Country"),
-    "assocation": lazy_gettext("Association")
+    "association": lazy_gettext("Association")
 }
 
 
@@ -63,7 +63,7 @@ class ProfileForm(Form):
     name = StringField(LABELS['name'])
     username = StringField(LABELS['username'], validators=[DataRequired()])
     email = StringField(LABELS['email'], validators=[DataRequired(), Email()])
-    assocation = StringField(LABELS['association'])
+    association = StringField(LABELS['association'])
     bio = StringField(LABELS['bio'], widget=TextArea())
     phone = StringField(LABELS["phone"])
     language = SelectField(LABELS["language"], choices=SUPPORTEDLANGUAGES())
