@@ -1,0 +1,14 @@
+{%- macro display_resources(resources) -%}
+<div class="categories-container">
+    {% for resource in resources %}
+    <div class="resources-list row-fluid">
+        <div class="col-sm-4">
+            <a class="resource pn" href="#">
+                <span class="resource-img">Image here</span>
+                <span class="name">{{ _(resource.name) }}</span>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{%- endmacro -%}

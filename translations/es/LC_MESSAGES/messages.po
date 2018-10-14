@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-13 16:49-0500\n"
+"POT-Creation-Date: 2018-10-13 20:56-0500\n"
 "PO-Revision-Date: 2018-10-13 11:53-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -18,52 +18,124 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: app/templates/index.jinja.html:6
+#: app/models/common.py:15
+msgid "Need"
+msgstr ""
+
+#: app/models/common.py:16
+msgid "Have"
+msgstr ""
+
+#: app/models/common.py:20
+msgid "Asylee"
+msgstr ""
+
+#: app/models/common.py:21
+msgid "Refugee"
+msgstr ""
+
+#: app/models/common.py:22
+msgid "Nonimmigrant"
+msgstr ""
+
+#: app/models/common.py:23
+msgid "Qualified Immigrant"
+msgstr ""
+
+#: app/models/common.py:24
+msgid "Unqualified Immigrant"
+msgstr ""
+
+#: app/models/common.py:25
+msgid "sponsor"
+msgstr ""
+
+#: app/models/common.py:26
+msgid "Public Charge"
+msgstr ""
+
+#: app/models/common.py:27
+msgid "Native Born Citizen"
+msgstr ""
+
+#: app/models/common.py:28
+msgid "Naturalized Citizen"
+msgstr ""
+
+#: app/models/common.py:32
+msgid "In Need Of Aide"
+msgstr ""
+
+#: app/models/common.py:33
+msgid "Individual Helper"
+msgstr ""
+
+#: app/models/common.py:34
+msgid "Corporate Sponsor"
+msgstr ""
+
+#: app/templates/index.jinja.html:7
 msgid "Hello, World!"
 msgstr "Hola, Mundo!"
 
-#: app/templates/index.jinja.html:21
+#: app/templates/index.jinja.html:32
+msgid "Category: "
+msgstr ""
+
+#: app/templates/index.jinja.html:73
 msgid "I need"
 msgstr "Yo necessito"
 
-#: app/templates/index.jinja.html:22
+#: app/templates/index.jinja.html:74
 msgid "What do you need?"
 msgstr "¿Que necesitas?"
 
-#: app/templates/index.jinja.html:24
+#: app/templates/index.jinja.html:76 app/views/user.py:21
 msgid "Submit"
 msgstr "Enviar"
+
+#: app/templates/login.jinja.html:10 app/templates/nav.jinja.html:24
+msgid "Login"
+msgstr "Iniciar Sesión"
 
 #: app/templates/nav.jinja.html:21
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: app/templates/nav.jinja.html:23
-msgid "Login"
-msgstr "Iniciar Sesión"
-
-#: app/templates/register.jinja.html:8 app/views/user.py:24
-#: app/views/user.py:129
+#: app/templates/nav.jinja.html:23 app/templates/register.jinja.html:8
+#: app/views/user.py:22 app/views/user.py:24 app/views/user.py:146
 msgid "Register"
 msgstr "Registro"
 
-#: app/views/user.py:18
+#: app/templates/profile.jinja.html:8
+msgid "User Profile"
+msgstr ""
+
+#: app/templates/sidebar.jinja.html:12
+msgid "Profile"
+msgstr ""
+
+#: app/views/index.py:17
+msgid "Can't find the requested category"
+msgstr ""
+
+#: app/views/user.py:16
 msgid "Username"
 msgstr "Nombre de Usuario"
 
-#: app/views/user.py:19
+#: app/views/user.py:17
 msgid "Password"
 msgstr "Contraseña"
 
-#: app/views/user.py:20
+#: app/views/user.py:18
 msgid "Repeat Password"
 msgstr "Repite la Contraseña"
 
-#: app/views/user.py:21
+#: app/views/user.py:19
 msgid "Remember Me"
 msgstr "Recuérdame"
 
-#: app/views/user.py:22 app/views/user.py:104
+#: app/views/user.py:20 app/views/user.py:117
 msgid "Sign In"
 msgstr "Registrarse"
 
@@ -99,6 +171,10 @@ msgstr "Idioma"
 msgid "Country"
 msgstr "País"
 
+#: app/views/user.py:32
+msgid "Association"
+msgstr ""
+
 #: app/views/user.py:43
 msgid "Please select a different username."
 msgstr ""
@@ -121,6 +197,60 @@ msgstr ""
 
 #: app/views/user.py:51
 msgid "You have successfully logged out."
+msgstr ""
+
+msgid "Furnishings"
+msgstr ""
+
+msgid "Financial Assistance"
+msgstr ""
+
+msgid "One Time Jobs"
+msgstr ""
+
+msgid "Bed"
+msgstr "Cama"
+
+msgid "Couch"
+msgstr ""
+
+msgid "Chair"
+msgstr ""
+
+msgid "Lamp"
+msgstr ""
+
+msgid "Dining Table"
+msgstr ""
+
+msgid "Table"
+msgstr ""
+
+msgid "Refrigerator"
+msgstr ""
+
+msgid "Microwave"
+msgstr ""
+
+msgid "Stove or Oven"
+msgstr ""
+
+msgid "Clothes Washer or Dryer"
+msgstr ""
+
+msgid "Lawn Mowing"
+msgstr ""
+
+msgid "Moving"
+msgstr ""
+
+msgid "Car Repair"
+msgstr ""
+
+msgid "Painting"
+msgstr ""
+
+msgid "Minor Construction"
 msgstr ""
 
 #~ msgid "Home"

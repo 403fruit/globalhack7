@@ -29,10 +29,21 @@ LABELS = {
     "primary_role": lazy_gettext("Primary Role"),
     "language": lazy_gettext("Language"),
     "country": lazy_gettext("Country"),
-    "picture": lazy_gettext("Picture")
+    "picture": lazy_gettext("Picture"),
+    "association": lazy_gettext("Association"),
 }
 HELP = {
     "picture": lazy_gettext("Upload a picture of yourself to help others get to know you"),
+}
+
+# copied from config.json, replace names with native names
+LANGUAGE_CHOICES = {
+    "en": "English",
+    "es": "Español",
+    "zh": "汉语",
+    "fr": "français",
+    "ar": "العربية",
+    "vi": "Tiếng Việt"
 }
 
 
@@ -66,9 +77,10 @@ class ProfileForm(Form):
     name = StringField(LABELS['name'])
     username = StringField(LABELS['username'], validators=[DataRequired()])
     email = StringField(LABELS['email'], validators=[DataRequired(), Email()])
+    association = StringField(LABELS['association'])
     bio = StringField(LABELS['bio'], widget=TextArea())
     phone = StringField(LABELS["phone"])
-    language = SelectField(LABELS["language"], choices=SUPPORTEDLANGUAGES())
+    language = SelectField(LABELS["language"], choices=[(k, v) for k,v in LANGUAGE_CHOICES.items()])
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
     picture = FileField(LABELS["picture"], description=HELP["picture"])
     submit = SubmitField(LABELS['submit'])
@@ -77,13 +89,14 @@ class ProfileForm(Form):
 class RegistrationForm(Form):
     name = StringField(LABELS['name'])
     email = StringField(LABELS['email'], validators=[DataRequired(), Email()])
+    assocation = StringField(LABELS['association'])
     username = StringField(LABELS['username'], validators=[DataRequired()])
     password = PasswordField(LABELS['password'], validators=[DataRequired()])
     password2 = PasswordField(
         LABELS['repeat_password'], validators=[DataRequired(), EqualTo('password')])
     bio = StringField(LABELS['bio'], widget=TextArea())
     phone = StringField(LABELS["phone"])
-    language = SelectField(LABELS["language"], choices=[])
+    language = SelectField(LABELS["language"], choices=[(k, v) for k,v in LANGUAGE_CHOICES.items()])
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
     picture = FileField(LABELS["picture"], description=HELP["picture"])
     immigration_status = SelectField(LABELS["immigration_status"], choices=IMMIGRATION_STATUS)
@@ -125,7 +138,7 @@ def register():
     if current_user.is_authenticated():
         return redirect(url_for('index.index'))
     form = RegistrationForm()
-    form.language.choices = [[k, v] for k, v in current_app.config.get("SUPPORTED_LANGUAGES", {}).items()]
+    # form.language.choices = [[k, v] for k, v in current_app.config.get("SUPPORTED_LANGUAGES", {}).items()]
     if form.validate_on_submit():
         user = User(
             username=form.username.data,
@@ -144,7 +157,7 @@ def register():
         login_user(user, remember=False)
         flash(GENERAL_MESSAGES['registration_success'], "success")
         return redirect(url_for('index.index'))
-    else :
+    else:
         if form.language.data == "None":
             form.language.data = g.lang_code
     return render_template('register.jinja.html', title=gettext('Register'), form=form)
