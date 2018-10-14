@@ -1,4 +1,5 @@
 {% extends "base.jinja.html" %}
+{% from "macros.jinja.html" import display_resources %}
 
 {% block wrapper %}
 <section id="main-content">
@@ -16,7 +17,10 @@
                 </ul>
             </div>
         </div>
+        <button type="button" class="scroll-btn left"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        <button type="button" class="scroll-btn right"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
 
+        {% if not resources %}
         <div class="categories-container">
             <div class="categories-breadcrumbs row-fluid">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -55,16 +59,19 @@
                 {% endfor %}
             </div>
         </div>
+        {% else %}
+        {{ display_resources(resources) }}
+        {% endif %}
 
         <div class="searchbox row-fluid">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <ul class="inputs"></ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <form method="POST" class="form-inline">
+                <form method="POST" id="search-resources" class="form-inline">
                     <div class="form-group">
                         <label for="id_resource" class="control-label">{{ _("I need") }}: </label>
-                        <input class="typeahead form-control" id="id_resource" type="text" placeholder="{{ _("What do you need?") }}">
+                        <input name="resource_ids" class="typeahead form-control" id="id_resource" type="text" placeholder="{{ _("What do you need?") }}">
                     </div>
                     <button type="submit" class="btn btn-default btn-primary">{{ _("Submit") }}</button>
                 </form>

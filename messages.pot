@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-13 16:49-0500\n"
+"POT-Creation-Date: 2018-10-13 20:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,48 +21,64 @@ msgstr ""
 msgid "Hello, World!"
 msgstr ""
 
-#: app/templates/index.jinja.html:21
+#: app/templates/index.jinja.html:28
+msgid "Category: "
+msgstr ""
+
+#: app/templates/index.jinja.html:66
 msgid "I need"
 msgstr ""
 
-#: app/templates/index.jinja.html:22
+#: app/templates/index.jinja.html:67
 msgid "What do you need?"
 msgstr ""
 
-#: app/templates/index.jinja.html:24
+#: app/templates/index.jinja.html:69 app/views/user.py:21
 msgid "Submit"
+msgstr ""
+
+#: app/templates/login.jinja.html:10 app/templates/nav.jinja.html:25
+msgid "Login"
 msgstr ""
 
 #: app/templates/nav.jinja.html:21
 msgid "Logout"
 msgstr ""
 
-#: app/templates/nav.jinja.html:23
-msgid "Login"
+#: app/templates/nav.jinja.html:22
+msgid "Profile"
 msgstr ""
 
-#: app/templates/register.jinja.html:8 app/views/user.py:24
-#: app/views/user.py:129
+#: app/templates/nav.jinja.html:24 app/templates/register.jinja.html:8
+#: app/views/user.py:22 app/views/user.py:24 app/views/user.py:141
 msgid "Register"
 msgstr ""
 
-#: app/views/user.py:18
+#: app/templates/profile.jinja.html:8
+msgid "User Profile"
+msgstr ""
+
+#: app/views/index.py:16
+msgid "Can't find the requested category"
+msgstr ""
+
+#: app/views/user.py:16
 msgid "Username"
 msgstr ""
 
-#: app/views/user.py:19
+#: app/views/user.py:17
 msgid "Password"
 msgstr ""
 
-#: app/views/user.py:20
+#: app/views/user.py:18
 msgid "Repeat Password"
 msgstr ""
 
-#: app/views/user.py:21
+#: app/views/user.py:19
 msgid "Remember Me"
 msgstr ""
 
-#: app/views/user.py:22 app/views/user.py:104
+#: app/views/user.py:20 app/views/user.py:112
 msgid "Sign In"
 msgstr ""
 
@@ -98,27 +114,99 @@ msgstr ""
 msgid "Country"
 msgstr ""
 
-#: app/views/user.py:43
+#: app/views/user.py:42
 msgid "Please select a different username."
 msgstr ""
 
-#: app/views/user.py:44
+#: app/views/user.py:43
 msgid "Please select a different email address"
 msgstr ""
 
-#: app/views/user.py:45
+#: app/views/user.py:44
 msgid "Invalid username or password."
 msgstr ""
 
-#: app/views/user.py:49
+#: app/views/user.py:48
 msgid "You have successfully registered."
 msgstr ""
 
-#: app/views/user.py:50
+#: app/views/user.py:49
 msgid "You have successfully logged in."
 msgstr ""
 
-#: app/views/user.py:51
+#: app/views/user.py:50
 msgid "You have successfully logged out."
+msgstr ""
+
+#: Category:1/name
+msgid "Furnishings"
+msgstr ""
+
+#: Category:2/name
+msgid "Financial Assistance"
+msgstr ""
+
+#: Category:3/name
+msgid "One Time Jobs"
+msgstr ""
+
+#: Category:4/name
+msgid "Bed"
+msgstr ""
+
+#: Category:5/name
+msgid "Couch"
+msgstr ""
+
+#: Category:6/name
+msgid "Chair"
+msgstr ""
+
+#: Category:7/name
+msgid "Lamp"
+msgstr ""
+
+#: Category:8/name
+msgid "Dining Table"
+msgstr ""
+
+#: Category:9/name
+msgid "Table"
+msgstr ""
+
+#: Category:10/name
+msgid "Refrigerator"
+msgstr ""
+
+#: Category:11/name
+msgid "Microwave"
+msgstr ""
+
+#: Category:12/name
+msgid "Stove or Oven"
+msgstr ""
+
+#: Category:13/name
+msgid "Clothes Washer or Dryer"
+msgstr ""
+
+#: Category:14/name
+msgid "Lawn Mowing"
+msgstr ""
+
+#: Category:15/name
+msgid "Moving"
+msgstr ""
+
+#: Category:16/name
+msgid "Car Repair"
+msgstr ""
+
+#: Category:17/name
+msgid "Painting"
+msgstr ""
+
+#: Category:18/name
+msgid "Minor Construction"
 msgstr ""
 
