@@ -4,9 +4,9 @@
     {% for resource in resources %}
         <div class="col-sm-4 resource-detail">
             <a class="resource pn picture" href="{{ url_for('resource.detail_view', lang_code=(g.lang_code if g.lang_code else 'en'), id=resource.id) }}">
-                <img class="resource-img" src="{{ resource.picture_url }}" />
+                <img class="resource-img" src="{{ resource.picture_url if resource.picture else url_for('static', filename='img/ui-sam.jpg')}}" />
                 <span class="name">{{ _(resource.name) }}</span>
-                <span class="description">{{ _(resource.description) }}</span>
+                <span class="description">{{ _(resource.description) | truncate(60) }}</span>
             </a>
         </div>
     {% endfor %}
