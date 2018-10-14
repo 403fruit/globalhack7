@@ -7,7 +7,7 @@
             <a class="resource pn picture" href="{{ url_for('resource.detail_view', lang_code=(g.lang_code if g.lang_code else 'en'), id=resource.id) }}">
                 <img class="resource-img" src="{{ resource.picture_url if resource.picture else url_for('static', filename='img/ui-sam.jpg')}}" />
                 <span class="name">{{ resource.name }}</span>
-                <span class="description">{{ resource.description }}</span>
+                <span class="description">{{ resource.description | truncate(40) if resource.description }}</span>
                 {% if resource.requested %}
                 <div class="resource-requested"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> {{ _('REQUESTED') }}</div>
                 {% endif %}
