@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-14 00:54-0500\n"
+"POT-Creation-Date: 2018-10-14 01:30-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,11 +71,11 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: app/lib/constants.py:20 app/templates/view_profile.jinja.html:20
+#: app/lib/constants.py:20 app/templates/view_profile.jinja.html:21
 msgid "Phone Number"
 msgstr ""
 
-#: app/lib/constants.py:21 app/templates/view_profile.jinja.html:22
+#: app/lib/constants.py:21 app/templates/view_profile.jinja.html:23
 msgid "Secondary Phone Number"
 msgstr ""
 
@@ -83,59 +83,71 @@ msgstr ""
 msgid "Bio"
 msgstr ""
 
-#: app/lib/constants.py:23 app/templates/view_profile.jinja.html:24
+#: app/lib/constants.py:23
+msgid "Item Description"
+msgstr ""
+
+#: app/lib/constants.py:24 app/templates/view_profile.jinja.html:25
 msgid "Primary Role"
 msgstr ""
 
-#: app/lib/constants.py:24
+#: app/lib/constants.py:25
 msgid "Language"
 msgstr ""
 
-#: app/lib/constants.py:25
+#: app/lib/constants.py:26
 msgid "Country"
 msgstr ""
 
-#: app/lib/constants.py:26
+#: app/lib/constants.py:27
 msgid "Picture"
 msgstr ""
 
-#: app/lib/constants.py:27
+#: app/lib/constants.py:28
 msgid "Association"
 msgstr ""
 
-#: app/lib/constants.py:30
+#: app/lib/constants.py:31
 msgid "Upload a picture of yourself to help others get to know you"
 msgstr ""
 
-#: app/lib/constants.py:51
+#: app/lib/constants.py:52
 msgid "Please select a different username."
 msgstr ""
 
-#: app/lib/constants.py:52
+#: app/lib/constants.py:53
 msgid "Please select a different email address"
 msgstr ""
 
-#: app/lib/constants.py:53
+#: app/lib/constants.py:54
 msgid "Invalid username or password."
 msgstr ""
 
-#: app/lib/constants.py:54
+#: app/lib/constants.py:55
 msgid "Must be logged in."
 msgstr ""
 
-#: app/lib/constants.py:58
+#: app/lib/constants.py:59
 msgid "You have successfully registered."
 msgstr ""
 
-#: app/lib/constants.py:59
-msgid "You have successfully saved."
-msgstr ""
-
 #: app/lib/constants.py:60
-msgid "You have successfully logged in."
+msgid "The Resource has been successfully requested."
 msgstr ""
 
 #: app/lib/constants.py:61
+msgid "The Resource was not successfully requested."
+msgstr ""
+
+#: app/lib/constants.py:62
+msgid "You have successfully saved."
+msgstr ""
+
+#: app/lib/constants.py:63
+msgid "You have successfully logged in."
+msgstr ""
+
+#: app/lib/constants.py:64
 msgid "You have successfully logged out."
 msgstr ""
 
@@ -160,7 +172,7 @@ msgid "Corporate Sponsor"
 msgstr ""
 
 #: app/templates/edit_profile.jinja.html:7
-#: app/templates/view_profile.jinja.html:6
+#: app/templates/view_profile.jinja.html:7
 msgid "User Profile"
 msgstr ""
 
@@ -176,7 +188,7 @@ msgstr ""
 msgid "Category: "
 msgstr ""
 
-#: app/templates/index.jinja.html:84
+#: app/templates/index.jinja.html:84 app/templates/view_profile.jinja.html:32
 msgid "I need"
 msgstr ""
 
@@ -224,6 +236,10 @@ msgstr ""
 msgid "No Affiliation"
 msgstr ""
 
+#: app/templates/resource_detail.jinja.html:48
+msgid "Request This Resource"
+msgstr ""
+
 #: app/templates/resource_editor.jinja.html:8
 msgid "Create Resource"
 msgstr ""
@@ -236,20 +252,32 @@ msgstr ""
 msgid "My Resources"
 msgstr ""
 
-#: app/templates/view_profile.jinja.html:14
+#: app/templates/view_profile.jinja.html:15
 msgid "About Me"
 msgstr ""
 
-#: app/templates/view_profile.jinja.html:17
+#: app/templates/view_profile.jinja.html:18
 msgid "User Information"
 msgstr ""
 
-#: app/templates/view_profile.jinja.html:19
+#: app/templates/view_profile.jinja.html:20
 msgid "E-Mail Address"
 msgstr ""
 
-#: app/templates/view_profile.jinja.html:25
+#: app/templates/view_profile.jinja.html:26
 msgid "Locale"
+msgstr ""
+
+#: app/templates/view_profile.jinja.html:32
+msgid "needs"
+msgstr ""
+
+#: app/templates/view_profile.jinja.html:36
+msgid "I am offering"
+msgstr ""
+
+#: app/templates/view_profile.jinja.html:36
+msgid "is offering"
 msgstr ""
 
 #: app/views/index.py:19
@@ -266,15 +294,15 @@ msgstr ""
 msgid "No resource found."
 msgstr ""
 
-#: app/views/user.py:135 app/views/user.py:145 app/views/user.py:149
+#: app/views/user.py:135 app/views/user.py:151 app/views/user.py:155
 msgid "A user with that ID does not exist"
 msgstr ""
 
-#: app/views/user.py:148
+#: app/views/user.py:154
 msgid "You do not have permission to access this profile."
 msgstr ""
 
-#: app/views/user.py:155
+#: app/views/user.py:161
 msgid "Your account has been successfully saved!"
 msgstr ""
 
