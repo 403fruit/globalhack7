@@ -19,23 +19,6 @@ def text_has_emoji(text):
     return False
 
 
-@app.route('/resources_autosuggest')
-def get_resources_autosuggestions():
-    query = request.args.get('query')
-
-    # Find all HAVE resources that match by name, and all HAVE resources that match category name
-    resources = db.session.query(Resource).filter(Resource.name.like(f'%{query}%'), Resource.type == 'HAVE').all()
-    categories = db.session.query(Category).filter(Category.name.like(f'%{query}%')).all()
-    resources += [r for cat in categories for r in cat.resources if r.type == 'HAVE']
-
-    # Build response as dict of {'Matching Phrase': [resources that match]}
-    response = {}
-    for resource in resources:
-        key = f'{resource.name} ({resource.category.name})'
-        response.setdefault(key, []).append(resource.serialize())
-    return jsonify(response)
-
-
 @app.route('/resources')
 def get_resources():
     query = request.args.get('query')
@@ -47,10 +30,18 @@ def get_resources():
         with open('emoji.json') as f:
             data = json.load(f)
             emoji = next((x for x in data if x['code'].lower() == query.lower()), None)
-        cat_query = Category.query.filter(or_(*[Category.name.like('%{}%'.format(keyword)) for idx, keyword in enumerate(emoji['keywords'])]))
+        cat_query = Category.query.filter(or_(*[Category.name.like(f'%{keyword}%') for keyword in emoji['keywords']]))
+        res_query = db.session.query(Resource).filter(Resource.type == 'HAVE', or_(*[Resource.name.like(f'%{keyword}%') for keyword in emoji['keywords']]))
     else:
-        cat_query = Category.query.filter(Category.name.like('%{}%'.format(query)))
+        cat_query = Category.query.filter(Category.name.like(f'%{query}%'))
+        res_query = db.session.query(Resource).filter(Resource.name.like(f'%{query}%'))
 
     categories = cat_query.all()
-    resource_list = [cat.name for cat in categories]
-    return jsonify(resource_list)
+    resources = res_query.all()
+
+    # Build response as dict of {'Matching Phrase': [resources that match]}
+    response = {}
+    for resource in resources + [r for cat in categories for r in cat.resources]:
+        key = f'{resource.name} ({resource.category.name})'
+        response.setdefault(key, []).append(resource.serialize())
+    return jsonify(response)
