@@ -11,6 +11,7 @@ app = Blueprint('index', __name__)
 @app.route('/category/<int:cat_id>')
 def index(cat_id=None):
     cat_drilldown = []
+    resources = []
     if cat_id:
         category = Category.query.get(cat_id)
         if not category:
@@ -19,6 +20,7 @@ def index(cat_id=None):
             while category:
                 cat_drilldown.append(category)
                 category = category.parent
+        resources = Resource.query.filter(Resource.category_id == cat_id).all()
 
     if cat_drilldown:
         cat_list = list(cat_drilldown[0].children)
@@ -29,6 +31,7 @@ def index(cat_id=None):
         'index.jinja.html',
         cat_drilldown=list(reversed(cat_drilldown)),
         cat_list=cat_list,
+        resources=resources,
     )
 
 
