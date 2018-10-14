@@ -26,7 +26,8 @@
                   <li>
                       <a href="{{ url_for('user.view_profile', lang_code=(g.lang_code or 'en'), id=current_user.id) }}#user-resources">
                           <i class="fa fa-toolbox"></i>
-                          <span>{{ _("My Resources") }}</span>
+                          <span>{{ _("My Resources") }} </span>
+                          <span style="color:red;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
                       </a>
                   </li>
               {% endif %}
