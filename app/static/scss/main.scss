@@ -66,8 +66,11 @@ ul.flags {
 	}
 }
 .form-inline {
-	display: flex;
-	justify-content: center;
+	width: 300px;
+	margin: 0 auto;
+	.form-group {
+		margin-bottom: 0;
+	}
 	.control-label, .need-have-switch {
 		line-height: 30px;
 		vertical-align: text-top;
@@ -102,7 +105,8 @@ ul.flags {
 	padding: 0 20px;
 	line-height: 40px;
 	height: 40px;
-	margin-left: 10px;
+	margin-top: 5px;
+	width: 300px;
 }
 .categories-container, .resources-container {
 	display: inline-block;
@@ -163,7 +167,6 @@ div.form-panel {
 h1.form {
 	margin-left: 10px;
 }
-
 
 .user-profile {
 	.picture img {

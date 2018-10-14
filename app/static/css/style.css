@@ -364,7 +364,7 @@ ul.sidebar-menu li a{
 }
 
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
-    background: #68dff0;
+    background: #337ab7;
     color: #fff;
     display: block;
 
@@ -2222,7 +2222,7 @@ label {
 
 /*footer*/
 .site-footer {
-    background: #68dff0;
+    background: #337ab7;
     color: #fff;
     padding: 10px 0;
 }
