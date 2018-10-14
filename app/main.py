@@ -10,6 +10,8 @@ from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
 from flask_babel import Babel
 
+from app.lib.storage import file_url
+
 
 logger = logging.getLogger(__name__)
 
@@ -45,6 +47,11 @@ def create_app():
     login_manager.init_app(app)
     login_manager.login_view = "login"
     babel = Babel(app)
+
+    # jinja happy fun times
+    app.jinja_env.globals.update({
+        'file_url': file_url,
+    })
 
     from app.models import common
     from app.views.index import app as index_view
