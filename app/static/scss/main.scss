@@ -84,6 +84,7 @@ ul.flags {
 		&.active {
 			color: #000;
 			border-color: #000;
+			background: #fff;
 		}
 	}
 	.twitter-typeahead {
@@ -127,6 +128,7 @@ ul.flags {
 				}
 				&.caticon-1 {
 					width: 100%;
+					max-height: 264px;
 				}
 			}
 		}
