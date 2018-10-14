@@ -3,6 +3,7 @@ import re
 import sqlalchemy_utils as sau
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from flask_babel import lazy_gettext
 from app.main import login_manager
 
 import arrow
@@ -11,26 +12,26 @@ from app.main import db
 
 
 USER_RESOURCE_TYPES = [
-    ('NEED', 'Need'),
-    ('HAVE', 'Have'),
+    ('NEED', lazy_gettext('Need')),
+    ('HAVE', lazy_gettext('Have')),
 ]
 
 IMMIGRATION_STATUS = [
-    ('ASYLEE', 'Asylee'),
-    ('REFUGEE', 'Refugee'),
-    ('NONIMMIGRANT', 'Nonimmigrant'),
-    ('QUALIFIED_IMMIGRANT', 'Qualified Immigrant'),
-    ('UNQUALIFIED_IMMIGRANT', 'Unqualified Immigrant'),
-    ('SPONSOR', 'sponsor'),
-    ('PUBLIC_CHARGE', 'Public Charge'),
-    ('NATIVE_BORN_CITIZEN', 'Native Born Citizen'),
-    ('NATURALIZED_CITIZEN', 'Naturalized Citizen')
+    ('ASYLEE', lazy_gettext("Asylee")),
+    ('REFUGEE', lazy_gettext("Refugee")),
+    ('NONIMMIGRANT', lazy_gettext("Nonimmigrant")),
+    ('QUALIFIED_IMMIGRANT', lazy_gettext("Qualified Immigrant")),
+    ('UNQUALIFIED_IMMIGRANT', lazy_gettext("Unqualified Immigrant")),
+    ('SPONSOR', lazy_gettext("sponsor")),
+    ('PUBLIC_CHARGE', lazy_gettext("Public Charge")),
+    ('NATIVE_BORN_CITIZEN', lazy_gettext("Native Born Citizen")),
+    ('NATURALIZED_CITIZEN', lazy_gettext("Naturalized Citizen"))
 ]
 
 PRIMARY_ROLE = [
-    ('IN_NEED_OF_AIDE', 'In Need Of Aide'),
-    ('INDIVIDUAL_HELPER', 'Individual Helper'),
-    ('CORPORATE_SPONSOR', 'Corporate Sponsor')
+    ('IN_NEED_OF_AIDE', lazy_gettext('In Need Of Aide')),
+    ('INDIVIDUAL_HELPER', lazy_gettext('Individual Helper')),
+    ('CORPORATE_SPONSOR', lazy_gettext('Corporate Sponsor'))
 ]
 
 
