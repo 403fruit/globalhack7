@@ -60,11 +60,11 @@ def resource_create():
         new_resource = Resource(
             name=form.name.data,
             category=form.category.data,
-            quantity_available=form.quantity_available.data,
+            quantity_available=form.quantity_available.data if form.type.data == 'HAVE' else 0,
             description=form.description.data,
             picture=form.picture.data,
             fulfilled=False,
-            quantity_needed=0,
+            quantity_needed=0 if form.type.data == 'NEED' else 1,
             type=form.type.data,
             user_id=current_user.id
         )
