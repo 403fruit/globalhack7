@@ -17,18 +17,6 @@ USER_RESOURCE_TYPES = [
     ('HAVE', lazy_gettext('Have')),
 ]
 
-IMMIGRATION_STATUS = [
-    ('ASYLEE', lazy_gettext("Asylee")),
-    ('REFUGEE', lazy_gettext("Refugee")),
-    ('NONIMMIGRANT', lazy_gettext("Nonimmigrant")),
-    ('QUALIFIED_IMMIGRANT', lazy_gettext("Qualified Immigrant")),
-    ('UNQUALIFIED_IMMIGRANT', lazy_gettext("Unqualified Immigrant")),
-    ('SPONSOR', lazy_gettext("sponsor")),
-    ('PUBLIC_CHARGE', lazy_gettext("Public Charge")),
-    ('NATIVE_BORN_CITIZEN', lazy_gettext("Native Born Citizen")),
-    ('NATURALIZED_CITIZEN', lazy_gettext("Naturalized Citizen"))
-]
-
 PRIMARY_ROLE = [
     ('IN_NEED_OF_AIDE', lazy_gettext('In Need Of Aide')),
     ('INDIVIDUAL_HELPER', lazy_gettext('Individual Helper')),
@@ -52,7 +40,6 @@ class User(UserMixin, TimestampMixin, db.Model):
     secondary_phone = db.Column(db.BigInteger(), nullable=True)
     bio = db.Column(db.UnicodeText, nullable=False)
     association = db.Column(db.Unicode(64), nullable=True)
-    immigration_status = db.Column(sau.ChoiceType(IMMIGRATION_STATUS), index=True)
     primary_role = db.Column(sau.ChoiceType(PRIMARY_ROLE))
     language = db.Column(db.String(2), nullable=False)
     country = db.Column(db.String(2), nullable=False)

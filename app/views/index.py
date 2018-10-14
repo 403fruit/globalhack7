@@ -36,11 +36,25 @@ def index(cat_id=None):
 
 
 @app.route('/', methods=['POST'])
-def display_search_results():
-    resource_ids = request.form.get('resource_ids').split(',')
-    resources = db.session.query(Resource).filter(Resource.id.in_(resource_ids)).all()
+def submit():
+    resource_data = request.form.get('resource_ids').split(',')
+    resources = db.session.query(Resource).filter(Resource.id.in_(resource_data))
 
-    return render_template(
-        'index.jinja.html',
-        resources=resources
-    )
+    # Redirect to HAVE creation
+    if request.form.get('is_have') != 'false':
+        model_resource = resources.first()
+        return redirect(
+            url_for('resource.resource_create',
+                    lang_code=g.lang_code or 'en',
+                    name=model_resource.name if model_resource else resource_data,
+                    cat_id=model_resource.category_id if model_resource else ''))
+
+    if resources.count():
+        # Resources exist, show NEEDER
+        return render_template(
+            'index.jinja.html',
+            resources=resources
+        )
+    else:
+        # No resources exist, create NEED resource?
+        return "stub"

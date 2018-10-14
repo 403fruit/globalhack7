@@ -11,7 +11,7 @@ from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 from wtforms.widgets import TextArea
 
 from app.main import db
-from app.models.common import User, IMMIGRATION_STATUS, PRIMARY_ROLE
+from app.models.common import User, PRIMARY_ROLE
 from app.models.constants import COUNTRY_CODES
 from app.lib.constants import *
 
@@ -42,7 +42,6 @@ class ResourceForm(Form):
     language = SelectField(LABELS["language"], choices=[(k, v) for k,v in LANGUAGE_CHOICES.items()])
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
     picture = FileField(LABELS["picture"], description=HELP["picture"])
-    immigration_status = SelectField(LABELS["immigration_status"], choices=IMMIGRATION_STATUS)
     primary_role = SelectField(LABELS["primary_role"], choices=PRIMARY_ROLE)
     submit = SubmitField(LABELS['submit_register'])
 
@@ -60,7 +59,6 @@ def resource_create():
             name=form.name.data,
             phone=form.phone.data,
             bio=form.bio.data,
-            immigration_status=form.immigration_status.data,
             primary_role=form.primary_role.data,
             language=form.language.data,
             country=form.country.data,

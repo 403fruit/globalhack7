@@ -39,8 +39,12 @@
     });
 
     $('#id_resource').on('typeahead:selected typeahead:autocompleted', function(event, value) {
-        // swap out readable label for resource ID values
-        $(this).val(value.value);
+        // swap out readable label for resource ID values and set hidden category ID field before submit
+        var resources = value.value;
+        var resource_ids = resources.map(function (r) { return r.resource_id });
+        var category_id = resources[0].category_id;
+        $('#id_category').val(category_id);
+        $(this).val(resource_ids);
         $('#search-resources').submit();
     });
 
