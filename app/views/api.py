@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, abort, g, current_app
 from flask import jsonify, request
+from flask_login import current_user
 from flask_babel import gettext
 from app.models.common import Category, Resource
 from app.main import babel
@@ -35,6 +36,10 @@ def search_resources():
     else:
         cat_query = Category.query.filter(Category.name.like(f'%{query}%'))
         res_query = db.session.query(Resource).filter(Resource.name.like(f'%{query}%'))
+
+    if current_user.is_authenticated():
+        cat_query = cat_query.filter(Resource.user != current_user)
+        res_query = res_query.filter(Resource.user != current_user)
 
     categories = cat_query.all()
     resources = res_query.all()
