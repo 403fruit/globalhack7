@@ -24,7 +24,7 @@ def index(cat_id=None):
                 category = category.parent
         resources = Resource.query.filter(Resource.category_id == cat_id)
         if current_user.is_authenticated():
-            resources = resources.filter(Resource.user_id != current_user.id)
+            resources = resources.filter(Resource.user != current_user)
         resources = resources.all()
 
     if cat_drilldown:
