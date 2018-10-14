@@ -43,6 +43,10 @@
                         </tr>
                 </table>
             </div>
+            <form method="GET" action="{{ url_for('resource.resource_request') }}">
+                <input type="hidden" name="resource_id" value="{{ resource.id }}">
+                <button type="submit" class="btn-primary">{{ _("Request This Resource") }}</button>
+            </form>
         </div>
         </div>
     </section>

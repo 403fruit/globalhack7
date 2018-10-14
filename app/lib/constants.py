@@ -18,7 +18,9 @@ LABELS = {
     "register": lazy_gettext("Register"),
     "name": lazy_gettext("Name"),
     "phone": lazy_gettext("Phone Number"),
+    "secondary_phone": lazy_gettext("Secondary Phone Number"),
     "bio": lazy_gettext("Bio"),
+    "description": lazy_gettext("Item Description"),
     "primary_role": lazy_gettext("Primary Role"),
     "language": lazy_gettext("Language"),
     "country": lazy_gettext("Country"),
@@ -55,6 +57,8 @@ ERROR_MESSAGES = {
 
 GENERAL_MESSAGES = {
     "registration_success": lazy_gettext("You have successfully registered."),
+    "resource_requested": lazy_gettext("The Resource has been successfully requested."),
+    "resource_not_requested": lazy_gettext("The Resource was not successfully requested."),
     "resource_save_success": lazy_gettext("You have successfully saved."),
     "login_success": lazy_gettext("You have successfully logged in."),
     "logout_success": lazy_gettext("You have successfully logged out.")

@@ -8,7 +8,7 @@ from flask_babel import gettext, lazy_gettext
 from wtforms.widgets import TextArea
 
 from app.main import db
-from app.models.common import User, PRIMARY_ROLE
+from app.models.common import User, PRIMARY_ROLE, Resource
 from app.models.constants import COUNTRY_CODES
 from app.lib.constants import *
 
@@ -45,6 +45,7 @@ class ProfileForm(Form):
     association = StringField(LABELS['association'])
     bio = StringField(LABELS['bio'], widget=TextArea())
     phone = StringField(LABELS["phone"])
+    secondary_phone = StringField(LABELS["secondary_phone"])
     language = SelectField(LABELS["language"], choices=[(k, v) for k,v in LANGUAGE_CHOICES.items()])
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
     picture = FileField(LABELS["picture"], description=HELP["picture"])
@@ -61,6 +62,7 @@ class RegistrationForm(Form):
         LABELS['repeat_password'], validators=[DataRequired(), EqualTo('password')])
     bio = StringField(LABELS['bio'], widget=TextArea())
     phone = StringField(LABELS["phone"])
+    secondary_phone = StringField(LABELS["secondary_phone"])
     language = SelectField(LABELS["language"], choices=[(k, v) for k,v in LANGUAGE_CHOICES.items()])
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
     picture = FileField(LABELS["picture"], description=HELP["picture"])
@@ -133,7 +135,13 @@ def view_profile(id=None):
         flash(gettext('A user with that ID does not exist'), 'error')
         return redirect(url_for('index.index', lang_code=g.lang_code if g.lang_code else 'en'))
 
-    return render_template('view_profile.jinja.html', user=user)
+    resource_needs = None
+    resource_haves = None
+    if user.resources:
+        resource_needs = Resource.query.filter(Resource.user_id==user.id, Resource.type=='NEED').all()
+        resource_haves = Resource.query.filter(Resource.user_id==user.id, Resource.type=='HAVE').all()
+
+    return render_template('view_profile.jinja.html', user=user, resource_haves=resource_haves, resource_needs=resource_needs)
 
 
 @app.route('/profile/edit/<int:id>', methods=['GET', 'POST'])

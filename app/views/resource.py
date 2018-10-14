@@ -25,7 +25,7 @@ class ResourceForm(Form):
     category = QuerySelectField(LABELS['category'], query_factory=lambda: Category.query.filter(Category.parent != None), get_label='name')
     quantity_available = StringField(LABELS['quantity'], default=1)
     quantity_needed = StringField(LABELS['quantity'], default=1)
-    description = StringField(LABELS['bio'], widget=TextArea())
+    description = StringField(LABELS['description'], widget=TextArea())
     type = HiddenField(LABELS['type'])
     picture = FileField(LABELS["picture"], description=HELP["picture"])
     submit = SubmitField(LABELS['submit_create'])
@@ -83,3 +83,16 @@ def resource_create():
         flash(GENERAL_MESSAGES['resource_save_success'], "success")
         return redirect(url_for('index.index'))
     return render_template('resource_editor.jinja.html', name=request.args.get('name'), form=form)
+
+
+@app.route('/request/', methods=['GET', 'POST'])
+def resource_request():
+    resource = Resource.query.get(request.args.get('resource_id'))
+    if resource:
+        resource.requested = 1
+        db.session.add(resource)
+        db.session.commit()
+        flash(GENERAL_MESSAGES['resource_requested'], "success")
+    else:
+        flash(GENERAL_MESSAGES['resource_requested'], "error")
+    return redirect(url_for('index.index'))

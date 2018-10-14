@@ -1,4 +1,5 @@
 {% extends "base.jinja.html" %}
+{% from "macros.jinja.html" import display_resources %}
 
 {% block wrapper %}
 <section id="main-content">
@@ -16,13 +17,25 @@
                     {% if user == current_user %}
                     <h2>{{ _("User Information") }}</h2>
                     <table class="table">
-                        <tr><th>{{ _("E-Mail Address") }}</th><td>{{ user.email }}</td></tr>
-                        <tr><th>{{ _("Phone Number") }}</th><td>{{ user.phone }}</td></tr>
-                        <tr><th>{{ _("Secondary Phone Number") }}</th><td>{{ user.secondary_phone }}</td></tr>
+                        <tr><th>{{ _("E-Mail Address") }}</th><td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td></tr>
+                        <tr><th>{{ _("Phone Number") }}</th><td><a href="tel:{{ user.phone }}">{{ user.phone }}</a></td></tr>
+                        {% if user.secondary_phone %}
+                            <tr><th>{{ _("Secondary Phone Number") }}</th><td><a href="tel:{{ user.secondary_phone }}">{{ user.secondary_phone }}</a></td></tr>
+                        {% endif %}
                         <tr><th>{{ _("Primary Role") }}</th><td>{{ user.primary_role.value }}</td></tr>
                         <tr><th>{{ _("Locale") }}</th><td>{{ user_locale_name(user) }}</td></tr>
                     </table>
                     {% endif %}
+                    <div id="user-resources">
+                    {% if resource_needs %}
+                        <h2>{{ _("Resource Needs") }}</h2>
+                        {{ display_resources(resource_needs) }}
+                    {% endif %}
+                    {% if resource_haves %}
+                         <h2>{{ _("Resource Haves") }}</h2>
+                        {{ display_resources(resource_haves) }}
+                    {% endif %}
+                </div>
                 </div>
             </div>
         </div>
