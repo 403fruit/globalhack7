@@ -17,7 +17,8 @@ span.logo {
 
 h1.greeting {
   text-align: center;
-  color: #000; }
+  color: #000;
+  margin-bottom: 35px; }
 
 .flag-carousel {
   position: relative; }
@@ -135,6 +136,8 @@ ul.flags {
     overflow-wrap: break-word; }
   .categories-container .resources-list, .resources-container .resources-list {
     width: 100%; }
+    .categories-container .resources-list .resource-detail:nth-child(3n+1), .resources-container .resources-list .resource-detail:nth-child(3n+1) {
+      clear: both; }
     .categories-container .resources-list .resource, .resources-container .resources-list .resource {
       min-height: 220px; }
       .categories-container .resources-list .resource img.resource-img, .resources-container .resources-list .resource img.resource-img {
@@ -150,13 +153,18 @@ div.form-panel {
   margin-top: 20px; }
 
 h1.form {
-  margin-left: 10px; }
+  margin-left: 10px;
+  text-transform: capitalize; }
 
 .breadcrumb {
   background: #fff; }
 
 .user-profile .picture img {
-  width: 100%; }
+  width: 100%;
+  max-width: 300px; }
+
+.table td {
+  text-transform: capitalize; }
 
 .resource-detail .picture img {
   width: 100%; }

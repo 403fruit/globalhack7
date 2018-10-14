@@ -7,10 +7,10 @@
         <h1 class="form">{{ _("User Profile") }}</h1>
         <div class="form-panel">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-2 picture">
+                <div class="col-xs-12 col-sm-12 col-lg-2 picture">
                     <img src="{{ file_url(user.picture) if user.picture else url_for('static', filename='img/ui-sam.jpg') }}" />
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-9 info">
+                <div class="col-xs-12 col-sm-12 col-lg-9 info">
                     <h1>{{ user.name }}</h1>
                     <h2>{{ _("About Me") }}</h2>
                     <p>{{ user.bio }}</p>
@@ -26,16 +26,17 @@
                         <tr><th>{{ _("Locale") }}</th><td>{{ user_locale_name(user) }}</td></tr>
                     </table>
                     {% endif %}
+
                     <div id="user-resources">
                     {% if resource_needs %}
-                        <h2>{{ _("Resource Needs") }}</h2>
+                        <h2>{{ _("I need") if current_user == user else user.name + ' ' + _("needs") }}</h2>
                         {{ display_resources(resource_needs) }}
                     {% endif %}
                     {% if resource_haves %}
-                         <h2>{{ _("Resource Haves") }}</h2>
+                        <h2>{{ _("I am offering") if current_user == user else user.name + ' ' + _("is offering")  }}</h2>
                         {{ display_resources(resource_haves) }}
                     {% endif %}
-                </div>
+                    </div>
                 </div>
             </div>
         </div>
