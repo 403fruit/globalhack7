@@ -1,4 +1,5 @@
 {% extends "base.jinja.html" %}
+{% from "macros.jinja.html" import display_resources %}
 
 {% block wrapper %}
 <section id="main-content">
@@ -25,6 +26,16 @@
                         <tr><th>{{ _("Locale") }}</th><td>{{ user_locale_name(user) }}</td></tr>
                     </table>
                     {% endif %}
+                    <div id="user-resources">
+                    {% if resource_needs %}
+                        <h2>{{ _("Resource Needs") }}</h2>
+                        {{ display_resources(resource_needs) }}
+                    {% endif %}
+                    {% if resource_haves %}
+                         <h2>{{ _("Resource Haves") }}</h2>
+                        {{ display_resources(resource_haves) }}
+                    {% endif %}
+                </div>
                 </div>
             </div>
         </div>
