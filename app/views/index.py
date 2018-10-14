@@ -40,10 +40,10 @@ def index(cat_id=None):
 def submit():
     resource_data = request.form.get('resource_ids').split(',')
     resources = db.session.query(Resource).filter(Resource.id.in_(resource_data))
+    model_resource = resources.first()
 
     if request.form.get('is_have') != 'false':
         # Redirect to HAVE creation (resource may or may not exist to model after)
-        model_resource = resources.first()
         return redirect(
             url_for('resource.resource_create',
                     lang_code=g.lang_code or 'en',
