@@ -132,7 +132,7 @@ class Resource(TimestampMixin, db.Model):
     fulfilled = db.Column(db.Boolean, nullable=False, default=False, server_default='0')
     name = db.Column(db.UnicodeText(), nullable=False)
     picture = db.Column(db.UnicodeText())
-    description = db.Column(db.UnicodeText())
+    requested = db.Column(db.Boolean(), nullable=True, default=False)
 
     def __setattr__(self, name, value):
         if name == 'picture':

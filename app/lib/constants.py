@@ -56,6 +56,8 @@ ERROR_MESSAGES = {
 
 GENERAL_MESSAGES = {
     "registration_success": lazy_gettext("You have successfully registered."),
+    "resource_requested": lazy_gettext("The Resource has been successfully requested."),
+    "resource_not_requested": lazy_gettext("The Resource was not successfully requested."),
     "resource_save_success": lazy_gettext("You have successfully saved."),
     "login_success": lazy_gettext("You have successfully logged in."),
     "logout_success": lazy_gettext("You have successfully logged out.")
