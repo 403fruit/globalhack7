@@ -5,4 +5,4 @@ __pycache__/
 .DS_Store
 .sass-cache/
 *.css.map
-.app/static/uploads/user_pictures/
+/app/static/uploads/user_pictures/
