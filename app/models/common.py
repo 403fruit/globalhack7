@@ -100,7 +100,7 @@ class Resource(TimestampMixin, db.Model):
     __tablename__ = 'resources'
     id = db.Column(db.BigInteger, primary_key=True)
     category_id = db.Column(db.BigInteger, db.ForeignKey('categories.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=False)
-    category = db.relationship('Category', backref='user_categories')
+    category = db.relationship('Category', backref='resources')
     user_id = db.Column(db.BigInteger, db.ForeignKey('users.id', onupdate='CASCADE', ondelete='CASCADE'), nullable=False)
     user = db.relationship('User', backref='resources')
     type = db.Column(sau.ChoiceType(USER_RESOURCE_TYPES), index=True)
@@ -131,11 +131,17 @@ class Resource(TimestampMixin, db.Model):
         )
         return self.quantity_needed - sum([f.fulfilled_quantity for f in fulfillment])
 
-    # def __repr__(self):
-    #     if self.type == 'NEED':
-    #         return f"{self.quantity_fulfilled} {self.name}"
-    #     else:
-    #         return f"{self.quantity_remaining} {self.name}"
+    def serialize(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'category': self.category.name,
+            'user_id': self.user.id,
+            'type': self.type.code,
+            'quantity_available': self.quantity_available,
+            'quantity_needed': self.quantity_needed,
+            'fulfilled': self.fulfilled,
+        }
 
 
 class ResourceFulfillment(TimestampMixin, db.Model):
