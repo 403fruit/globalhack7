@@ -1,8 +1,21 @@
 body {
 	font-weight: 400;
 }
+a.logo {
+	font-family: 'Fahkwang', sans-serif;
+	font-weight: 700;
+	letter-spacing: 1.5px;
+	line-height: 25px;
+	span {
+		text-transform: lowercase;
+		font-size: 28px;
+	}
+}
 h1.greeting {
 	text-align: center;
+}
+.flag-carousel {
+	position: relative;
 }
 .flag-container {
 	width: 90%;
@@ -13,6 +26,7 @@ h1.greeting {
 ul.flags {
 	display: flex;
 	padding: 0;
+	margin-bottom: 0;
 	li {
 		display: inline-block;
 		margin: 0 10px;
@@ -33,6 +47,20 @@ ul.flags {
 				width: 3em;
 			}
 		}
+	}
+}
+.scroll-btn {
+	border: 0;
+	font-size: 25px;
+	line-height: 1;
+	width: 50px;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	height: 100%;
+	outline: 0;
+	&.right {
+		right: 0;
 	}
 }
 .form-inline {
@@ -62,11 +90,11 @@ ul.flags {
 	height: 40px;
 	margin-left: 10px;
 }
-.categories-container {
+.categories-container, .resources-container {
 	display: inline-block;
 	margin-bottom: 50px;
-	.categories-list {
-		.category {
+	.categories-list, .resources-list {
+		.category, .resource {
 			display: block;
 			text-align: center;
 			background: #fff;

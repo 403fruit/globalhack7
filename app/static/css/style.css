@@ -8,6 +8,7 @@ Premium: http://www.gridgum.com
 
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Fahkwang:400,700);
 
 /* BASIC THEME CONFIGURATION */
 body {
@@ -444,7 +445,7 @@ a.logo:hover, a.logo:focus {
 }
 
 a.logo span {
-    color: #68dff0;
+    color: #fff;
 }
 
 
