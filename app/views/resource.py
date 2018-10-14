@@ -8,6 +8,7 @@ from flask_wtf import Form
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, FileField, HiddenField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
+from flask_babel import gettext
 
 from wtforms.widgets import TextArea
 
@@ -36,7 +37,7 @@ def detail_view(id=None):
         return 'Not Implemented Yet'
     resource = Resource.query.get(id)
     if not resource:
-        flash('No resource found.', 'warning')
+        flash(gettext('No resource found.'), 'warning')
         return redirect(url_for('index.index', lang_code=g.lang_code))
     return render_template('resource_detail.jinja.html', resource=resource)
 
