@@ -1,0 +1,24 @@
+{% extends "base.jinja.html" %}
+
+{% block wrapper %}
+<section id="main-content">
+    <section class="wrapper site-min-height">
+        <h1>{{ _("User Profile") }}</h1>
+        <div class="row">
+            {{ user.name }}<br />
+            {{ user.username }}<br />
+            {{ user.password }}<br />
+            {{ user.email }}<br />
+            {{ user.phone }}<br />
+            {{ user.secondary_phone }}<br />
+            {{ user.bio }}<br />
+            {{ user.immigration_status }}<br />
+            {{ user.primary_role }}<br />
+            {{ user.language }}<br />
+            {{ user.country }}<br />
+            {{ user.picture }}<br />
+        </div>
+    </section>
+</section>
+
+{% endblock %}

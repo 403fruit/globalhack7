@@ -1,6 +1,5 @@
 body {
-  font-weight: 400;
-}
+  font-weight: 400; }
 
 a.logo {
   font-family: 'Fahkwang', sans-serif;
@@ -12,112 +11,108 @@ a.logo {
     font-size: 28px; }
 
 h1.greeting {
-  text-align: center;
-}
+  text-align: center; }
+
+.flag-carousel {
+  position: relative; }
 
 .flag-container {
   width: 90%;
   overflow: scroll;
   margin: 0 auto 50px;
-  position: relative;
-}
+  position: relative; }
 
 ul.flags {
   display: flex;
   padding: 0;
-}
-ul.flags li {
-  display: inline-block;
-  margin: 0 10px;
-  cursor: pointer;
-}
-ul.flags li:first-child {
-  margin-left: 0;
-}
-ul.flags li img {
-  width: 15em;
-  border-radius: 6px;
-  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
-}
-ul.flags.flags-sm {
-  justify-content: center;
-}
-ul.flags.flags-sm li img {
-  width: 3em;
-}
+  margin-bottom: 0; }
+  ul.flags li {
+    display: inline-block;
+    margin: 0 10px;
+    cursor: pointer; }
+    ul.flags li:first-child {
+      margin-left: 0; }
+    ul.flags li img {
+      width: 15em;
+      border-radius: 6px;
+      box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2); }
+  ul.flags.flags-sm {
+    justify-content: center; }
+    ul.flags.flags-sm li img {
+      width: 3em; }
+
+.scroll-btn {
+  border: 0;
+  font-size: 25px;
+  line-height: 1;
+  width: 50px;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  outline: 0; }
+  .scroll-btn.right {
+    right: 0; }
 
 .form-inline {
   display: flex;
-  justify-content: center;
-}
-.form-inline .control-label {
-  line-height: 40px;
-  vertical-align: text-top;
-  text-transform: uppercase;
-  position: absolute;
-  top: -40px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 700;
-}
-.form-inline input {
-  height: 40px;
-  line-height: 40px;
-  padding: 0 15px;
-}
+  justify-content: center; }
+  .form-inline .control-label {
+    line-height: 40px;
+    vertical-align: text-top;
+    text-transform: uppercase;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700; }
+  .form-inline input {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px; }
 
 .btn-default {
   padding: 0 20px;
   line-height: 40px;
   height: 40px;
-  margin-left: 10px;
-}
+  margin-left: 10px; }
 
 .categories-container, .resources-container {
   display: inline-block;
-  margin-bottom: 50px;
-}
-.categories-container .categories-list .category, .categories-container .categories-list .resource, .categories-container .resources-list .category, .categories-container .resources-list .resource, .resources-container .categories-list .category, .resources-container .categories-list .resource, .resources-container .resources-list .category, .resources-container .resources-list .resource {
-  display: block;
-  text-align: center;
-  background: #fff;
-  padding: 20px;
-  height: auto;
-  min-height: 320px;
-  margin-bottom: 25px;
-}
-.categories-container .categories-list .icons, .categories-container .resources-list .icons, .resources-container .categories-list .icons, .resources-container .resources-list .icons {
-  display: block;
-}
-.categories-container .categories-list .icons img.caticon-4, .categories-container .categories-list .icons img.caticon-3, .categories-container .categories-list .icons img.caticon-2, .categories-container .resources-list .icons img.caticon-4, .categories-container .resources-list .icons img.caticon-3, .categories-container .resources-list .icons img.caticon-2, .resources-container .categories-list .icons img.caticon-4, .resources-container .categories-list .icons img.caticon-3, .resources-container .categories-list .icons img.caticon-2, .resources-container .resources-list .icons img.caticon-4, .resources-container .resources-list .icons img.caticon-3, .resources-container .resources-list .icons img.caticon-2 {
-  width: 50%;
-  height: 75px;
-  margin-bottom: 10px;
-}
-.categories-container .categories-list .icons img.caticon-1, .categories-container .resources-list .icons img.caticon-1, .resources-container .categories-list .icons img.caticon-1, .resources-container .resources-list .icons img.caticon-1 {
-  width: 100%;
-}
-.categories-container .categories-list .name, .categories-container .resources-list .name, .resources-container .categories-list .name, .resources-container .resources-list .name {
-  display: block;
-  text-transform: uppercase;
-  color: #000;
-  margin-top: 15px;
-  font-size: 20px;
-  font-weight: 700;
-}
+  margin-bottom: 50px; }
+  .categories-container .categories-list .category, .categories-container .categories-list .resource, .categories-container .resources-list .category, .categories-container .resources-list .resource, .resources-container .categories-list .category, .resources-container .categories-list .resource, .resources-container .resources-list .category, .resources-container .resources-list .resource {
+    display: block;
+    text-align: center;
+    background: #fff;
+    padding: 20px;
+    height: auto;
+    min-height: 370px;
+    margin-bottom: 25px; }
+  .categories-container .categories-list .icons, .categories-container .resources-list .icons, .resources-container .categories-list .icons, .resources-container .resources-list .icons {
+    display: block; }
+    .categories-container .categories-list .icons img.caticon-4, .categories-container .categories-list .icons img.caticon-3, .categories-container .categories-list .icons img.caticon-2, .categories-container .resources-list .icons img.caticon-4, .categories-container .resources-list .icons img.caticon-3, .categories-container .resources-list .icons img.caticon-2, .resources-container .categories-list .icons img.caticon-4, .resources-container .categories-list .icons img.caticon-3, .resources-container .categories-list .icons img.caticon-2, .resources-container .resources-list .icons img.caticon-4, .resources-container .resources-list .icons img.caticon-3, .resources-container .resources-list .icons img.caticon-2 {
+      width: 50%;
+      height: 75px;
+      margin-bottom: 10px; }
+    .categories-container .categories-list .icons img.caticon-1, .categories-container .resources-list .icons img.caticon-1, .resources-container .categories-list .icons img.caticon-1, .resources-container .resources-list .icons img.caticon-1 {
+      width: 100%; }
+  .categories-container .categories-list .name, .categories-container .resources-list .name, .resources-container .categories-list .name, .resources-container .resources-list .name {
+    display: block;
+    text-transform: uppercase;
+    color: #000;
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 700; }
 
 .alert {
   padding-top: 75px;
   text-align: center;
-  margin-bottom: 0;
-}
+  margin-bottom: 0; }
 
 div.form-panel {
-  margin-top: 20px;
-}
+  margin-top: 20px; }
 
 h1.form {
-  margin-left: 10px;
-}
+  margin-left: 10px; }
