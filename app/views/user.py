@@ -1,16 +1,22 @@
 from flask import Blueprint, render_template, g, current_app, redirect, url_for, flash
 from flask_login import login_user, logout_user, current_user
 from flask_wtf import Form
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, FileField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, FileField as _FileField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
 from flask_babel import gettext, lazy_gettext
 from wtforms.widgets import TextArea
 
 from app.main import db
-from app.models.common import User, IMMIGRATION_STATUS, PRIMARY_ROLE
+from app.models.common import User, PRIMARY_ROLE
 from app.models.constants import COUNTRY_CODES
 from app.lib.constants import *
+
+
+class FileField(_FileField):
+    def populate_obj(self, obj, name):
+        if self.data:
+            return super(FileField, self).populate_obj(obj, name)
 
 
 class LoginForm(Form):
@@ -46,7 +52,6 @@ class RegistrationForm(Form):
     language = SelectField(LABELS["language"], choices=[(k, v) for k,v in LANGUAGE_CHOICES.items()])
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
     picture = FileField(LABELS["picture"], description=HELP["picture"])
-    immigration_status = SelectField(LABELS["immigration_status"], choices=IMMIGRATION_STATUS)
     primary_role = SelectField(LABELS["primary_role"], choices=PRIMARY_ROLE)
     submit = SubmitField(LABELS['submit_register'])
 
@@ -93,7 +98,6 @@ def register():
             name=form.name.data,
             phone=form.phone.data,
             bio=form.bio.data,
-            immigration_status=form.immigration_status.data,
             primary_role=form.primary_role.data,
             language=form.language.data,
             country=form.country.data,

@@ -70,14 +70,15 @@
                 <ul class="inputs"></ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <form method="POST" id="search-resources" class="form-inline">
+                <form method="POST" action="/" id="search-resources" class="form-inline">
                     <div class="form-group">
                         <span class="need-have-switch need active">{{ _("I need") }}: </span>
                         <span class="need-have-switch have">{{ _("I have") }}: </span>
-                        <input name="is_have" type="hidden" class="is-have" value="false">
-                        <input name="resource_ids" class="typeahead form-control" id="id_resource" type="text" placeholder="{{ _("Try: 🛏, 🚗, or Start Typing") }}">
+                        <input name="is_have" type="hidden" class="is-have" value="false" />
+                        <input name="category_id" type="hidden" value="" />
+                        <input name="resource_ids" class="typeahead form-control" id="id_resource" type="text" placeholder="{{ _("Try: 🛏, 🚗, or Start Typing") }}" />
                     </div>
-                    <!-- <button type="submit" class="btn btn-default btn-primary">{{ _("Submit") }}</button> -->
+                    <button type="submit" class="btn btn-default btn-primary">{{ _("Submit") }}</button>
                 </form>
             </div>
         </div>

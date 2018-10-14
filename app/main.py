@@ -66,6 +66,7 @@ def create_app():
     app.register_blueprint(index_view)
     app.register_blueprint(index_view, url_prefix='/<lang_code>')
     app.register_blueprint(user_view, url_prefix='/<lang_code>')
+    app.register_blueprint(resource_view, url_prefix='/<lang_code>/resource')
     app.register_blueprint(api_view, url_prefix='/api')
     app.register_blueprint(resource_view, url_prefix='/<lang_code>/resource')
 
