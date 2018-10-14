@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, g, current_app, url_for, redirect, flash, request
+from flask_login import current_user
 from flask.ext.babel import gettext
 
 from app.models.common import Category, Resource
@@ -28,11 +29,19 @@ def index(cat_id=None):
     else:
         cat_list = Category.query.filter(Category.parent == None).all()
 
+    has_requested_resource = False
+    if current_user.is_authenticated():
+        for resource in Resource.query.filter(Resource.user_id == current_user.id).all():
+            if resource.requested:
+                has_requested_resource = True
+                break
+
     return render_template(
         'index.jinja.html',
         cat_drilldown=list(reversed(cat_drilldown)),
         cat_list=cat_list,
         resources=resources,
+        has_requested_resource=has_requested_resource
     )
 
 
