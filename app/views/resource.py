@@ -40,7 +40,13 @@ def detail_view(id=None):
     if not resource:
         flash(gettext('No resource found.'), 'warning')
         return redirect(url_for('index.index', lang_code=g.lang_code))
-    return render_template('resource_detail.jinja.html', resource=resource)
+
+    show_request_btn = True
+    if current_user and current_user.id == resource.user_id:
+        show_request_btn = False
+    resource_requested = resource.requested
+
+    return render_template('resource_detail.jinja.html', resource=resource, show_request_btn=show_request_btn, resource_requested=resource_requested)
 
 
 @app.route('/create', methods=['GET', 'POST'])
@@ -95,4 +101,17 @@ def resource_request():
         flash(GENERAL_MESSAGES['resource_requested'], "success")
     else:
         flash(GENERAL_MESSAGES['resource_requested'], "error")
+    return redirect(url_for('index.index'))
+
+
+@app.route('/request_fulfilled/', methods=['GET', 'POST'])
+def resource_request_fulfilled():
+    resource = Resource.query.get(request.args.get('resource_id'))
+    if resource:
+        resource.fulfilled = 1
+        db.session.add(resource)
+        db.session.commit()
+        flash(GENERAL_MESSAGES['resource_fulfilled'], "success")
+    else:
+        flash(GENERAL_MESSAGES['resource_not_requested'], "error")
     return redirect(url_for('index.index'))

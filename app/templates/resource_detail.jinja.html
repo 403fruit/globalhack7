@@ -43,14 +43,20 @@
                         </tr>
                 </table>
             </div>
-                {% if not resource.requested %}
-                    <form method="GET" action="{{ url_for('resource.resource_request') }}">
-                        <input type="hidden" name="resource_id" value="{{ resource.id }}">
-                        <button type="submit" class="btn-primary">{{ _("Request This Resource") }}</button>
-                    </form>
-                {% else %}
                     <label class="label label-info">{{ _("This resource has already been requested.") }}</label>
                 {% endif %}
+            {% if show_request_btn %}
+            <form method="GET" action="{{ url_for('resource.resource_request') }}">
+                <input type="hidden" name="resource_id" value="{{ resource.id }}">
+                <button type="submit" class="btn-primary">{{ _("Request This Resource") }}</button>
+            </form>
+            {% endif %}
+            {% if resource_requested %}
+                <form method="GET" action="{{ url_for('resource.resource_request_fulfilled') }}">
+                    <input type="hidden" name="resource_id" value="{{ resource.id }}">
+                    <button type="submit" class="btn-primary">{{ _("Fulfill Requested Resource") }}</button>
+                </form>
+            {% endif %}
         </div>
         </div>
     </section>
