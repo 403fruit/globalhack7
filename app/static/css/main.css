@@ -69,8 +69,9 @@ ul.flags {
     display: inline-block;
     width: 49%;
     cursor: pointer;
-    border-bottom: 3px solid transparent;
-    margin-bottom: 5px; }
+    border: 1px solid transparent;
+    border-bottom-width: 3px;
+    margin-bottom: 3px; }
     .form-inline .control-label.active, .form-inline .need-have-switch.active {
       color: #000;
       border-color: #000; }
@@ -80,7 +81,8 @@ ul.flags {
   .form-inline input {
     height: 40px;
     line-height: 40px;
-    padding: 0 15px; }
+    padding: 0 15px;
+    min-width: 300px; }
 
 .btn-default {
   padding: 0 20px;

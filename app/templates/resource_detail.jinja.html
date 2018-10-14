@@ -6,7 +6,7 @@
         <h1>{{ _("Resource") }}: {{ resource.name }}</h1>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 picture">
-               <<img src="{{ resource.picture_url if resource.picture else url_for('static', filename='img/ui-sam.jpg') }}">
+               <img src="{{ resource.picture_url if resource.picture else url_for('static', filename='img/ui-sam.jpg') }}">
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-9 info">
                 <table class="table">

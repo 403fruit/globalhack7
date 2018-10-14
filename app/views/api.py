@@ -43,6 +43,6 @@ def search_resources():
     response = {}
     for resource in set(resources + [r for cat in categories for r in cat.resources]):
         key = '{} ({})'.format(resource.name, gettext(resource.category.name))
-        response.setdefault(key, []).append(resource.id)
+        response.setdefault(key, []).append({'category_id': resource.category.id, 'resource_id': resource.id})
     return jsonify(response)
 
