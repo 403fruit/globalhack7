@@ -117,7 +117,7 @@ msgstr ""
 
 #: app/templates/nav.jinja.html:24
 msgid "Edit Profile"
-msgstr ""
+msgstr "更新帐户"
 
 #: app/templates/nav.jinja.html:26 app/templates/register.jinja.html:8
 #: app/views/user.py:22 app/views/user.py:24 app/views/user.py:163
@@ -218,7 +218,7 @@ msgstr "登录成功"
 
 #: app/views/user.py:65
 msgid "You have successfully logged out."
-msgstr ""
+msgstr "注销成功"
 
 #: app/views/user.py:170 app/views/user.py:180 app/views/user.py:184
 msgid "A user with that ID does not exist"

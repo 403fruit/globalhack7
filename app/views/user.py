@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, g, current_app, redirect, url_for, flash
 from flask_login import login_user, logout_user, current_user
 from flask_wtf import Form
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, FileField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, FileField as _FileField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
 from flask_babel import gettext, lazy_gettext
@@ -11,6 +11,12 @@ from app.main import db
 from app.models.common import User, IMMIGRATION_STATUS, PRIMARY_ROLE
 from app.models.constants import COUNTRY_CODES
 from app.lib.constants import *
+
+
+class FileField(_FileField):
+    def populate_obj(self, obj, name):
+        if self.data:
+            return super(FileField, self).populate_obj(obj, name)
 
 
 class LoginForm(Form):
