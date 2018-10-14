@@ -2,6 +2,7 @@
 <div class="categories-container">
     <div class="resources-list row-fluid">
     {% for resource in resources %}
+        {% if not resource.fulfilled %}
         <div class="col-sm-4 resource-detail">
             <a class="resource pn picture" href="{{ url_for('resource.detail_view', lang_code=(g.lang_code if g.lang_code else 'en'), id=resource.id) }}">
                 <img class="resource-img" src="{{ resource.picture_url if resource.picture else url_for('static', filename='img/ui-sam.jpg')}}" />
@@ -12,6 +13,7 @@
                 {% endif %}
             </a>
         </div>
+        {% endif %}
     {% endfor %}
     </div>
 </div>
