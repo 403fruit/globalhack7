@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, g, current_app, redirect, url_for, flash
 from flask_login import login_user, logout_user, current_user
 from flask_wtf import Form
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, FileField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
 from flask_babel import gettext, lazy_gettext
@@ -28,7 +28,11 @@ LABELS = {
     "immigration_status": lazy_gettext("Immigration Status"),
     "primary_role": lazy_gettext("Primary Role"),
     "language": lazy_gettext("Language"),
-    "country": lazy_gettext("Country")
+    "country": lazy_gettext("Country"),
+    "picture": lazy_gettext("Picture")
+}
+HELP = {
+    "picture": lazy_gettext("Upload a picture of yourself to help others get to know you"),
 }
 
 
@@ -66,6 +70,7 @@ class ProfileForm(Form):
     phone = StringField(LABELS["phone"])
     language = SelectField(LABELS["language"], choices=SUPPORTEDLANGUAGES())
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
+    picture = FileField(LABELS["picture"], description=HELP["picture"])
     submit = SubmitField(LABELS['submit'])
 
 
@@ -80,6 +85,7 @@ class RegistrationForm(Form):
     phone = StringField(LABELS["phone"])
     language = SelectField(LABELS["language"], choices=[])
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
+    picture = FileField(LABELS["picture"], description=HELP["picture"])
     immigration_status = SelectField(LABELS["immigration_status"], choices=IMMIGRATION_STATUS)
     primary_role = SelectField(LABELS["primary_role"], choices=PRIMARY_ROLE)
     submit = SubmitField(LABELS['submit_register'])
@@ -135,6 +141,7 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
+        login_user(user, remember=False)
         flash(GENERAL_MESSAGES['registration_success'], "success")
         return redirect(url_for('index.index'))
     else :
@@ -143,24 +150,34 @@ def register():
     return render_template('register.jinja.html', title=gettext('Register'), form=form)
 
 
-@app.route('/profile/<id>', methods=['GET', 'POST'])
-def profile(id=None):
+@app.route('/profile/<int:id>', methods=['GET', 'POST'])
+def view_profile(id=None):
     user = User.query.get(id)
     if not user:
-        flash('A user with that ID does not exist', 'error')
+        flash(gettext('A user with that ID does not exist'), 'error')
+        return redirect(url_for('index.index', lang_code=g.lang_code if g.lang_code else 'en'))
+
+    return render_template('view_profile.jinja.html', user=user)
+
+
+@app.route('/profile/edit/<int:id>', methods=['GET', 'POST'])
+def edit_profile(id=None):
+    user = User.query.get(id)
+    if not user:
+        flash(gettext('A user with that ID does not exist'), 'error')
         return redirect(url_for('index.index', lang_code=g.lang_code if g.lang_code else 'en'))
     if current_user != user:
-        flash("You do not have permission to access this profile.", 'danger')
-        flash('A user with that ID does not exist', 'error')
+        flash(gettext("You do not have permission to access this profile."), 'danger')
+        flash(gettext('A user with that ID does not exist'), 'error')
     form = ProfileForm(obj=user)
 
     if form.validate_on_submit():
         form.populate_obj(user)
         db.session.commit()
-        flash('Your account has been successfully saved!', 'success')
+        flash(gettext('Your account has been successfully saved!'), 'success')
         return redirect(url_for('index.index', lang_code=(user.language or 'en')))
 
-    return render_template('profile.jinja.html', form=form)
+    return render_template('edit_profile.jinja.html', form=form)
 
 
 @app.route('/logout')
