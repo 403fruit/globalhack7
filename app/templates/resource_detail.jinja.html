@@ -3,7 +3,7 @@
 {% block wrapper %}
 <section id="main-content">
     <section class="wrapper site-min-height resource-detail">
-        <h1 class="form">{{ _("Resource") }}: {{ resource.name }}</h1>
+        <h2 class="form">{{ resource.user.username}}'s {{resource.name}} </h2>
         <div class="form-panel">
             <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 picture">
@@ -34,7 +34,7 @@
                         </tr>
                         <tr>
                             <td>{{ _("User") }}</td>
-                            <td><a href="{{ url_for('user.view_profile', lang_code=(g.lang_code if g.lang_code or 'en'), id=resource.user.id) }}">{{ resource.user.name }}</a></td>
+                            <td><a href="{{ url_for('user.view_profile', lang_code=(g.lang_code if g.lang_code or 'en'), id=resource.user.id) }}">{{ resource.user.username }}</a></td>
                         </tr>
                         <tr>
                             <td>{{ _("User Affiliation") }}</td>
@@ -43,11 +43,14 @@
                         </tr>
                 </table>
             </div>
-            {% if show_request_btn %}
-            <form method="GET" action="{{ url_for('resource.resource_request') }}">
-                <input type="hidden" name="resource_id" value="{{ resource.id }}">
-                <button type="submit" class="btn-primary">{{ _("Request This Resource") }}</button>
-            </form>
+            {% if show_request_btn and not resource.requested %}
+
+                <form method="GET" action="{{ url_for('resource.resource_request') }}">
+                    <input type="hidden" name="resource_id" value="{{ resource.id }}">
+                    <button type="submit" class="btn-primary">{{ _("Request This Resource") }}</button>
+                </form>
+            {% else %}
+                <label class="label label-info">{{ _("This resource has already been requested.") }}</label>
             {% endif %}
             {% if resource_requested %}
                 <form method="GET" action="{{ url_for('resource.resource_request_fulfilled') }}">

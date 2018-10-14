@@ -11,6 +11,7 @@
                     <img src="{{ file_url(user.picture) if user.picture else url_for('static', filename='img/ui-sam.jpg') }}" />
                 </div>
                 <div class="col-xs-12 col-sm-12 col-lg-9 info">
+                    <h1>{{ user.username }}</h1>
                     <h1>{{ user.name }}</h1>
                     <h2>{{ _("About Me") }}</h2>
                     <p>{{ user.bio }}</p>
@@ -29,11 +30,11 @@
 
                     <div id="user-resources">
                     {% if resource_needs %}
-                        <h2>{{ _("I need") if current_user == user else user.name + ' ' + _("needs") }}</h2>
+                        <h2>{{ _("I need") if current_user == user else user.username + ' ' + _("needs") }}</h2>
                         {{ display_resources(resource_needs) }}
                     {% endif %}
                     {% if resource_haves %}
-                        <h2>{{ _("I am offering") if current_user == user else user.name + ' ' + _("is offering")  }}</h2>
+                        <h2>{{ _("I am offering") if current_user == user else user.username + ' ' + _("is offering")  }}</h2>
                         {{ display_resources(resource_haves) }}
                     {% endif %}
                     </div>
