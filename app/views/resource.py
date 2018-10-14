@@ -42,9 +42,10 @@ def detail_view(id=None):
         return redirect(url_for('index.index', lang_code=g.lang_code))
 
     show_request_btn = True
+    resource_requested = False
     if current_user and current_user.id == resource.user_id:
         show_request_btn = False
-    resource_requested = resource.requested
+        resource_requested = resource.requested
 
     return render_template('resource_detail.jinja.html', resource=resource, show_request_btn=show_request_btn, resource_requested=resource_requested)
 
