@@ -16,22 +16,20 @@
               <h5 class="centered">{{ current_user.name }}</h5>
               {% endif %}
 
-              <li class="mt">
-                  {% if current_user.is_authenticated() %}
-                  <a class="active" href="{{ url_for('user.edit_profile', lang_code=(g.lang_code or 'en'), id=current_user.id) }}">
-                      <i class="fa fa-user"></i>
-                      <span>{{ _("Edit Profile") }}</span>
-                  </a>
-                  {% endif %}
-              </li>
-
-              <li>
-                  <a href="#">
-                      <i class="fa fa-toolbox"></i>
-                      <span>{{ _("My Resources") }}</span>
-                  </a>
-              </li>
-
+              {% if current_user.is_authenticated() %}
+                  <li class="mt">
+                      <a class="active" href="{{ url_for('user.edit_profile', lang_code=(g.lang_code or 'en'), id=current_user.id) }}">
+                          <i class="fa fa-user"></i>
+                          <span>{{ _("Edit Profile") }}</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#">
+                          <i class="fa fa-toolbox"></i>
+                          <span>{{ _("My Resources") }}</span>
+                      </a>
+                  </li>
+              {% endif %}
           </ul>
           <!-- sidebar menu end-->
       </div>
