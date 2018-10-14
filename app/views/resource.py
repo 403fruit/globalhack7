@@ -62,12 +62,14 @@ def resource_create():
             category=form.category.data,
             quantity_available=form.quantity_available.data,
             description=form.description.data,
-            picture=form.picture.data,
             fulfilled=False,
             quantity_needed=0,
             type=form.type.data,
             user_id=current_user.id
         )
+        db.session.add(new_resource)
+        db.session.commit()
+        new_resource.picture = form.picture.data
         db.session.add(new_resource)
         db.session.commit()
         flash(GENERAL_MESSAGES['resource_save_success'], "success")
