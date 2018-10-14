@@ -6,7 +6,7 @@
         <h1>{{ _("User Profile") }}</h1>
         <div class="form-panel">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 picture">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-2 picture">
                     <img src="{{ file_url(user.picture) if user.picture else url_for('static', filename='img/ui-sam.jpg') }}" />
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-9 info">
