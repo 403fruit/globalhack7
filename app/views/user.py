@@ -43,10 +43,10 @@ LANGUAGE_CHOICES = {
 }
 
 
-class SUPPORTEDLANGUAGES(object):
-    def __iter__(self):
-        for key, value in current_app.config.get("SUPPORTED_LANGUAGES", {}).items():
-            yield (key, value)
+# class SUPPORTEDLANGUAGES(object):
+#     def __iter__(self):
+#         for key, value in current_app.config.get("SUPPORTED_LANGUAGES", {}).items():
+#             yield (key, value)
 
 
 ERROR_MESSAGES = {
