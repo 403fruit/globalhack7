@@ -5,20 +5,22 @@
 <section id="main-content">
     <section class="wrapper site-min-height">
         <h1 class="greeting">{{ _("Hello, World!") }}</h1>
-        <div class="flag-container row-fluid">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <ul class="{% if g.lang_code %}flags flags-sm{% else %}flags{% endif %}">
-                    <li><a href="{{ url_for('index.index', lang_code='en') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/us.svg') }}" /></a></li>
-                    <li><a href="{{ url_for('index.index', lang_code='ar') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/sy.svg') }}" /></a></li>
-                    <li><a href="{{ url_for('index.index', lang_code='es') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/mx.svg') }}" /></a></li>
-                    <li><a href="{{ url_for('index.index', lang_code='zh') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/cn.svg') }}" /></a></li>
-                    <li><a href="{{ url_for('index.index', lang_code='fr') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/fr.svg') }}" /></a></li>
-                    <li><a href="{{ url_for('index.index', lang_code='vi') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/vn.svg') }}" /></a></li>
-                </ul>
+        <div class="flag-carousel">
+            <button type="button" class="scroll-btn left"><i class="fa fa-caret-left" aria-hidden="true"></i></button>
+            <div class="flag-container row-fluid">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="{% if g.lang_code %}flags flags-sm{% else %}flags{% endif %}">
+                        <li><a href="{{ url_for('index.index', lang_code='en') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/us.svg') }}" /></a></li>
+                        <li><a href="{{ url_for('index.index', lang_code='ar') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/sy.svg') }}" /></a></li>
+                        <li><a href="{{ url_for('index.index', lang_code='es') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/mx.svg') }}" /></a></li>
+                        <li><a href="{{ url_for('index.index', lang_code='zh') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/cn.svg') }}" /></a></li>
+                        <li><a href="{{ url_for('index.index', lang_code='fr') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/fr.svg') }}" /></a></li>
+                        <li><a href="{{ url_for('index.index', lang_code='vi') }}"><img src="{{ url_for('static', filename='flag-icon-css-master/flags/4x3/vn.svg') }}" /></a></li>
+                    </ul>
+                </div>
             </div>
+            <button type="button" class="scroll-btn right"><i class="fa fa-caret-right" aria-hidden="true"></i></button>
         </div>
-        <button type="button" class="scroll-btn left"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
-        <button type="button" class="scroll-btn right"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
 
         {% if not resources %}
         <div class="categories-container">
@@ -75,7 +77,7 @@
                         <input name="is_have" type="hidden" class="is-have" value="false">
                         <input name="resource_ids" class="typeahead form-control" id="id_resource" type="text" placeholder="{{ _("What do you need?") }}">
                     </div>
-                    <button type="submit" class="btn btn-default btn-primary">{{ _("Submit") }}</button>
+                    <!-- <button type="submit" class="btn btn-default btn-primary">{{ _("Submit") }}</button> -->
                 </form>
             </div>
         </div>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-13 20:15-0500\n"
+"POT-Creation-Date: 2018-10-13 20:56-0500\n"
 "PO-Revision-Date: 2018-10-13 11:53-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -18,86 +18,142 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: app/templates/index.jinja.html:6
+#: app/models/common.py:15
+msgid "Need"
+msgstr ""
+
+#: app/models/common.py:16
+msgid "Have"
+msgstr ""
+
+#: app/models/common.py:20
+msgid "Asylee"
+msgstr ""
+
+#: app/models/common.py:21
+msgid "Refugee"
+msgstr ""
+
+#: app/models/common.py:22
+msgid "Nonimmigrant"
+msgstr ""
+
+#: app/models/common.py:23
+msgid "Qualified Immigrant"
+msgstr ""
+
+#: app/models/common.py:24
+msgid "Unqualified Immigrant"
+msgstr ""
+
+#: app/models/common.py:25
+msgid "sponsor"
+msgstr ""
+
+#: app/models/common.py:26
+msgid "Public Charge"
+msgstr ""
+
+#: app/models/common.py:27
+msgid "Native Born Citizen"
+msgstr ""
+
+#: app/models/common.py:28
+msgid "Naturalized Citizen"
+msgstr ""
+
+#: app/models/common.py:32
+msgid "In Need Of Aide"
+msgstr ""
+
+#: app/models/common.py:33
+msgid "Individual Helper"
+msgstr ""
+
+#: app/models/common.py:34
+msgid "Corporate Sponsor"
+msgstr ""
+
+#: app/templates/index.jinja.html:7
 msgid "Hello, World!"
 msgstr "你好，世界"
 
-#: app/templates/index.jinja.html:28
+#: app/templates/index.jinja.html:32
 msgid "Category: "
 msgstr ""
 
-#: app/templates/index.jinja.html:66
+#: app/templates/index.jinja.html:73
 msgid "I need"
 msgstr "我需要"
 
-#: app/templates/index.jinja.html:67
+#: app/templates/index.jinja.html:74
 msgid "What do you need?"
 msgstr "你需要什么？"
 
-#: app/templates/index.jinja.html:69 app/views/user.py:21
+#: app/templates/index.jinja.html:76 app/views/user.py:21
 msgid "Submit"
 msgstr "提交"
 
-#: app/templates/login.jinja.html:10 app/templates/nav.jinja.html:25
+#: app/templates/login.jinja.html:10 app/templates/nav.jinja.html:24
 msgid "Login"
 msgstr "登录"
 
 #: app/templates/nav.jinja.html:21
 msgid "Logout"
-msgstr ""
+msgstr "退出"
 
-#: app/templates/nav.jinja.html:22
-msgid "Profile"
-msgstr ""
-
-#: app/templates/nav.jinja.html:24 app/templates/register.jinja.html:8
-#: app/views/user.py:22 app/views/user.py:24 app/views/user.py:141
+#: app/templates/nav.jinja.html:23 app/templates/register.jinja.html:8
+#: app/views/user.py:22 app/views/user.py:24 app/views/user.py:146
 msgid "Register"
-msgstr ""
+msgstr "注册"
 
 #: app/templates/profile.jinja.html:8
 msgid "User Profile"
-msgstr ""
+msgstr "注册"
 
-#: app/views/index.py:16
+#: app/templates/sidebar.jinja.html:12
+msgid "Profile"
+msgstr "帐户"
+
+#: app/views/index.py:17
 msgid "Can't find the requested category"
 msgstr ""
 
 #: app/views/user.py:16
 msgid "Username"
-msgstr ""
+msgstr "用戶名"
 
 #: app/views/user.py:17
 msgid "Password"
-msgstr ""
+msgstr "密码"
 
 #: app/views/user.py:18
 msgid "Repeat Password"
-msgstr ""
+msgstr "重复密码"
 
 #: app/views/user.py:19
 msgid "Remember Me"
-msgstr ""
+msgstr "记住我的登录名"
 
-#: app/views/user.py:20 app/views/user.py:112
+#: app/views/user.py:20 app/views/user.py:117
 msgid "Sign In"
-msgstr ""
+msgstr "登录"
 
 #: app/views/user.py:23
 msgid "Email"
-msgstr ""
+msgstr "电子邮件"
 
 #: app/views/user.py:25
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: app/views/user.py:26
 msgid "Phone Number"
-msgstr ""
+msgstr "电话号码"
 
 #: app/views/user.py:27
 msgid "Bio"
-msgstr ""
+msgstr "传记"
 
 #: app/views/user.py:28
 msgid "Immigration Status"
@@ -109,33 +165,37 @@ msgstr ""
 
 #: app/views/user.py:30
 msgid "Language"
-msgstr ""
+msgstr "语言"
 
 #: app/views/user.py:31
 msgid "Country"
-msgstr ""
+msgstr "国家"
 
-#: app/views/user.py:42
+#: app/views/user.py:32
+msgid "Association"
+msgstr "团体"
+
+#: app/views/user.py:43
 msgid "Please select a different username."
 msgstr ""
 
-#: app/views/user.py:43
+#: app/views/user.py:44
 msgid "Please select a different email address"
 msgstr ""
 
-#: app/views/user.py:44
+#: app/views/user.py:45
 msgid "Invalid username or password."
 msgstr ""
 
-#: app/views/user.py:48
+#: app/views/user.py:49
 msgid "You have successfully registered."
 msgstr ""
 
-#: app/views/user.py:49
+#: app/views/user.py:50
 msgid "You have successfully logged in."
 msgstr ""
 
-#: app/views/user.py:50
+#: app/views/user.py:51
 msgid "You have successfully logged out."
 msgstr ""
 

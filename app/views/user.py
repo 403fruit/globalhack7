@@ -32,6 +32,16 @@ LABELS = {
     "association": lazy_gettext("Association")
 }
 
+# copied from config.json, replace names with native names
+LANGUAGE_CHOICES = {
+    "en": "English",
+    "es": "Español",
+    "zh": "汉语",
+    "fr": "français",
+    "ar": "العربية",
+    "vi": "Tiếng Việt"
+}
+
 
 class SUPPORTEDLANGUAGES(object):
     def __iter__(self):
@@ -66,7 +76,7 @@ class ProfileForm(Form):
     association = StringField(LABELS['association'])
     bio = StringField(LABELS['bio'], widget=TextArea())
     phone = StringField(LABELS["phone"])
-    language = SelectField(LABELS["language"], choices=SUPPORTEDLANGUAGES())
+    language = SelectField(LABELS["language"], choices=[(k, v) for k,v in LANGUAGE_CHOICES.items()])
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
     submit = SubmitField(LABELS['submit'])
 
@@ -81,7 +91,7 @@ class RegistrationForm(Form):
         LABELS['repeat_password'], validators=[DataRequired(), EqualTo('password')])
     bio = StringField(LABELS['bio'], widget=TextArea())
     phone = StringField(LABELS["phone"])
-    language = SelectField(LABELS["language"], choices=[])
+    language = SelectField(LABELS["language"], choices=[(k, v) for k,v in LANGUAGE_CHOICES.items()])
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
     immigration_status = SelectField(LABELS["immigration_status"], choices=IMMIGRATION_STATUS)
     primary_role = SelectField(LABELS["primary_role"], choices=PRIMARY_ROLE)
@@ -122,7 +132,7 @@ def register():
     if current_user.is_authenticated():
         return redirect(url_for('index.index'))
     form = RegistrationForm()
-    form.language.choices = [[k, v] for k, v in current_app.config.get("SUPPORTED_LANGUAGES", {}).items()]
+    # form.language.choices = [[k, v] for k, v in current_app.config.get("SUPPORTED_LANGUAGES", {}).items()]
     if form.validate_on_submit():
         user = User(
             username=form.username.data,
