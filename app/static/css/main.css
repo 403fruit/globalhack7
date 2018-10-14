@@ -122,6 +122,11 @@ ul.flags {
     .categories-container .categories-list .icons img.caticon-1, .categories-container .resources-list .icons img.caticon-1, .resources-container .categories-list .icons img.caticon-1, .resources-container .resources-list .icons img.caticon-1 {
       width: 100%;
       max-height: 264px; }
+    .categories-container .categories-list .icons.linecon, .categories-container .resources-list .icons.linecon, .resources-container .categories-list .icons.linecon, .resources-container .resources-list .icons.linecon {
+      color: #000;
+      font-size: 200px; }
+      .categories-container .categories-list .icons.linecon img, .categories-container .resources-list .icons.linecon img, .resources-container .categories-list .icons.linecon img, .resources-container .resources-list .icons.linecon img {
+        display: none; }
   .categories-container .categories-list .name, .categories-container .resources-list .name, .resources-container .categories-list .name, .resources-container .resources-list .name {
     display: block;
     text-transform: uppercase;

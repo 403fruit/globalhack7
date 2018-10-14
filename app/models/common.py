@@ -36,8 +36,8 @@ class User(UserMixin, TimestampMixin, db.Model):
     username = db.Column(db.Unicode(64), unique=True, nullable=False)
     password = db.Column(db.UnicodeText, nullable=False)
     email = db.Column(db.UnicodeText(), nullable=True)
-    phone = db.Column(db.BigInteger(), nullable=True)
-    secondary_phone = db.Column(db.BigInteger(), nullable=True)
+    phone = db.Column(db.Unicode(255), nullable=True)
+    secondary_phone = db.Column(db.Unicode(255), nullable=True)
     bio = db.Column(db.UnicodeText, nullable=False)
     association = db.Column(db.Unicode(64), nullable=True)
     primary_role = db.Column(sau.ChoiceType(PRIMARY_ROLE))
@@ -87,6 +87,7 @@ class Category(db.Model):
     parent = db.relationship('Category', foreign_keys=[parent_id], remote_side=[id], backref='children')
     name = db.Column(db.UnicodeText(), nullable=False)
     fontawesome_icon = db.Column(db.UnicodeText())
+    linecon_icon = db.Column(db.UnicodeText())
 
     @property
     def fontawesome_icons(self):
@@ -102,6 +103,20 @@ class Category(db.Model):
 
         return ['fas fa-' + i for i in re.split(r',\s*', self.fontawesome_icon)]
 
+    @property
+    def linecon_icons(self):
+        if self.linecon_icon is None:
+            return ''
+
+        return list(re.split(r',\s*', self.linecon_icon))
+
+    @property
+    def linecon_icon_classes(self):
+        if self.linecon_icon is None:
+            return ''
+
+        return ['linecon li_' + i for i in re.split(r',\s*', self.linecon_icon)]
+
 
 class Resource(TimestampMixin, db.Model):
     __tablename__ = 'resources'
@@ -110,6 +125,7 @@ class Resource(TimestampMixin, db.Model):
     category = db.relationship('Category', backref='resources')
     user_id = db.Column(db.BigInteger, db.ForeignKey('users.id', onupdate='CASCADE', ondelete='CASCADE'), nullable=False)
     user = db.relationship('User', backref='resources')
+    description = db.Column(db.UnicodeText(), nullable=True)
     type = db.Column(sau.ChoiceType(USER_RESOURCE_TYPES), index=True)
     quantity_available = db.Column(db.BigInteger)
     quantity_needed = db.Column(db.BigInteger)

@@ -16,7 +16,7 @@ def index(cat_id=None):
     if cat_id:
         category = Category.query.get(cat_id)
         if not category:
-            flash(_("Can't find the requested category"), 'danger')
+            flash(gettext("Can't find the requested category"), 'danger')
         else:
             while category:
                 cat_drilldown.append(category)
