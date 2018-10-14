@@ -25,7 +25,7 @@ class ResourceForm(Form):
     category = QuerySelectField(LABELS['category'], query_factory=lambda: Category.query.filter(Category.parent != None), get_label='name')
     quantity_available = StringField(LABELS['quantity'], default=1)
     quantity_needed = StringField(LABELS['quantity'], default=1)
-    description = StringField(LABELS['bio'], widget=TextArea())
+    description = StringField(LABELS['description'], widget=TextArea())
     type = HiddenField(LABELS['type'])
     picture = FileField(LABELS["picture"], description=HELP["picture"])
     submit = SubmitField(LABELS['submit_create'])

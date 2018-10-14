@@ -20,6 +20,7 @@ LABELS = {
     "phone": lazy_gettext("Phone Number"),
     "secondary_phone": lazy_gettext("Secondary Phone Number"),
     "bio": lazy_gettext("Bio"),
+    "description": lazy_gettext("Item Description"),
     "primary_role": lazy_gettext("Primary Role"),
     "language": lazy_gettext("Language"),
     "country": lazy_gettext("Country"),
