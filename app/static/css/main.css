@@ -88,7 +88,7 @@ ul.flags {
     background: #fff;
     padding: 20px;
     height: auto;
-    min-height: 320px;
+    min-height: 370px;
     margin-bottom: 25px; }
   .categories-container .categories-list .icons, .categories-container .resources-list .icons, .resources-container .categories-list .icons, .resources-container .resources-list .icons {
     display: block; }
