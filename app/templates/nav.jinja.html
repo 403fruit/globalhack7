@@ -19,6 +19,7 @@
         <ul class="nav pull-right top-menu">
             {% if current_user.is_authenticated() %}
                 <li><a class="logout" href="{{ url_for('user.logout', lang_code=(g.lang_code or 'en')) }}"> {{ _("Logout") }}</a></li>
+                <li><a class="logout" href="{{ url_for('user.profile', lang_code=(g.lang_code or 'en'), id=current_user.id) }}">{{ _("Profile") }}</a></li>
             {% else %}
                 <li><a class="logout" href="{{ url_for('user.register', lang_code=(g.lang_code or 'en')) }}"> {{ _("Register") }}</a></li>
                 <li><a class="logout" href="{{ url_for('user.login', lang_code=(g.lang_code or 'en')) }}"> {{ _("Login") }}</a></li>

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, g, current_app, url_for, redirect
+from flask import Blueprint, render_template, g, current_app, url_for, redirect, flash
 
 from app.models.common import Category
 

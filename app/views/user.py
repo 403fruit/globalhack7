@@ -1,15 +1,13 @@
-import json
-
-from flask import Blueprint, render_template, abort, g, current_app, redirect, url_for, flash, request
-from flask_babel import Babel
+from flask import Blueprint, render_template, g, current_app, redirect, url_for, flash
 from flask_login import login_user, logout_user, current_user
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
 from flask_babel import gettext, lazy_gettext
+from wtforms.widgets import TextArea
 
-from app.main import babel, db
+from app.main import db
 from app.models.common import User, IMMIGRATION_STATUS, PRIMARY_ROLE
 from app.models.constants import COUNTRY_CODES
 
@@ -30,9 +28,8 @@ LABELS = {
     "immigration_status": lazy_gettext("Immigration Status"),
     "primary_roll": lazy_gettext("Primary Role"),
     "language": lazy_gettext("Language"),
-    "country": lazy_gettext("Country"),
+    "country": lazy_gettext("Country")
 }
-
 
 
 class SUPPORTEDLANGUAGES(object):
@@ -58,7 +55,18 @@ class LoginForm(Form):
     username = StringField(LABELS['username'], validators=[DataRequired()])
     password = PasswordField(LABELS['password'], validators=[DataRequired()])
     remember_me = BooleanField(LABELS['remember_me'])
-    submit = SubmitField(LABELS['submit_sign_in'])
+    submit = SubmitField(LABELS['submit'])
+
+
+class ProfileForm(Form):
+    name = StringField(LABELS['name'])
+    username = StringField(LABELS['username'], validators=[DataRequired()])
+    email = StringField(LABELS['email'], validators=[DataRequired(), Email()])
+    bio = StringField(LABELS['bio'], widget=TextArea())
+    phone = StringField(LABELS["phone"])
+    language = SelectField(LABELS["language"], choices=SUPPORTEDLANGUAGES())
+    country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
+    submit = SubmitField(LABELS['submit'])
 
 
 class RegistrationForm(Form):
@@ -68,9 +76,7 @@ class RegistrationForm(Form):
     password = PasswordField(LABELS['password'], validators=[DataRequired()])
     password2 = PasswordField(
         LABELS['repeat_password'], validators=[DataRequired(), EqualTo('password')])
-    immigration_status = SelectField(LABELS["immigration_status"], choices=IMMIGRATION_STATUS)
-    primary_role = SelectField(LABELS["primary_roll"], choices=PRIMARY_ROLE)
-    bio = StringField(LABELS['bio'])
+    bio = StringField(LABELS['bio'], widget=TextArea())
     phone = StringField(LABELS["phone"])
     language = SelectField(LABELS["language"], choices=[])
     country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
@@ -118,7 +124,7 @@ def register():
             email=form.email.data,
             name=form.name.data,
             phone=form.phone.data,
-            bio = form.bio.data,
+            bio=form.bio.data,
             immigration_status=form.immigration_status.data,
             primary_role=form.primary_role.data,
             language=form.language.data,
@@ -133,6 +139,26 @@ def register():
         if form.language.data == "None":
             form.language.data = g.lang_code
     return render_template('register.jinja.html', title=gettext('Register'), form=form)
+
+
+@app.route('/profile/<id>', methods=['GET', 'POST'])
+def profile(id=None):
+    user = User.query.get(id)
+    if not user:
+        flash('A user with that ID does not exist', 'error')
+        return redirect(url_for('index.index', lang_code=g.lang_code if g.lang_code else 'en'))
+    if current_user != user:
+        flash("You do not have permission to access this profile.", 'danger')
+        flash('A user with that ID does not exist', 'error')
+    form = ProfileForm(obj=user)
+
+    if form.validate_on_submit():
+        form.populate_obj(user)
+        db.session.commit()
+        flash('Your account has been successfully saved!', 'success')
+        return redirect(url_for('index.index', lang_code=(user.language or 'en')))
+
+    return render_template('profile.jinja.html', form=form)
 
 
 @app.route('/logout')
