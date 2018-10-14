@@ -34,7 +34,9 @@
         <div class="row-fluid">
             {% include 'messages.jinja.html' %}
         </div>
+        {% if current_user.is_authenticated() %}
         {% include 'sidebar.jinja.html' %}
+        {% endif %}
         {% block wrapper %}{% endblock %}
         {% include 'footer.jinja.html' %}
     </section>

@@ -1,6 +1,12 @@
 body {
   font-weight: 400; }
 
+#main-content.logged-out {
+  margin-left: 0; }
+
+.sidebar-toggle-box.logged-out {
+  display: none; }
+
 a.logo, span.logo {
   font-family: 'Fahkwang', sans-serif;
   font-weight: 700;

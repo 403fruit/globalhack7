@@ -5,7 +5,7 @@
 {% block wrapper %}
 
 
-    <section id="main-content">
+    <section id="main-content" {% if not current_user.is_authenticated() %}class="logged-out"{% endif %}>
         <section class="wrapper site-min-height">
             <h1 class="form">{{ _("Login") }}</h1>
             <div class="form-panel">{{ wtf.quick_form(form) }}</div>
