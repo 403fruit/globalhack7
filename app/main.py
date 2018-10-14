@@ -50,11 +50,13 @@ def create_app():
     from app.views.index import app as index_view
     from app.views.api import app as api_view
     from app.views.user import app as user_view
+    from app.views.resource import app as resource_view
 
     app.register_blueprint(index_view)
     app.register_blueprint(index_view, url_prefix='/<lang_code>')
     app.register_blueprint(user_view, url_prefix='/<lang_code>')
     app.register_blueprint(api_view, url_prefix='/api')
+    app.register_blueprint(resource_view, url_prefix='/<lang_code>/resource')
 
     # from app.views import view_modules
     # app.register_blueprint(index.app, url_prefix=whatever)

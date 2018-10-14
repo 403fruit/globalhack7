@@ -1,0 +1,33 @@
+{% extends "base.jinja.html" %}
+
+{% block wrapper %}
+<section id="main-content">
+    <section class="wrapper site-min-height">
+        <h1>{{ _("Resource") }}</h1>
+        <div class="col-sm-8">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>{{ _("Category") }}</th>
+                        <th>{{ _("Name") }}</th>
+                        <th>{{ _("Category") }}</th>
+                        <th>{{ _("Quantity Available") if resource.type == "HAVE" else _("Quantity Needed") }} </th>
+                        <th>{{ _("User") }}</th>
+                        <th>{{ _("Image") }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ resource.category.name }}</td>
+                        <td>{{ resource.name }}</td>
+                        <td>{{ resource.category.name }}</td>
+                        <td>{{ resource.quantity_remaining }}</td>
+                        <td>{{ resource.user.name }}</td>
+                        <td>IMAGE PLACEHOLDER</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
+{% endblock %}
