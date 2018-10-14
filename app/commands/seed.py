@@ -1,5 +1,11 @@
+import random
+from collections import namedtuple
+
+import requests
+
 from app.main import manager, db
-from app.models.common import Category
+from app.models.common import Category, User
+from app.models.common import USER_RESOURCE_TYPES, IMMIGRATION_STATUS, PRIMARY_ROLE
 
 
 def get_or_create(query_props, upd_props):
@@ -40,3 +46,68 @@ def seed_categories():
         get_or_create({'name': "Minor Construction", 'parent': jobs}, {'fontawesome_icon': "hammer"}),
     ])
     db.session.commit()
+
+
+@manager.command
+def seed_user(num=None, seed=None):
+    ASSOCIATIONS = [
+        'Washington University Foreign Language Professor',
+        'International Institute Associate',
+    ]
+    LOCALES = [
+        ("en", 'US'),
+        ("es", 'MX'),
+        ("zh", 'CN'),
+        ("fr", 'FR'),
+        ("ar", 'SY'),
+        ("vi", 'VN'),
+    ]
+
+    def rchance(pc, next):
+        if random.random() <= pc:
+            return next()
+        return None
+
+    class FileWrapper(object):
+        def __init__(self, url):
+            self.filename = url.split('/')[-1]
+            self.url = url
+            self.res = requests.get(url, stream=True)
+
+        def read(self, bytes=None):
+            return self.res.raw.read()
+
+        def save(self, filename):
+            with open(filename, 'wb') as fp:
+                while True:
+                    data = self.read()
+                    if len(data) == 0:
+                        break
+                    fp.write(data)
+
+    params = {
+        'results': num or 1,
+        'inc': 'name,location,email,login,phone,cell,picture,nat',
+    }
+    if seed:
+        params['seed'] = seed
+    res = requests.get('https://randomuser.me/api/', params=params)
+    for info in res.json()['results']:
+        user = User(
+            name=' '.join((v.title() for v in (info['name']['first'], info['name']['last']) if v)),
+            username=info['login']['username'],
+            email=info['email'],
+            phone=info['phone'],
+            secondary_phone=info['cell'],
+            bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            association=rchance(0.05, lambda: random.choice(ASSOCIATIONS)),
+            immigration_status=random.choice(list(dict(IMMIGRATION_STATUS).keys())),
+            primary_role=random.choice(list(dict(PRIMARY_ROLE).keys())),
+        )
+        user.set_password('password')
+        user.language, user.country = random.choice(LOCALES)
+        db.session.add(user)
+        db.session.commit()
+        user.picture = FileWrapper(info['picture']['large'])
+        db.session.add(user)
+        db.session.commit()

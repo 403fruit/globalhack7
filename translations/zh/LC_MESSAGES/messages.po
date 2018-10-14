@@ -186,7 +186,7 @@ msgstr "国家"
 
 #: app/views/user.py:32
 msgid "Picture"
-msgstr ""
+msgstr "图片"
 
 #: app/views/user.py:33
 msgid "Association"
@@ -210,11 +210,11 @@ msgstr ""
 
 #: app/views/user.py:63
 msgid "You have successfully registered."
-msgstr ""
+msgstr "注册成功"
 
 #: app/views/user.py:64
 msgid "You have successfully logged in."
-msgstr ""
+msgstr "登录成功"
 
 #: app/views/user.py:65
 msgid "You have successfully logged out."
