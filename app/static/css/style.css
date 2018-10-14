@@ -428,10 +428,10 @@ ul.sidebar-menu li a.active i {
 }
 
 a.logo {
-    font-size: 20px;
+    font-size: 25px;
     color: #ffffff;
     float: left;
-    margin-top: 15px;
+    margin-top: 8px;
     text-transform: uppercase;
 }
 

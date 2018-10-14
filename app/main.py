@@ -8,7 +8,9 @@ from flask_script import Manager
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
-from flask_babel import Babel
+from flask_babel import Babel, Locale
+
+from app.lib.storage import file_url
 
 
 logger = logging.getLogger(__name__)
@@ -46,15 +48,26 @@ def create_app():
     login_manager.login_view = "login"
     babel = Babel(app)
 
+    # jinja happy fun times
+    def _user_locale_name(user):
+        l = Locale(user.language, user.country)
+        return l.get_display_name(str(l))
+    app.jinja_env.globals.update({
+        'file_url': file_url,
+        'user_locale_name': _user_locale_name,
+    })
+
     from app.models import common
     from app.views.index import app as index_view
     from app.views.api import app as api_view
     from app.views.user import app as user_view
+    from app.views.resource import app as resource_view
 
     app.register_blueprint(index_view)
     app.register_blueprint(index_view, url_prefix='/<lang_code>')
     app.register_blueprint(user_view, url_prefix='/<lang_code>')
     app.register_blueprint(api_view, url_prefix='/api')
+    app.register_blueprint(resource_view, url_prefix='/<lang_code>/resource')
 
     # from app.views import view_modules
     # app.register_blueprint(index.app, url_prefix=whatever)

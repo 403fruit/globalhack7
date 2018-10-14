@@ -52,4 +52,16 @@
             $('.flag-container').animate( { scrollLeft: '-=215' }, 250);
         }
     });
+
+    $('.need-have-switch').click(function () {
+        $(this).addClass('active');
+        $(this).siblings('.need-have-switch').removeClass('active');
+
+        var $is_have_input = $(this).siblings('.is-have');
+        if ($(this).hasClass('have')) {
+            $is_have_input.val('true');
+        } else {
+            $is_have_input.val('false');
+        }
+    });
 })();

@@ -1,0 +1,31 @@
+{% extends "base.jinja.html" %}
+
+{% block wrapper %}
+<section id="main-content">
+    <section class="wrapper site-min-height user-profile">
+        <h1>{{ _("User Profile") }}</h1>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 picture">
+                <img src="{{ file_url(user.picture) if user.picture else url_for('static', filename='img/ui-sam.jpg') }}" />
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-9 info">
+                <h1>{{ user.name }}</h1>
+                <h2>{{ _("About Me") }}</h2>
+                <p>{{ user.bio }}</p>
+                {% if user == current_user %}
+                <h2>{{ _("User Information") }}</h2>
+                <table class="table">
+                    <tr><th>{{ _("E-Mail Address") }}</th><td>{{ user.email }}</td></tr>
+                    <tr><th>{{ _("Phone Number") }}</th><td>{{ user.phone }}</td></tr>
+                    <tr><th>{{ _("Secondary Phone Number") }}</th><td>{{ user.secondary_phone }}</td></tr>
+                    <tr><th>{{ _("Immigration Status") }}</th><td>{{ user.immigration_status.value }}</td></tr>
+                    <tr><th>{{ _("Primary Role") }}</th><td>{{ user.primary_role.value }}</td></tr>
+                    <tr><th>{{ _("Locale") }}</th><td>{{ user_locale_name(user) }}</td></tr>
+                </table>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</section>
+
+{% endblock %}

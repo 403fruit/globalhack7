@@ -3,14 +3,26 @@
           <!-- sidebar menu start-->
           <ul class="sidebar-menu" id="nav-accordion">
 
-              <p class="centered"><a href="profile.html"><img src="{{ url_for('static', filename='img/ui-sam.jpg') }}" class="img-circle" width="60"></a></p>
-              <h5 class="centered">Marcel Newman</h5>
+              <p class="centered">
+                  {% if current_user.is_authenticated() %}
+                  <a href="{{ url_for('user.view_profile', lang_code=(g.lang_code or 'en'), id=current_user.id) }}">
+                      <img src="{{ file_url(current_user.picture) if current_user.picture else url_for('static', filename='img/ui-sam.jpg') }}" class="img-circle" width="60">
+                    </a>
+                {% else %}
+                    <a href="#"><img src="{{ url_for('static', filename='img/ui-sam.jpg') }}" class="img-circle" width="60"></a>
+                {% endif %}
+                </p>
+            {% if current_user.is_authenticated() %}
+              <h5 class="centered">{{ current_user.name }}</h5>
+              {% endif %}
 
               <li class="mt">
-                  <a class="active" href="{{ url_for('user.profile', lang_code=(g.lang_code or 'en'), id=current_user.id) }}">
+                  {% if current_user.is_authenticated() %}
+                  <a class="active" href="{{ url_for('user.edit_profile', lang_code=(g.lang_code or 'en'), id=current_user.id) }}">
                       <i class="fa fa-user"></i>
-                      <span>{{ _("Profile") }}</span>
+                      <span>{{ _("Edit Profile") }}</span>
                   </a>
+                  {% endif %}
               </li>
 
               <li class="sub-menu">
