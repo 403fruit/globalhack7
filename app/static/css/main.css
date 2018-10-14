@@ -111,7 +111,7 @@ ul.flags {
     background: #fff;
     padding: 20px;
     height: auto;
-    min-height: 370px;
+    min-height: 375px;
     margin-bottom: 25px; }
   .categories-container .categories-list .icons, .categories-container .resources-list .icons, .resources-container .categories-list .icons, .resources-container .resources-list .icons {
     display: block; }
@@ -124,7 +124,7 @@ ul.flags {
       max-height: 264px; }
     .categories-container .categories-list .icons .linecon, .categories-container .resources-list .icons .linecon, .resources-container .categories-list .icons .linecon, .resources-container .resources-list .icons .linecon {
       color: #000;
-      font-size: calc( 12px + (50 - 12) * ( (100vw - 115px) / ( 330 - 115) )); }
+      font-size: calc( 7rem + (30 - 7) * ( (100vw - 150px) / ( 370 - 150) )); }
   .categories-container .categories-list .name, .categories-container .resources-list .name, .resources-container .categories-list .name, .resources-container .resources-list .name {
     display: block;
     text-transform: uppercase;
