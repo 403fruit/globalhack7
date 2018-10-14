@@ -46,7 +46,7 @@ def resource_create():
         flash(ERROR_MESSAGES['not_logged_in'], "warning")
         return redirect(url_for('index.index'))
     form = ResourceForm()
-    form.category.choices = [(cat.id, cat.name) for cat in Category.query.all()]
+    form.category.choices = [(cat.id, cat.name) for cat in Category.query.all() if cat.parent]
     if request.args.get('cat_id'):
         default_cat = Category.query.get(int(request.args['cat_id']))
         form.category.data = default_cat.id
