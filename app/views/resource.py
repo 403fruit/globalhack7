@@ -6,6 +6,7 @@ from flask import Blueprint, render_template, g, current_app, redirect, url_for,
 from flask_login import login_user, logout_user, current_user
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, FileField, HiddenField
+from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
 from wtforms.widgets import TextArea
@@ -20,7 +21,7 @@ app = Blueprint('resource', __name__)
 
 class ResourceForm(Form):
     name = StringField(LABELS['name'])
-    category = SelectField(LABELS['category'])
+    category = QuerySelectField(LABELS['category'], query_factory=lambda: Category.query.filter(Category.parent != None), get_label='name')
     quantity_available = StringField(LABELS['quantity'])
     description = StringField(LABELS['bio'], widget=TextArea())
     type = HiddenField(LABELS['type'])
@@ -45,30 +46,30 @@ def resource_create():
     if not current_user.is_authenticated():
         flash(ERROR_MESSAGES['not_logged_in'], "warning")
         return redirect(url_for('index.index'))
-    form = ResourceForm()
-    form.category.choices = [(cat.id, cat.name) for cat in Category.query.all() if cat.parent]
-    if request.args.get('cat_id'):
-        default_cat = Category.query.get(int(request.args['cat_id']))
-        form.category.data = default_cat.id
-    if request.args.get('name'):
-        form.name.data = request.args['name']
-    if request.args.get('resource_type'):
-        form.type.data = request.args['resource_type']
 
-    form.type.data = request.args.get('type')
+    default_data = {}
+    if request.args.get('cat_id'):
+        default_data['category'] = Category.query.get(int(request.args['cat_id']))
+    if request.args.get('name'):
+        default_data['name'] = request.args['name']
+    if request.args.get('resource_type'):
+        default_data['type'] = request.args['type']
+    form = ResourceForm(data=default_data)
 
     if form.validate_on_submit():
         new_resource = Resource(
             name=form.name.data,
-            category_id=form.category.data,
+            category=form.category.data,
             quantity_available=form.quantity_available.data,
             description=form.description.data,
-            picture=form.picture.data,
             fulfilled=False,
             quantity_needed=0,
             type=form.type.data,
             user_id=current_user.id
         )
+        db.session.add(new_resource)
+        db.session.commit()
+        new_resource.picture = form.picture.data
         db.session.add(new_resource)
         db.session.commit()
         flash(GENERAL_MESSAGES['resource_save_success'], "success")
