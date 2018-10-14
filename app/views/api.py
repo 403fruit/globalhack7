@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, abort, g, current_app
 from flask import jsonify, request
-from flask.ext.babel import gettext
+from flask_babel import gettext
 from app.models.common import Category, Resource
 from app.main import babel
 from sqlalchemy import or_

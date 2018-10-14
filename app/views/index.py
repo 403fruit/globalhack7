@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, g, current_app, url_for, redirect, flash, request
-from flask.ext.babel import gettext
+from flask_babel import gettext
 
 from app.models.common import Category, Resource
 from app.main import db
