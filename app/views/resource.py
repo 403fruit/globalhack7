@@ -5,18 +5,28 @@ from app.models.common import Resource
 from flask import Blueprint, render_template, g, current_app, redirect, url_for, flash, request
 from flask_login import login_user, logout_user, current_user
 from flask_wtf import Form
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, FileField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, FileField, HiddenField
+from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
 from wtforms.widgets import TextArea
 
 from app.main import db
-from app.models.common import User, PRIMARY_ROLE
-from app.models.constants import COUNTRY_CODES
+from app.models.common import User, Category, PRIMARY_ROLE, USER_RESOURCE_TYPES
 from app.lib.constants import *
 
 
 app = Blueprint('resource', __name__)
+
+
+class ResourceForm(Form):
+    name = StringField(LABELS['name'])
+    category = QuerySelectField(LABELS['category'], query_factory=lambda: Category.query.filter(Category.parent != None), get_label='name')
+    quantity_available = StringField(LABELS['quantity'])
+    description = StringField(LABELS['bio'], widget=TextArea())
+    type = HiddenField(LABELS['type'])
+    picture = FileField(LABELS["picture"], description=HELP["picture"])
+    submit = SubmitField(LABELS['submit_create'])
 
 
 @login_required
@@ -31,40 +41,37 @@ def detail_view(id=None):
     return render_template('resource_detail.jinja.html', resource=resource)
 
 
-class ResourceForm(Form):
-    name = StringField(LABELS['name'])
-    email = StringField(LABELS['email'], validators=[DataRequired(), Email()])
-    assocation = StringField(LABELS['association'])
-    username = StringField(LABELS['username'], validators=[DataRequired()])
-    password = PasswordField(LABELS['password'], validators=[DataRequired()])
-    bio = StringField(LABELS['bio'], widget=TextArea())
-    phone = StringField(LABELS["phone"])
-    language = SelectField(LABELS["language"], choices=[(k, v) for k,v in LANGUAGE_CHOICES.items()])
-    country = SelectField(LABELS["country"], choices=COUNTRY_CODES)
-    picture = FileField(LABELS["picture"], description=HELP["picture"])
-    primary_role = SelectField(LABELS["primary_role"], choices=PRIMARY_ROLE)
-    submit = SubmitField(LABELS['submit_register'])
-
-
-@app.route('/create', methods=['GET'])
+@app.route('/create', methods=['GET', 'POST'])
 def resource_create():
-    if current_user.is_authenticated():
+    if not current_user.is_authenticated():
+        flash(ERROR_MESSAGES['not_logged_in'], "warning")
         return redirect(url_for('index.index'))
-    form = ResourceForm()
+
+    default_data = {}
+    if request.args.get('cat_id'):
+        default_data['category'] = Category.query.get(int(request.args['cat_id']))
+    if request.args.get('name'):
+        default_data['name'] = request.args['name']
+    if request.args.get('resource_type'):
+        default_data['type'] = request.args['type']
+    form = ResourceForm(data=default_data)
 
     if form.validate_on_submit():
-        new_resource = ResourceForm(
-            username=form.username.data,
-            email=form.email.data,
+        new_resource = Resource(
             name=form.name.data,
-            phone=form.phone.data,
-            bio=form.bio.data,
-            primary_role=form.primary_role.data,
-            language=form.language.data,
-            country=form.country.data,
+            category=form.category.data,
+            quantity_available=form.quantity_available.data,
+            description=form.description.data,
+            fulfilled=False,
+            quantity_needed=0,
+            type=form.type.data,
+            user_id=current_user.id
         )
         db.session.add(new_resource)
         db.session.commit()
-        flash(GENERAL_MESSAGES['registration_success'], "success")
+        new_resource.picture = form.picture.data
+        db.session.add(new_resource)
+        db.session.commit()
+        flash(GENERAL_MESSAGES['resource_save_success'], "success")
         return redirect(url_for('index.index'))
-    return render_template('register.jinja.html', name=request.args.get('name'), cat_id=request.args.get('cat_id'), form=form)
+    return render_template('resource_editor.jinja.html', name=request.args.get('name'), form=form)

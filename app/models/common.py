@@ -51,7 +51,7 @@ class User(UserMixin, TimestampMixin, db.Model):
                 self.id,
                 value.filename.split('.')[-1]
             )
-            super().__setattr__('picture', upload_file(value, 'user_pictures', filename))
+            super().__setattr__('picture', upload_file(value, 'resource_pictures', filename))
 
         else:
             super().__setattr__(name, value)
@@ -117,14 +117,16 @@ class Resource(TimestampMixin, db.Model):
     fulfilled = db.Column(db.Boolean, nullable=False, default=False, server_default='0')
     name = db.Column(db.UnicodeText(), nullable=False)
     picture = db.Column(db.UnicodeText())
+    description = db.Column(db.UnicodeText())
 
     def __setattr__(self, name, value):
         if name == 'picture':
-            filename = '{}.{}'.format(
-                self.id,
-                value.filename.split('.')[-1]
-            )
-            super().__setattr__('picture', upload_file(value, 'user_pictures', filename))
+            if value:
+                filename = '{}.{}'.format(
+                    self.id,
+                    value.filename.split('.')[-1]
+                )
+                super().__setattr__('picture', upload_file(value, 'user_pictures', filename))
 
         else:
             super().__setattr__(name, value)

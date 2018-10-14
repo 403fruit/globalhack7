@@ -1,17 +1,23 @@
 body {
   font-weight: 400; }
 
-a.logo {
+a.logo, span.logo {
   font-family: 'Fahkwang', sans-serif;
   font-weight: 700;
   letter-spacing: 1.5px;
   line-height: 1; }
-  a.logo span {
+  a.logo span, span.logo span {
     text-transform: lowercase;
     font-size: 35px; }
 
+span.logo {
+  text-transform: uppercase; }
+  span.logo span {
+    font-size: 51px; }
+
 h1.greeting {
-  text-align: center; }
+  text-align: center;
+  color: #000; }
 
 .flag-carousel {
   position: relative; }
@@ -57,8 +63,10 @@ ul.flags {
     right: 0; }
 
 .form-inline {
-  display: flex;
-  justify-content: center; }
+  width: 300px;
+  margin: 0 auto; }
+  .form-inline .form-group {
+    margin-bottom: 0; }
   .form-inline .control-label, .form-inline .need-have-switch {
     line-height: 30px;
     vertical-align: text-top;
@@ -89,11 +97,13 @@ ul.flags {
   padding: 0 20px;
   line-height: 40px;
   height: 40px;
-  margin-left: 10px; }
+  margin-top: 5px;
+  width: 300px;
+  margin-bottom: 35px; }
 
 .categories-container, .resources-container {
   display: inline-block;
-  margin-bottom: 50px;
+  margin-bottom: 35px;
   width: 100%; }
   .categories-container .categories-list .category, .categories-container .categories-list .resource, .categories-container .resources-list .category, .categories-container .resources-list .resource, .resources-container .categories-list .category, .resources-container .categories-list .resource, .resources-container .resources-list .category, .resources-container .resources-list .resource {
     display: block;
@@ -118,7 +128,8 @@ ul.flags {
     color: #000;
     margin-top: 15px;
     font-size: 20px;
-    font-weight: 700; }
+    font-weight: 700;
+    overflow-wrap: break-word; }
   .categories-container .resources-list, .resources-container .resources-list {
     width: 100%; }
     .categories-container .resources-list .resource, .resources-container .resources-list .resource {
@@ -137,6 +148,9 @@ div.form-panel {
 
 h1.form {
   margin-left: 10px; }
+
+.breadcrumb {
+  background: #fff; }
 
 .user-profile .picture img {
   width: 100%; }

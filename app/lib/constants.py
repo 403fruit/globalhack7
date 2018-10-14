@@ -4,12 +4,16 @@ from flask_babel import lazy_gettext
 
 LABELS = {
     "username": lazy_gettext("Username"),
+    "category": lazy_gettext("Category"),
+    "quantity": lazy_gettext("Quantity"),
+    "type": lazy_gettext("Type"),
     "password": lazy_gettext("Password"),
     "repeat_password": lazy_gettext("Repeat Password"),
     "remember_me": lazy_gettext("Remember Me"),
     "submit_sign_in": lazy_gettext("Sign In"),
     "submit": lazy_gettext("Submit"),
     "submit_register": lazy_gettext("Register"),
+    "submit_create": lazy_gettext("Create"),
     "email": lazy_gettext("Email"),
     "register": lazy_gettext("Register"),
     "name": lazy_gettext("Name"),
@@ -45,7 +49,8 @@ class SUPPORTEDLANGUAGES(object):
 ERROR_MESSAGES = {
     "different_username": lazy_gettext("Please select a different username."),
     "different_email": lazy_gettext("Please select a different email address"),
-    "invalid_credentials": lazy_gettext("Invalid username or password.")
+    "invalid_credentials": lazy_gettext("Invalid username or password."),
+    "not_logged_in": lazy_gettext("Must be logged in.")
 }
 
 GENERAL_MESSAGES = {

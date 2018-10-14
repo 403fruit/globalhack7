@@ -1,7 +1,7 @@
 body {
 	font-weight: 400;
 }
-a.logo {
+a.logo, span.logo {
 	font-family: 'Fahkwang', sans-serif;
 	font-weight: 700;
 	letter-spacing: 1.5px;
@@ -11,8 +11,15 @@ a.logo {
 		font-size: 35px;
 	}
 }
+span.logo {
+	text-transform: uppercase;
+	span {
+		font-size: 51px;
+	}
+}
 h1.greeting {
 	text-align: center;
+	color: #000;
 }
 .flag-carousel {
 	position: relative;
@@ -66,8 +73,11 @@ ul.flags {
 	}
 }
 .form-inline {
-	display: flex;
-	justify-content: center;
+	width: 300px;
+	margin: 0 auto;
+	.form-group {
+		margin-bottom: 0;
+	}
 	.control-label, .need-have-switch {
 		line-height: 30px;
 		vertical-align: text-top;
@@ -102,11 +112,13 @@ ul.flags {
 	padding: 0 20px;
 	line-height: 40px;
 	height: 40px;
-	margin-left: 10px;
+	margin-top: 5px;
+	width: 300px;
+	margin-bottom: 35px;
 }
 .categories-container, .resources-container {
 	display: inline-block;
-	margin-bottom: 50px;
+	margin-bottom: 35px;
 	width: 100%;
 	.categories-list, .resources-list {
 		.category, .resource {
@@ -139,6 +151,7 @@ ul.flags {
 			margin-top: 15px;
 			font-size: 20px;
 			font-weight: 700;
+			overflow-wrap: break-word;
 		}
 	}
 	.resources-list {
@@ -163,8 +176,9 @@ div.form-panel {
 h1.form {
 	margin-left: 10px;
 }
-
-
+.breadcrumb {
+	background: #fff;
+}
 .user-profile {
 	.picture img {
 		width: 100%;
