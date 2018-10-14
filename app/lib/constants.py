@@ -60,6 +60,8 @@ GENERAL_MESSAGES = {
     "resource_requested": lazy_gettext("The Resource has been successfully requested."),
     "resource_not_requested": lazy_gettext("The Resource was not successfully requested."),
     "resource_save_success": lazy_gettext("You have successfully saved."),
+    "resource_fulfilled": lazy_gettext("Your contact info was sent to Requester. Thank you!"),
+    "resource_not_fulfilled": lazy_gettext("Your contact info was not sent to Requester"),
     "login_success": lazy_gettext("You have successfully logged in."),
     "logout_success": lazy_gettext("You have successfully logged out.")
 }
