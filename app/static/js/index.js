@@ -41,7 +41,6 @@
     $('#id_resource').on('typeahead:selected', function(event, value) {
         // swap out readable label for resource ID values
         $(this).val(value.value);
-        debugger;
         $('#search-resources').submit();
     });
 
