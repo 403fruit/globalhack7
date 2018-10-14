@@ -13,10 +13,19 @@ from app.models.constants import COUNTRY_CODES
 from app.lib.constants import *
 
 
-class FileField(_FileField):
+class IngoreIfFalseyInputMixin(object):
     def populate_obj(self, obj, name):
         if self.data:
-            return super(FileField, self).populate_obj(obj, name)
+            return super(IngoreIfFalseyInputMixin, self).populate_obj(obj, name)
+
+class FileField(IngoreIfFalseyInputMixin, _FileField):
+    pass
+
+
+class IgnoreablePasswordField(IngoreIfFalseyInputMixin, PasswordField):
+    def populate_obj(self, obj, name):
+        if self.data:
+            obj.set_password(self.data)
 
 
 class LoginForm(Form):
@@ -29,6 +38,9 @@ class LoginForm(Form):
 class ProfileForm(Form):
     name = StringField(LABELS['name'])
     username = StringField(LABELS['username'], validators=[DataRequired()])
+    password = IgnoreablePasswordField(LABELS['password'], validators=[])
+    password2 = IgnoreablePasswordField(
+        LABELS['repeat_password'], validators=[EqualTo('password')])
     email = StringField(LABELS['email'], validators=[DataRequired(), Email()])
     association = StringField(LABELS['association'])
     bio = StringField(LABELS['bio'], widget=TextArea())
