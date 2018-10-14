@@ -3,26 +3,32 @@
 {% block wrapper %}
 <section id="main-content">
     <section class="wrapper site-min-height">
-        <h1>{{ _("Resource") }}</h1>
+        <h1>{{ _("Resource") }}: {{ resource.name }}</h1>
         <div class="col-sm-8">
             <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>{{ _("Category") }}</th>
-                        <th>{{ _("Name") }}</th>
-                        <th>{{ _("Category") }}</th>
-                        <th>{{ _("Quantity Available") if resource.type == "HAVE" else _("Quantity Needed") }} </th>
-                        <th>{{ _("User") }}</th>
-                        <th>{{ _("Image") }}</th>
-                    </tr>
-                </thead>
                 <tbody>
                     <tr>
+                        <td>{{ _("Category") }}</td>
                         <td>{{ resource.category.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ _("Name") }}</td>
                         <td>{{ resource.name }}</td>
-                        <td>{{ resource.category.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ _("Quantity Available") if resource.type == "HAVE" else _("Quantity Needed") }} </td>
                         <td>{{ resource.quantity_remaining }}</td>
-                        <td>{{ resource.user.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ _("User") }}</td>
+                        <td><a href="{{ url_for('user.edit_profile, id=resource.user.id) }}">{{ resource.user.name }}</a></td>
+                    </tr>
+                    <tr>
+                        <td>{{ _("User Affiliation") }}</td>
+                        <td>{{ resource.user.association }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ _("Image") }}</td>
                         <td>IMAGE PLACEHOLDER</td>
                     </tr>
                 </tbody>
