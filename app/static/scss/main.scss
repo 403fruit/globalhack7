@@ -78,8 +78,9 @@ ul.flags {
 		display: inline-block;
 		width: 49%;
 		cursor: pointer;
-		border-bottom: 3px solid transparent;
-		margin-bottom: 5px;
+		border: 1px solid transparent;
+		border-bottom-width: 3px;
+		margin-bottom: 3px;
 		&.active {
 			color: #000;
 			border-color: #000;
@@ -93,6 +94,7 @@ ul.flags {
 		height: 40px;
 		line-height: 40px;
 		padding: 0 15px;
+		min-width: 300px;
 	}
 }
 .btn-default {
