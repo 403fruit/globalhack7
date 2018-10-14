@@ -44,20 +44,20 @@ msgstr "登录"
 
 #: app/templates/nav.jinja.html:21
 msgid "Logout"
-msgstr ""
+msgstr "退出"
 
 #: app/templates/nav.jinja.html:22
 msgid "Profile"
-msgstr ""
+msgstr "帐户"
 
 #: app/templates/nav.jinja.html:24 app/templates/register.jinja.html:8
 #: app/views/user.py:22 app/views/user.py:24 app/views/user.py:141
 msgid "Register"
-msgstr ""
+msgstr "注册"
 
 #: app/templates/profile.jinja.html:8
 msgid "User Profile"
-msgstr ""
+msgstr "注册"
 
 #: app/views/index.py:16
 msgid "Can't find the requested category"
@@ -65,39 +65,39 @@ msgstr ""
 
 #: app/views/user.py:16
 msgid "Username"
-msgstr ""
+msgstr "用戶名"
 
 #: app/views/user.py:17
 msgid "Password"
-msgstr ""
+msgstr "密码"
 
 #: app/views/user.py:18
 msgid "Repeat Password"
-msgstr ""
+msgstr "重复密码"
 
 #: app/views/user.py:19
 msgid "Remember Me"
-msgstr ""
+msgstr "记住我的登录名"
 
 #: app/views/user.py:20 app/views/user.py:112
 msgid "Sign In"
-msgstr ""
+msgstr "登录"
 
 #: app/views/user.py:23
 msgid "Email"
-msgstr ""
+msgstr "电子邮件"
 
 #: app/views/user.py:25
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: app/views/user.py:26
 msgid "Phone Number"
-msgstr ""
+msgstr "电话号码"
 
 #: app/views/user.py:27
 msgid "Bio"
-msgstr ""
+msgstr "传记"
 
 #: app/views/user.py:28
 msgid "Immigration Status"
@@ -109,11 +109,11 @@ msgstr ""
 
 #: app/views/user.py:30
 msgid "Language"
-msgstr ""
+msgstr "语言"
 
 #: app/views/user.py:31
 msgid "Country"
-msgstr ""
+msgstr "国家"
 
 #: app/views/user.py:42
 msgid "Please select a different username."
