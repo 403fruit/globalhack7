@@ -72,11 +72,11 @@ ul.flags {
 	height: 40px;
 	margin-left: 10px;
 }
-.categories-container {
+.categories-container, .resources-container {
 	display: inline-block;
 	margin-bottom: 50px;
-	.categories-list {
-		.category {
+	.categories-list, .resources-list {
+		.category, .resource {
 			display: block;
 			text-align: center;
 			background: #fff;
