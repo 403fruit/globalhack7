@@ -1,5 +1,5 @@
 (function () {
-    var url = '/api/resources?query=%QUERY&lang_code=' + window.lang_code;
+    var url = '/api/resources_autosuggest?query=%QUERY&lang_code=' + window.lang_code;
 
     var bloodhound_resources = new Bloodhound({
         datumTokenizer: function (datum) {

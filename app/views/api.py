@@ -10,8 +10,8 @@ from app.main import db
 app = Blueprint('api', __name__)
 
 
-@app.route('/resources')
-def get_resources():
+@app.route('/resources_autosuggest')
+def get_resources_autosuggestions():
     query = request.args.get('query')
 
     # Find all HAVE resources that match by name, and all HAVE resources that match category name
