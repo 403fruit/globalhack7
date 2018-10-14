@@ -17,7 +17,8 @@ span.logo {
 
 h1.greeting {
   text-align: center;
-  color: #000; }
+  color: #000;
+  margin-bottom: 35px; }
 
 .flag-carousel {
   position: relative; }
@@ -150,13 +151,17 @@ div.form-panel {
   margin-top: 20px; }
 
 h1.form {
-  margin-left: 10px; }
+  margin-left: 10px;
+  text-transform: capitalize; }
 
 .breadcrumb {
   background: #fff; }
 
 .user-profile .picture img {
   width: 100%; }
+
+.table td {
+  text-transform: capitalize; }
 
 .resource-detail .picture img {
   width: 100%; }

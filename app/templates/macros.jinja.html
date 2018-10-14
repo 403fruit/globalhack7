@@ -7,6 +7,9 @@
                 <img class="resource-img" src="{{ resource.picture_url if resource.picture else url_for('static', filename='img/ui-sam.jpg')}}" />
                 <span class="name">{{ _(resource.name) }}</span>
                 <span class="description">{{ _(resource.description) | truncate(60) }}</span>
+                {% if resource.requested %}
+                <div class="resource-requested"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> {{ _('REQUESTED') }}</div>
+                {% endif %}
             </a>
         </div>
     {% endfor %}
