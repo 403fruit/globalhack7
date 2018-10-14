@@ -22,7 +22,10 @@ def index(cat_id=None):
             while category:
                 cat_drilldown.append(category)
                 category = category.parent
-        resources = Resource.query.filter(Resource.category_id == cat_id).all()
+        resources = Resource.query.filter(Resource.category_id == cat_id)
+        if current_user.is_authenticated():
+            resources = resources.filter(Resource.user != current_user)
+        resources = resources.all()
 
     if cat_drilldown:
         cat_list = list(cat_drilldown[0].children)
@@ -32,7 +35,7 @@ def index(cat_id=None):
     has_requested_resource = False
     if current_user.is_authenticated():
         for resource in Resource.query.filter(Resource.user_id == current_user.id).all():
-            if resource.requested:
+            if resource.requested and not resource.fulfilled:
                 has_requested_resource = True
                 break
 
