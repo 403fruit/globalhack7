@@ -31,7 +31,7 @@ def search_resources():
             data = json.load(f)
             emoji = next((x for x in data if x['code'].lower() == query.lower()), None)
         cat_query = Category.query.filter(or_(*[Category.name.like(f'%{keyword}%') for keyword in emoji['keywords']]))
-        res_query = db.session.query(Resource).filter(Resource.type == 'HAVE', or_(*[Resource.name.like(f'%{keyword}%') for keyword in emoji['keywords']]))
+        res_query = db.session.query(Resource).filter(Resource.type == 'HAVE', Resource.requested == False, or_(*[Resource.name.like(f'%{keyword}%') for keyword in emoji['keywords']]))
     else:
         cat_query = Category.query.filter(Category.name.like(f'%{query}%'))
         res_query = db.session.query(Resource).filter(Resource.name.like(f'%{query}%'))
