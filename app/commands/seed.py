@@ -4,8 +4,44 @@ from collections import namedtuple
 import requests
 
 from app.main import manager, db
-from app.models.common import Category, User
+from app.models.common import Category, User, Resource
 from app.models.common import USER_RESOURCE_TYPES, PRIMARY_ROLE
+
+
+ASSOCIATIONS = [
+    'Washington University Foreign Language Professor',
+    'International Institute Associate',
+]
+LOCALES = [
+    ("en", 'US'),
+    ("es", 'MX'),
+    ("zh", 'CN'),
+    ("fr", 'FR'),
+    ("ar", 'SY'),
+    ("vi", 'VN'),
+]
+
+def rchance(pc, next):
+    if random.random() <= pc:
+        return next()
+    return None
+
+class FileWrapper(object):
+    def __init__(self, url):
+        self.filename = url.split('/')[-1]
+        self.url = url
+        self.res = requests.get(url, stream=True)
+
+    def read(self, bytes=None):
+        return self.res.raw.read()
+
+    def save(self, filename):
+        with open(filename, 'wb') as fp:
+            while True:
+                data = self.read()
+                if len(data) == 0:
+                    break
+                fp.write(data)
 
 
 def get_or_create(query_props, upd_props):
@@ -50,41 +86,6 @@ def seed_categories():
 
 @manager.command
 def seed_user(num=None, seed=None):
-    ASSOCIATIONS = [
-        'Washington University Foreign Language Professor',
-        'International Institute Associate',
-    ]
-    LOCALES = [
-        ("en", 'US'),
-        ("es", 'MX'),
-        ("zh", 'CN'),
-        ("fr", 'FR'),
-        ("ar", 'SY'),
-        ("vi", 'VN'),
-    ]
-
-    def rchance(pc, next):
-        if random.random() <= pc:
-            return next()
-        return None
-
-    class FileWrapper(object):
-        def __init__(self, url):
-            self.filename = url.split('/')[-1]
-            self.url = url
-            self.res = requests.get(url, stream=True)
-
-        def read(self, bytes=None):
-            return self.res.raw.read()
-
-        def save(self, filename):
-            with open(filename, 'wb') as fp:
-                while True:
-                    data = self.read()
-                    if len(data) == 0:
-                        break
-                    fp.write(data)
-
     params = {
         'results': num or 1,
         'inc': 'name,location,email,login,phone,cell,picture,nat',
@@ -97,8 +98,8 @@ def seed_user(num=None, seed=None):
             name=' '.join((v.title() for v in (info['name']['first'], info['name']['last']) if v)),
             username=info['login']['username'],
             email=info['email'],
-            phone=info['phone'],
-            secondary_phone=info['cell'],
+            phone=int(info['phone'].replace('-', '')),
+            secondary_phone=int(info['cell'].replace('-', '')),
             bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             association=rchance(0.05, lambda: random.choice(ASSOCIATIONS)),
             primary_role=random.choice(list(dict(PRIMARY_ROLE).keys())),
@@ -110,3 +111,21 @@ def seed_user(num=None, seed=None):
         user.picture = FileWrapper(info['picture']['large'])
         db.session.add(user)
         db.session.commit()
+
+
+@manager.command
+def seed_resource(num=None):
+    cats = [c for c in Category.query if not len(c.children)]
+    users = User.query.all()
+    # for _ in range(num or 1):
+    #     type_ = random.choice([v[0] for v in USER_RESOURCE_TYPES])
+    #     resource = Resource(
+    #         category=random.choice(cats),
+    #         user=random.choice(users),
+    #         type=type_,
+    #         quantity_available=random.randint(1, 5) if type_ == 'HAVE' else None,
+    #         quantity_needed=random.randint(1, 5) if type_ == 'NEED' else None,
+    #         fulfilled=random.randint(0, 1) if type_ == 'NEED' else None,
+    #         # name = db.Column(db.UnicodeText(), nullable=False)
+    #         # picture = db.Column(db.UnicodeText())
+    #     )
