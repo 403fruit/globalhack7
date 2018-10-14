@@ -22,7 +22,8 @@ app = Blueprint('resource', __name__)
 class ResourceForm(Form):
     name = StringField(LABELS['name'])
     category = QuerySelectField(LABELS['category'], query_factory=lambda: Category.query.filter(Category.parent != None), get_label='name')
-    quantity_available = StringField(LABELS['quantity'])
+    quantity_available = StringField(LABELS['quantity'], default=1)
+    quantity_needed = StringField(LABELS['quantity'], default=1)
     description = StringField(LABELS['bio'], widget=TextArea())
     type = HiddenField(LABELS['type'])
     picture = FileField(LABELS["picture"], description=HELP["picture"])
@@ -52,18 +53,24 @@ def resource_create():
         default_data['category'] = Category.query.get(int(request.args['cat_id']))
     if request.args.get('name'):
         default_data['name'] = request.args['name']
-    if request.args.get('resource_type'):
+    if request.args.get('type'):
         default_data['type'] = request.args['type']
+
     form = ResourceForm(data=default_data)
+
+    if request.args.get('type') == 'NEED':
+        del form.quantity_available
+    else:
+        del form.quantity_needed
 
     if form.validate_on_submit():
         new_resource = Resource(
             name=form.name.data,
             category=form.category.data,
-            quantity_available=form.quantity_available.data if form.type.data == 'HAVE' else 0,
             description=form.description.data,
             fulfilled=False,
-            quantity_needed=0 if form.type.data == 'NEED' else 1,
+            quantity_needed=form.quantity_needed.data if form.type.data == 'NEED' else 0,
+            quantity_available=form.quantity_available.data if form.type.data == 'HAVE' else 0,
             type=form.type.data,
             user_id=current_user.id
         )
