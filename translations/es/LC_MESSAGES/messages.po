@@ -20,64 +20,64 @@ msgstr ""
 
 #: app/models/common.py:16
 msgid "Need"
-msgstr ""
+msgstr "Necesitar"
 
 #: app/models/common.py:17
 msgid "Have"
-msgstr ""
+msgstr "Tener"
 
 #: app/models/common.py:21
 msgid "Asylee"
-msgstr ""
+msgstr "Asilado"
 
 #: app/models/common.py:22
 msgid "Refugee"
-msgstr ""
+msgstr "Refugiado"
 
 #: app/models/common.py:23
 msgid "Nonimmigrant"
-msgstr ""
+msgstr "No inmigrante"
 
 #: app/models/common.py:24
 msgid "Qualified Immigrant"
-msgstr ""
+msgstr "Inmigrante calificado"
 
 #: app/models/common.py:25
 msgid "Unqualified Immigrant"
-msgstr ""
+msgstr "Inmigrante no calificado"
 
 #: app/models/common.py:26
-msgid "sponsor"
-msgstr ""
+msgid "Sponsor"
+msgstr "Patrocinador"
 
 #: app/models/common.py:27
 msgid "Public Charge"
-msgstr ""
+msgstr "Cargo público"
 
 #: app/models/common.py:28
 msgid "Native Born Citizen"
-msgstr ""
+msgstr "Ciudadano nacido nativo"
 
 #: app/models/common.py:29
 msgid "Naturalized Citizen"
-msgstr ""
+msgstr "Ciudadano naturalizado"
 
 #: app/models/common.py:33
 msgid "In Need Of Aide"
-msgstr ""
+msgstr "En necesidad de ayudante"
 
 #: app/models/common.py:34
 msgid "Individual Helper"
-msgstr ""
+msgstr "Patrocinador individual"
 
 #: app/models/common.py:35
 msgid "Corporate Sponsor"
-msgstr ""
+msgstr "Patrocinador Corporativo"
 
 #: app/templates/edit_profile.jinja.html:8
 #: app/templates/view_profile.jinja.html:6
 msgid "User Profile"
-msgstr ""
+msgstr "Perfil del usuario"
 
 #: app/templates/index.jinja.html:7
 msgid "Hello, World!"
@@ -85,7 +85,7 @@ msgstr "Hola, Mundo!"
 
 #: app/templates/index.jinja.html:34
 msgid "Category: "
-msgstr ""
+msgstr "Categoría: "
 
 #: app/templates/index.jinja.html:75
 msgid "I need"
@@ -93,7 +93,7 @@ msgstr "Yo necessito"
 
 #: app/templates/index.jinja.html:76
 msgid "I have"
-msgstr ""
+msgstr "Yo Tengo"
 
 #: app/templates/index.jinja.html:78
 msgid "Try: 🛏, 🚗, or Start Typing"
@@ -113,11 +113,11 @@ msgstr "Cerrar sesión"
 
 #: app/templates/nav.jinja.html:23
 msgid "View Profile"
-msgstr ""
+msgstr "Ver perfil"
 
 #: app/templates/nav.jinja.html:24
 msgid "Edit Profile"
-msgstr ""
+msgstr "Editar perfil"
 
 #: app/templates/nav.jinja.html:26 app/templates/register.jinja.html:8
 #: app/views/user.py:22 app/views/user.py:24 app/views/user.py:163
@@ -214,15 +214,15 @@ msgstr "Se ha registrado exitosamente."
 
 #: app/views/user.py:64
 msgid "You have successfully logged in."
-msgstr ""
+msgstr "Has iniciado sesión correctamente."
 
 #: app/views/user.py:65
 msgid "You have successfully logged out."
-msgstr ""
+msgstr "Has terminado tu sesion satisfactoriamente."
 
 #: app/views/user.py:170 app/views/user.py:180 app/views/user.py:184
 msgid "A user with that ID does not exist"
-msgstr ""
+msgstr "Un usuario con ese ID no existe"
 
 #: app/views/user.py:183
 msgid "You do not have permission to access this profile."
@@ -230,61 +230,61 @@ msgstr ""
 
 #: app/views/user.py:190
 msgid "Your account has been successfully saved!"
-msgstr ""
+msgstr "No tienes permiso para acceder a este perfil."
 
 msgid "Furnishings"
-msgstr ""
+msgstr "Mobiliario"
 
 msgid "Financial Assistance"
-msgstr ""
+msgstr "Asistencia financiera"
 
 msgid "One Time Jobs"
-msgstr ""
+msgstr "Trabajos de una sola vez"
 
 msgid "Bed"
 msgstr "Cama"
 
 msgid "Couch"
-msgstr ""
+msgstr "Sofá"
 
 msgid "Chair"
-msgstr ""
+msgstr "Silla"
 
 msgid "Lamp"
-msgstr ""
+msgstr "Lámpara"
 
 msgid "Dining Table"
-msgstr ""
+msgstr "Comedor"
 
 msgid "Table"
-msgstr ""
+msgstr "Mesa"
 
 msgid "Refrigerator"
-msgstr ""
+msgstr "Refrigerador"
 
 msgid "Microwave"
-msgstr ""
+msgstr "Microonda"
 
 msgid "Stove or Oven"
-msgstr ""
+msgstr "Estufa o horno"
 
 msgid "Clothes Washer or Dryer"
-msgstr ""
+msgstr "Lavadora o secadora de ropa"
 
 msgid "Lawn Mowing"
-msgstr ""
+msgstr "Cortar el césped"
 
 msgid "Moving"
-msgstr ""
+msgstr "Movedor"
 
 msgid "Car Repair"
-msgstr ""
+msgstr "Reparación de autos"
 
 msgid "Painting"
-msgstr ""
+msgstr "Pintura"
 
 msgid "Minor Construction"
-msgstr ""
+msgstr "Construcción menor"
 
 #~ msgid "Home"
 #~ msgstr "Casa"
