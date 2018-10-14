@@ -114,10 +114,11 @@ ul.flags {
 	height: 40px;
 	margin-top: 5px;
 	width: 300px;
+	margin-bottom: 35px;
 }
 .categories-container, .resources-container {
 	display: inline-block;
-	margin-bottom: 50px;
+	margin-bottom: 35px;
 	width: 100%;
 	.categories-list, .resources-list {
 		.category, .resource {
@@ -150,6 +151,7 @@ ul.flags {
 			margin-top: 15px;
 			font-size: 20px;
 			font-weight: 700;
+			overflow-wrap: break-word;
 		}
 	}
 	.resources-list {
