@@ -22,7 +22,7 @@ def text_has_emoji(text):
 @app.route('/search-resources')
 def search_resources():
     query = request.args.get('query')
-    lang_code = request.args.get('lang_code') or 'en'
+    g.lang_code = request.args.get('lang_code') or 'en'
     resource_list = []
 
     if text_has_emoji(query):
