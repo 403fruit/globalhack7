@@ -23,8 +23,10 @@ ul.flags {
       width: 15em;
       border-radius: 6px;
       box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2); }
-  ul.flags.flags-sm li img {
-    width: 3em; }
+  ul.flags.flags-sm {
+    justify-content: center; }
+    ul.flags.flags-sm li img {
+      width: 3em; }
 
 .form-inline {
   display: flex;
