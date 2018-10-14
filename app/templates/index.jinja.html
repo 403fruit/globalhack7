@@ -40,7 +40,7 @@
             </div>
             <div class="categories-list row-fluid">
                 {% for cat in cat_list %}
-                    <div class="col-xs-6 col-sm-4">
+                    <div class="col-sm-4">
                         <a class="category pn" href="{{ url_for('index.index', cat_id=cat.id) }}">
                             <span class="icons">
                                 {#{% for icon in cat.fontawesome_icon_classes %}
@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        <div class="search row-fluid">
+        <div class="searchbox row-fluid">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <ul class="inputs"></ul>
             </div>
@@ -64,7 +64,7 @@
                 <form method="POST" class="form-inline">
                     <div class="form-group">
                         <label for="id_resource">{{ _("I need") }}: </label>
-                        <input class="typeahead form-control" id="id_resource" type="text" placeholder="{{ _("What do you need?") }}">
+                        <input class="typeahead form-control" id="resource" type="text" placeholder="{{ _("What do you need?") }}">
                     </div>
                     <button type="submit" class="btn btn-default btn-primary">{{ _("Submit") }}</button>
                 </form>

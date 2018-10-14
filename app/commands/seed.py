@@ -15,7 +15,7 @@ def get_or_create(query_props, upd_props):
 def seed_categories():
     furnishings = get_or_create({'name': "Furnishings"}, {'fontawesome_icon': "couch, bed, chair"})
     financial = get_or_create({'name': "Financial Assistance"}, {'fontawesome_icon': "yen-sign, dollar-sign, credit-card"})
-    jobs = get_or_create({'name': "One Time Jobs"}, {'fontawesome_icon': "building, shovel, people-carry"})
+    jobs = get_or_create({'name': "One Time Jobs"}, {'fontawesome_icon': "building, hammer, people-carry"})
 
     db.session.add_all([
         furnishings,

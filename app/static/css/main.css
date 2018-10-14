@@ -60,7 +60,8 @@ ul.flags {
     display: block; }
     .categories-container .categories-list .icons img.caticon-4, .categories-container .categories-list .icons img.caticon-3, .categories-container .categories-list .icons img.caticon-2 {
       width: 50%;
-      height: 75px; }
+      height: 75px;
+      margin-bottom: 10px; }
     .categories-container .categories-list .icons img.caticon-1 {
       width: 100%; }
   .categories-container .categories-list .name {
