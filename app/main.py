@@ -50,7 +50,7 @@ def create_app():
 
     # jinja happy fun times
     def _user_locale_name(user):
-        l = Locale(user.language, user.country)
+        l = Locale(user.language)
         return l.get_display_name(str(l))
     app.jinja_env.globals.update({
         'file_url': file_url,
