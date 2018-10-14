@@ -37,6 +37,9 @@
                                     {% for icon in cat.fontawesome_icon_classes %}
                                         <i class="{{ icon }}"></i>
                                     {% endfor %}
+                                    {% for icon in cat.linecon_icon_classes %}
+                                        <span class="{{ icon }}"></span>
+                                    {% endfor %}
                                     {{ _(cat.name) }}
                                 </li>
                             {% endfor %}
@@ -54,7 +57,11 @@
                                 {% for icon in cat.fontawesome_icons %}
                                     <img class="caticon-{{ loop.length }}" src="{{ url_for('static', filename='fontawesome-5.4.1/svgs/solid/' + icon + '.svg') }}" />
                                 {% else %}
-                                    <img class="caticon-1" src="{{ url_for('static', filename='categories/' + cat.name.replace(' ', '_').lower() + '.png') }}" />
+                                    {% for icon in cat.linecon_icon_classes %}
+                                        <span class="caticon-{{ loop.length }} {{ icon }}"></span>
+                                    {% else %}
+                                        <img class="caticon-1" src="{{ url_for('static', filename='categories/' + cat.name.replace(' ', '_').lower() + '.png') }}" />
+                                    {% endfor %}
                                 {% endfor %}
                             </span>
                             <span class="name">{{ _(cat.name) }}</span>

@@ -87,6 +87,7 @@ class Category(db.Model):
     parent = db.relationship('Category', foreign_keys=[parent_id], remote_side=[id], backref='children')
     name = db.Column(db.UnicodeText(), nullable=False)
     fontawesome_icon = db.Column(db.UnicodeText())
+    linecon_icon = db.Column(db.UnicodeText())
 
     @property
     def fontawesome_icons(self):
@@ -101,6 +102,20 @@ class Category(db.Model):
             return ''
 
         return ['fas fa-' + i for i in re.split(r',\s*', self.fontawesome_icon)]
+
+    @property
+    def linecon_icons(self):
+        if self.linecon_icon is None:
+            return ''
+
+        return list(re.split(r',\s*', self.linecon_icon))
+
+    @property
+    def linecon_icon_classes(self):
+        if self.linecon_icon is None:
+            return ''
+
+        return ['linecon li_' + i for i in re.split(r',\s*', self.linecon_icon)]
 
 
 class Resource(TimestampMixin, db.Model):
