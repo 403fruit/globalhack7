@@ -3,7 +3,7 @@ from flask import jsonify, request
 from flask_babel import Babel
 from app.models.common import Category, Resource
 from app.main import babel
-from operator import or_
+from sqlalchemy import or_
 import emoji
 import json
 
@@ -29,7 +29,7 @@ def get_resources():
         with open('emoji.json') as f:
             data = json.load(f)
             emoji = next((x for x in data if x['code'].lower() == query.lower()), None)
-        cat_query = Category.query.filter(or_(*[Category.name.like('%{}%'.format(keyword)) for keyword in emoji['keywords']]))
+        cat_query = Category.query.filter(or_(*[Category.name.like('%{}%'.format(keyword)) for idx, keyword in enumerate(emoji['keywords'])]))
     else:
         cat_query = Category.query.filter(Category.name.like('%{}%'.format(query)))
 
