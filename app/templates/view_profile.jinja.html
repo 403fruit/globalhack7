@@ -26,16 +26,17 @@
                         <tr><th>{{ _("Locale") }}</th><td>{{ user_locale_name(user) }}</td></tr>
                     </table>
                     {% endif %}
+
                     <div id="user-resources">
                     {% if resource_needs %}
-                        <h2>{{ _("Resource Needs") }}</h2>
+                        <h2>{{ _("I need") if current_user == user else user.name + ' ' + _("needs") }}</h2>
                         {{ display_resources(resource_needs) }}
                     {% endif %}
                     {% if resource_haves %}
-                         <h2>{{ _("Resource Haves") }}</h2>
+                        <h2>{{ _("I am offering") if current_user == user else user.name + ' ' + _("is offering")  }}</h2>
                         {{ display_resources(resource_haves) }}
                     {% endif %}
-                </div>
+                    </div>
                 </div>
             </div>
         </div>
