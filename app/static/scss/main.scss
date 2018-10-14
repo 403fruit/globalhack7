@@ -127,7 +127,7 @@ ul.flags {
 			background: #fff;
 			padding: 20px;
 			height: auto;
-			min-height: 370px;
+			min-height: 375px;
 			margin-bottom: 25px;
 		}
 		.icons {
@@ -145,7 +145,7 @@ ul.flags {
 			}
 			.linecon {
 				color: #000;
-				font-size: calc( 12px + (50 - 12) * ( (100vw - 115px) / ( 330 - 115) ));
+				font-size: calc( 7rem + (30 - 7) * ( (100vw - 150px) / ( 370 - 150) ));
 			}
 		}
 		.name {
