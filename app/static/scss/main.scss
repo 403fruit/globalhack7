@@ -78,8 +78,9 @@ ul.flags {
 		display: inline-block;
 		width: 49%;
 		cursor: pointer;
-		border-bottom: 3px solid transparent;
-		margin-bottom: 5px;
+		border: 1px solid transparent;
+		border-bottom-width: 3px;
+		margin-bottom: 3px;
 		&.active {
 			color: #000;
 			border-color: #000;
@@ -93,6 +94,7 @@ ul.flags {
 		height: 40px;
 		line-height: 40px;
 		padding: 0 15px;
+		min-width: 300px;
 	}
 }
 .btn-default {
@@ -104,6 +106,7 @@ ul.flags {
 .categories-container, .resources-container {
 	display: inline-block;
 	margin-bottom: 50px;
+	width: 100%;
 	.categories-list, .resources-list {
 		.category, .resource {
 			display: block;
@@ -136,6 +139,16 @@ ul.flags {
 			font-weight: 700;
 		}
 	}
+	.resources-list {
+		width: 100%;
+		.resource {
+			min-height: 220px;
+			img.resource-img {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+		}
+	}
 }
 .alert {
   padding-top:75px;
@@ -147,4 +160,17 @@ div.form-panel {
 }
 h1.form {
 	margin-left: 10px;
+}
+
+
+.user-profile {
+	.picture img {
+		width: 100%;
+	}
+}
+
+.resource-detail {
+	.picture img {
+		width: 100%;
+	}
 }

@@ -93,7 +93,6 @@ class User(UserMixin, TimestampMixin, db.Model):
         return ", ".join(resources_needed)
 
 
-
 class Category(db.Model):
     __tablename__ = 'categories'
     id = db.Column(db.BigInteger, primary_key=True)
@@ -129,6 +128,24 @@ class Resource(TimestampMixin, db.Model):
     quantity_needed = db.Column(db.BigInteger)
     fulfilled = db.Column(db.Boolean, nullable=False, default=False, server_default='0')
     name = db.Column(db.UnicodeText(), nullable=False)
+    picture = db.Column(db.UnicodeText())
+
+    def __setattr__(self, name, value):
+        if name == 'picture':
+            filename = '{}.{}'.format(
+                self.id,
+                value.filename.split('.')[-1]
+            )
+            super().__setattr__('picture', upload_file(value, 'user_pictures', filename))
+
+        else:
+            super().__setattr__(name, value)
+
+    @property
+    def picture_url(self):
+        if not self.picture:
+            return None
+        return file_url(self.picture)
 
     @property
     def quantity_remaining(self):

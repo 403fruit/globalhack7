@@ -69,8 +69,9 @@ ul.flags {
     display: inline-block;
     width: 49%;
     cursor: pointer;
-    border-bottom: 3px solid transparent;
-    margin-bottom: 5px; }
+    border: 1px solid transparent;
+    border-bottom-width: 3px;
+    margin-bottom: 3px; }
     .form-inline .control-label.active, .form-inline .need-have-switch.active {
       color: #000;
       border-color: #000; }
@@ -80,7 +81,8 @@ ul.flags {
   .form-inline input {
     height: 40px;
     line-height: 40px;
-    padding: 0 15px; }
+    padding: 0 15px;
+    min-width: 300px; }
 
 .btn-default {
   padding: 0 20px;
@@ -90,7 +92,8 @@ ul.flags {
 
 .categories-container, .resources-container {
   display: inline-block;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  width: 100%; }
   .categories-container .categories-list .category, .categories-container .categories-list .resource, .categories-container .resources-list .category, .categories-container .resources-list .resource, .resources-container .categories-list .category, .resources-container .categories-list .resource, .resources-container .resources-list .category, .resources-container .resources-list .resource {
     display: block;
     text-align: center;
@@ -114,6 +117,13 @@ ul.flags {
     margin-top: 15px;
     font-size: 20px;
     font-weight: 700; }
+  .categories-container .resources-list, .resources-container .resources-list {
+    width: 100%; }
+    .categories-container .resources-list .resource, .resources-container .resources-list .resource {
+      min-height: 220px; }
+      .categories-container .resources-list .resource img.resource-img, .resources-container .resources-list .resource img.resource-img {
+        width: 100%;
+        margin-bottom: 10px; }
 
 .alert {
   padding-top: 75px;
@@ -125,3 +135,9 @@ div.form-panel {
 
 h1.form {
   margin-left: 10px; }
+
+.user-profile .picture img {
+  width: 100%; }
+
+.resource-detail .picture img {
+  width: 100%; }
