@@ -53,6 +53,8 @@
                                     <i class="caticon-{{ loop.length }} {{ icon }}"></i>#}
                                 {% for icon in cat.fontawesome_icons %}
                                     <img class="caticon-{{ loop.length }}" src="{{ url_for('static', filename='fontawesome-5.4.1/svgs/solid/' + icon + '.svg') }}" />
+                                {% else %}
+                                    <img class="caticon-1" src="{{ url_for('static', filename='categories/' + cat.name.replace(' ', '_').lower() + '.png') }}" />
                                 {% endfor %}
                             </span>
                             <span class="name">{{ _(cat.name) }}</span>
