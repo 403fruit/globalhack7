@@ -158,7 +158,7 @@ def profile(id=None):
         form.populate_obj(user)
         db.session.commit()
         flash('Your account has been successfully saved!', 'success')
-        redirect(url_for('index.index', lang_code=(g.lang_code or 'en')))
+        return redirect(url_for('index.index', lang_code=(user.language or 'en')))
 
     return render_template('profile.jinja.html', form=form)
 
