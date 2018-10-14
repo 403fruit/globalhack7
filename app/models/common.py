@@ -50,6 +50,7 @@ class User(UserMixin, TimestampMixin, db.Model):
     phone = db.Column(db.BigInteger(), nullable=True)
     secondary_phone = db.Column(db.BigInteger(), nullable=True)
     bio = db.Column(db.UnicodeText, nullable=False)
+    association = db.Column(db.Unicode(64), nullable=True)
     immigration_status = db.Column(sau.ChoiceType(IMMIGRATION_STATUS), index=True)
     primary_role = db.Column(sau.ChoiceType(PRIMARY_ROLE))
     language = db.Column(db.String(2), nullable=False)

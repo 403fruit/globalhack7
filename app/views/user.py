@@ -28,7 +28,8 @@ LABELS = {
     "immigration_status": lazy_gettext("Immigration Status"),
     "primary_role": lazy_gettext("Primary Role"),
     "language": lazy_gettext("Language"),
-    "country": lazy_gettext("Country")
+    "country": lazy_gettext("Country"),
+    "association": lazy_gettext("Association")
 }
 
 
@@ -62,6 +63,7 @@ class ProfileForm(Form):
     name = StringField(LABELS['name'])
     username = StringField(LABELS['username'], validators=[DataRequired()])
     email = StringField(LABELS['email'], validators=[DataRequired(), Email()])
+    association = StringField(LABELS['association'])
     bio = StringField(LABELS['bio'], widget=TextArea())
     phone = StringField(LABELS["phone"])
     language = SelectField(LABELS["language"], choices=SUPPORTEDLANGUAGES())
@@ -72,6 +74,7 @@ class ProfileForm(Form):
 class RegistrationForm(Form):
     name = StringField(LABELS['name'])
     email = StringField(LABELS['email'], validators=[DataRequired(), Email()])
+    assocation = StringField(LABELS['association'])
     username = StringField(LABELS['username'], validators=[DataRequired()])
     password = PasswordField(LABELS['password'], validators=[DataRequired()])
     password2 = PasswordField(
@@ -137,7 +140,7 @@ def register():
         db.session.commit()
         flash(GENERAL_MESSAGES['registration_success'], "success")
         return redirect(url_for('index.index'))
-    else :
+    else:
         if form.language.data == "None":
             form.language.data = g.lang_code
     return render_template('register.jinja.html', title=gettext('Register'), form=form)
